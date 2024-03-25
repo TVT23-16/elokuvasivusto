@@ -6,3 +6,4 @@ Ryhmä 16 projektin repositorio
 - o7lipy00 - Pyry Liu
 - Heikkinenja - Janniina Heikkinen
 - miialatervo - Miia Alatervo
+- c2lael03 - Elina Lappalainen
