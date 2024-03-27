@@ -12,3 +12,8 @@ app.get("/", (req, res) => {
   console.log("getting root");
   res.send("Serveri toimii jee");
 });
+
+app.get("/login", (req, res) => {
+  console.log("getting root");
+  res.send("anna käyttäjätiedot");
+});
