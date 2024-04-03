@@ -1,0 +1,39 @@
+footer {
+background-color: var(--dark-color);
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100px;
+width: 100%;
+position: fixed;
+bottom: 0;
+
+
+
+}
+footer p {
+
+    display: inline-block; /* Display paragraphs as inline-block */
+    margin: 0 100px;
+    color:beige
+
+
+}
+footer p1{
+    display: inline-block; /* Display paragraphs as inline-block */
+    margin: 0 100px;
+    color:aqua
+}
+footer p2{
+    display: inline-block; /* Display paragraphs as inline-block */
+    margin: 0 100px;
+    color:rgb(255, 0, 0)
+}
+
+footer p1:hover{
+color: yellow; 
+
+}
+footer p2:hover{
+    color: yellow; 
+    }
