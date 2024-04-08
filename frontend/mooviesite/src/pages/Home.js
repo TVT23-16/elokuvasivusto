@@ -5,7 +5,8 @@ export default function Home() {
   return (
     
     
-      <p>makkara koira</p>
+      <p>KOTISIVUSTO
+      </p>
   
   )
 }
