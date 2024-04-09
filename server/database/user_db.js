@@ -2,8 +2,8 @@ const pgPool = require("./pg_connection")
 
 const sql = {
     GET_ALL_USERS : "SELECT * from table_account",
-    GET_USER : "SELECT * from table_account WHERE usernam=$1",
-    ADD_USER: "INSERT INTO table_account ( password) VALUES ($1)"
+    GET_USER : "SELECT * from table_account WHERE userId=$1",
+    DELETE_USER: "DELETE FROM table_account WHERE userId = ($1)"
 }
 
 async function getUsers() {
@@ -12,10 +12,12 @@ async function getUsers() {
    return result.rows;
 }
 
-async function addUser(password){
-    await pgPool.query(sql.ADD_USER, [password])
-    console.log(password)
+
+
+async function delUser(delet){
+    await pgPool.query(sql.DELETE_USER, [delet])
+    console.log(delet)
 }
 
 
-module.exports = {getUsers, addUser}
+module.exports = {getUsers, delUser}

@@ -5,7 +5,7 @@ app.use( express.urlencoded({extended: false}) );
 const cors = require('cors');
 
 const user = require("./routes/user")
-
+const auth = require("./routes/auth")
 
 const pgPool = require("./database/pg_connection")
 const PORT = process.env.PORT || 3001;
@@ -18,9 +18,9 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use("/user", user)
-app.use("/add", user)
 //routet
+app.use("/user", user)
+app.use("/auth", auth)
 
 app.get("/", (req, res) => {
   console.log("getting root");
