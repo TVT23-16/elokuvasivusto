@@ -1,39 +1,31 @@
 footer {
-background-color: var(--dark-color);
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100px;
-width: 100%;
-position: fixed;
-bottom: 0;
 
-
-
+    background-color: var(--grey-color);
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
 }
+
 footer p {
-
-    display: inline-block; /* Display paragraphs as inline-block */
-    margin: 0 100px;
-    color:beige
-
-
-}
-footer p1{
-    display: inline-block; /* Display paragraphs as inline-block */
-    margin: 0 100px;
-    color:aqua
-}
-footer p2{
-    display: inline-block; /* Display paragraphs as inline-block */
-    margin: 0 100px;
-    color:rgb(255, 0, 0)
+    width: auto;
+    position: absolute;
+    margin-top: 20px;
+    padding: 0 40px;
+    display: flex;
 }
 
-footer p1:hover{
-color: yellow; 
-
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-footer p2:hover{
-    color: yellow; 
-    }
+
+.logo-container img {
+    width: 60px; /* Muuta kuvien leveyttä tarvittaessa */
+    height: auto; /* Automaattinen korkeuden määritys leveyden suhteessa */
+    align-items: center;
+    /*margin-right: 80px;
+    margin-left: 80px; */
+    margin-top: auto;
+}

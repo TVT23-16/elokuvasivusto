@@ -1,16 +1,24 @@
 header {
-background-color: var(--dark-color);
-height: 150px;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-header h1{
-    color: var(--light-color);
+    background-color: var(--dark-color);
+    height: 315px; /* Voit säätää tämän koon tarpeidesi mukaan */
+    display: flex;
+    align-items: center;
 }
 
-div{
+img {
+    max-width: 100%; /* Asetetaan kuvan maksimileveydeksi 100% headerin leveydestä */
+    max-height: 100%; /* Asetetaan kuvan maksimikorkeudeksi 100% headerin korkeudesta */
+    height: auto; /* Säilytetään kuvan alkuperäinen suhde leveyteen nähden */
+}
 
+@media screen and (max-width: 1200px) {
+    header {min-height: 150px;}
+}
 
-    
+@media screen and (max-width: 600px) {
+    header {min-height: 100px;}
+}
+
+@media screen and (max-width: 375px) {
+    header {min-height: 60px}
 }
