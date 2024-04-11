@@ -1,12 +1,47 @@
 import React from 'react'
-import {Navigate } from 'react-router-dom'
+import './Myprofile.css';
 
-export default function myprofile({user}) {
-  if (user === null)
-  {
-    return <Navigate to ="/login"/>
-  }
+export default function Myprofile() {
   return (
-    <div>MINUN PROFIILINI</div>
-  )
-}
+    <div>
+      <h1>PROFIILINI</h1>
+      <br />
+      <button>Poista profiilini</button>
+      <br />
+      <div className="profile-lists">
+        <div className="profile-list">
+          <h2>Suosikki elokuvani</h2>
+          <br />
+          <ul>
+            <li>Listan eka rivi</li>
+            <li>Listan toka rivi</li>
+            <li>Listan kolmas rivi</li>
+          </ul>
+          <br />
+        </div>
+        <div className="profile-list">
+          <h2>Suosikki sarjani</h2>
+          <br />
+          <ul>
+            <li>Listan eka rivi</li>
+            <li>Listan toka rivi</li>
+            <li>Listan kolmas rivi</li>
+          </ul>
+          <br />
+        </div>
+        <div className="profile-list">
+          <h2>Arvosteluni</h2>
+          <br />
+          <ul>
+            <li>Listan eka rivi</li>
+            <li>Listan toka rivi</li>
+            <li>Listan kolmas rivi</li>
+            <br />
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/*muutostesti*/

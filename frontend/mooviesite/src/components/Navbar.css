@@ -22,3 +22,16 @@ nav a:hover{
 nav div{
 display: inline-block;
 }
+
+.dropdown-menu {
+    left: auto; /* Poista automaattinen asettelu */
+    right: 0; /* Aseta oikea reuna 0:ksi */
+  }
+  
+  @media (max-width: 768px) {
+    /* Muokkaa responsiivista asettelua tarvittaessa */
+    .dropdown-menu {
+      left: 50%; /* Aseta vaaka-asento 50%:iin */
+      transform: translateX(-50%); /* Siirrä vaakatasossa 50% vasemmalle */
+    }
+  }
