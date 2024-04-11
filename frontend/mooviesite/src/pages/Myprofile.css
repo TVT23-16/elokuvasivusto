@@ -1,0 +1,65 @@
+.profile-lists {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profile-list {
+  flex: 1;
+  margin: 10px;
+  border: 3px solid #ccc; /* Lisää reunus /
+  border-radius: 5px; / Pyöristetyt kulmat /
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); / Varjo /
+  padding: 10px; / Lisää tyhjennystä / 
+}
+
+
+.profile-list ul {
+margin-left: 15px; / Sijoita lista oikealle /
+}
+
+
+/ alla dropvalikon jutut */
+}
+
+.profile-menu {
+position: relative;
+display: inline-block;
+}
+
+.profile-button {
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+background-color: #fff;
+cursor: pointer;
+}
+
+.profile-dropdown {
+position: absolute;
+display: none;
+background-color: #fff;
+border: 1px solid #ccc;
+border-radius: 5px;
+min-width: 150px;
+z-index: 10;
+}
+
+.profile-button:hover .profile-dropdown {
+display: block;
+}
+
+.profile-dropdown li {
+padding: 10px;
+border-bottom: 1px solid #ccc;
+}
+
+.profile-dropdown li:hover {
+background-color: #ddd;
+}
+
+#delete-account-button {
+  background-color: red;
+color: #fff;
+border: none;
+}

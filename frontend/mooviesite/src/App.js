@@ -1,4 +1,3 @@
-
 import './App.css';
 import Home from './pages/Home';
 import Login from './pages/login';
@@ -29,14 +28,14 @@ function App() {
       <Route path ="/series" element ={<Series/>}/>
       <Route path ="/myprofile" element ={<Myprofile user={user}/>}/>
       <Route path="/home"exact element ={<Home/>} />
-      
-     
+
+
     </Routes>
-    
-    
+
+
     </div>
     <Footer></Footer>
-   
+
 </>
   );
 }

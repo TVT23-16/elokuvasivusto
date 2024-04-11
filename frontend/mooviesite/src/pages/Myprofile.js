@@ -1,12 +1,45 @@
 import React from 'react'
-import {Navigate } from 'react-router-dom'
+import './Myprofile.css';
 
-export default function myprofile({user}) {
-  if (user === null)
-  {
-    return <Navigate to ="/login"/>
-  }
+export default function Myprofile() {
   return (
-    <div>MINUN PROFIILINI</div>
-  )
-}
+    <div>
+      <h1>MY PROFILE</h1>
+      <br />
+      <button>Delete profile</button>
+      <br />
+      <div className="profile-lists">
+        <div className="profile-list">
+          <h2>My favourite movies</h2>
+          <br />
+          <ul>
+            <li>First movies</li>
+            <li>First movies</li>
+            <li>First movies</li>
+          </ul>
+          <br />
+        </div>
+        <div className="profile-list">
+          <h2>My favourite series</h2>
+          <br />
+          <ul>
+            <li>First movies</li>
+            <li>First movies</li>
+            <li>First movies</li>
+          </ul>
+          <br />
+        </div>
+        <div className="profile-list">
+          <h2>My ratings</h2>
+          <br />
+          <ul>
+            <li>First movies</li>
+            <li>First movies</li>
+            <li>First movies</li>
+            <br />
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};

@@ -1,43 +1,39 @@
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import React from 'react'
+import DropdownMenu from './DropdownMenu';
 
 
-export default function Navbar({user}) {
+const Navbar = ({ user }) => {
   return (
-    
     <nav>
       <div>
-      <ul>
-        <li>
-          <Link to ="/Home"> Home</Link>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
           </li>
           <li>
-          <Link to ="/Series">Series</Link>
+            <Link to="/series">Series</Link>
           </li>
-        <li>
-         <Link to ="/movies">Movies</Link> 
-        </li>
-        
-        
-        
-      </ul>
+          <li>
+            <Link to="/movies">Movies</Link>
+          </li>
+        </ul>
       </div>
       <div>
-       <ul>
-       <li> <Link to ="/myprofile">My profile</Link></li>
-       <li>
-      {user === null &&
-       <Link to ="/Login">Login</Link> 
-      }
-      </li>
-      <li>
-       {user &&
-      <Link to ="/Logout">Logout</Link> 
-       }
-     </li>
-      </ul> 
+        <ul>
+          <li>
+          
+          </li>
+          <li>
+            {user === null && <Link to="/login">Login</Link>}
+            {user && <Link to="/logout">Logout</Link>}
+          </li>
+          <DropdownMenu user={user} />
+        </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
+
+export default Navbar;
