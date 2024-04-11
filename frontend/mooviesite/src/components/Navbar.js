@@ -31,7 +31,7 @@ const Navbar = ({ user }) => {
       <div>
         <ul>
           <li>
-            <Link to="/myprofile">My Profile</Link>
+            
           </li>
           <li>
             {user === null && <Link to="/login">Login</Link>}
