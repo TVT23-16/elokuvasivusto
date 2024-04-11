@@ -1,3 +1,51 @@
 .container {
     margin: var(--gutter);
 }
+
+/* alla oleva lisätty drop-valikkoa varten*/
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    /* position: relative;  */
+  }
+  
+  .navbar ul {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+  }
+
+  
+.navbar ul li:first-child {
+    margin-right: 10px; /* Muokkaa tätä arvoa tarpeen mukaan */
+    order: 1;
+  }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: auto; /* Muuta arvoa tarpeen mukaan */
+    /* left: 0; /* Muuta arvoa tarpeen mukaan */
+  }
+  
+  .dropdown-toggle {
+    cursor: pointer;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+  }
+  
+  .dropdown-menu li {
+    padding: 10px;
+  }
+  
