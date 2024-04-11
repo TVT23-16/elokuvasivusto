@@ -17,12 +17,13 @@ nav a {
     padding: 1em var(--gutter);
     text-decoration: none;
     font-size: 18px;
-    color: rgb(204, 0, 0);
-    cursor: url('popcorn_cursor2.png'), auto;
+    font-weight: 700;
+    color: rgb(180, 0, 0);
 
 }
 nav a:hover{
     color: rgb(255, 0, 0);
+    font-weight: 700;
 }
 nav div{
 display: inline-block;

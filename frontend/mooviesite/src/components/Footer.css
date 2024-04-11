@@ -31,10 +31,6 @@ footer p {
     text-shadow: 2px 1px 4px darkgrey;
 }
 
-.logo-container a {
-    cursor: url('popcorn_cursor2.png'), auto;
-}
-
 .logo-container {
     display: flex;
     align-items: center;
