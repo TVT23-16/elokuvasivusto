@@ -1,15 +1,12 @@
-import './Header.css'
 import React from 'react'
-
-
+import './Header.css'
 
 export default function Header() {
   return (
     <header>
-      
-        <h1>MOOVIES</h1>
-       
-  
+      <div id="Lehma_header">
+        <img src="Lehma_header.png" alt="Lehma kuva" />
+      </div>
     </header>
   )
 }

@@ -1,7 +1,9 @@
 nav{
-    background-color: var(--grey-color);
+    background-image: linear-gradient(to bottom, rgb(64, 62, 62), black);
     display: flex;
     justify-content: space-between;
+    position: relative;
+    text-shadow: 2px 1px 4px rgb(0, 0, 0);
 }
 nav ul{
     list-style-type: none;
@@ -14,14 +16,18 @@ nav a {
     display: inline-block;
     padding: 1em var(--gutter);
     text-decoration: none;
+    font-size: 18px;
+    color: rgb(204, 0, 0);
+    cursor: url('popcorn_cursor2.png'), auto;
 
 }
 nav a:hover{
-    color: var(--accent-color);
+    color: rgb(255, 0, 0);
 }
 nav div{
 display: inline-block;
 }
+
 
 .dropdown-menu {
     left: auto; /* Poista automaattinen asettelu */
@@ -35,3 +41,4 @@ display: inline-block;
       transform: translateX(-50%); /* Siirrä vaakatasossa 50% vasemmalle */
     }
   }
+

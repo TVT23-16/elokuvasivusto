@@ -2,6 +2,7 @@
 import './App.css';
 import Home from './pages/Home';
 import Login from './pages/login';
+import Logout from './pages/Logout';
 import Movies from './pages/Movies';
 import Series from './pages/Series';
 import Myprofile from './pages/Myprofile';
@@ -24,7 +25,8 @@ function App() {
     <Routes>
       <Route path="/"exact element ={<Home/>} />
       <Route path="/login" element ={<Login setUser={setUser}/>} />
-      <Route path ="/movies" element ={<Movies user={user}/>}/>
+      <Route path="/logout" element ={<Logout setUser={setUser}/>} />
+      <Route path ="/movies" element ={<Movies/>}/>
       <Route path ="*" element={<NotFound/>}/>
       <Route path ="/series" element ={<Series/>}/>
       <Route path ="/myprofile" element ={<Myprofile user={user}/>}/>
