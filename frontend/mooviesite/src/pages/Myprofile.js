@@ -4,38 +4,38 @@ import './Myprofile.css';
 export default function Myprofile() {
   return (
     <div>
-      <h1>PROFIILINI</h1>
+      <h1>MY PROFILE</h1>
       <br />
-      <button>Poista profiilini</button>
+      <button>Delete profile</button>
       <br />
       <div className="profile-lists">
         <div className="profile-list">
-          <h2>Suosikki elokuvani</h2>
+          <h2>My favourite movies</h2>
           <br />
           <ul>
-            <li>Listan eka rivi</li>
-            <li>Listan toka rivi</li>
-            <li>Listan kolmas rivi</li>
+            <li>My favouritte movies</li>
+            <li>My favouritte movies</li>
+            <li>My favouritte movies</li>
           </ul>
           <br />
         </div>
         <div className="profile-list">
-          <h2>Suosikki sarjani</h2>
+          <h2>My favourite series</h2>
           <br />
           <ul>
-            <li>Listan eka rivi</li>
-            <li>Listan toka rivi</li>
-            <li>Listan kolmas rivi</li>
+            <li>My favouritte movies</li>
+            <li>My favouritte movies</li>
+            <li>My favouritte movies</li>
           </ul>
           <br />
         </div>
         <div className="profile-list">
-          <h2>Arvosteluni</h2>
+          <h2>My reviews</h2>
           <br />
           <ul>
-            <li>Listan eka rivi</li>
-            <li>Listan toka rivi</li>
-            <li>Listan kolmas rivi</li>
+          <li>My favouritte movies</li>
+          <li>My favouritte movies</li>
+          <li>My favouritte movies</li>
             <br />
           </ul>
         </div>
