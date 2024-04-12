@@ -7,15 +7,33 @@ export default function Login({setUser}) {
   const [username,setUsername] = useState('')
   const [password,setPassword] = useState('')
   const navigate = useNavigate()
-  const validate =(e) =>{
+  const validate = async (e) =>{
 e.preventDefault()// ei lähe backendii vielä
 //backendiin pitäs lähtiä tästä nuo salasanat ja kirjautmishommat
-if(username ==='admin' && password ==='admin'){
-setUser({user: username,password: password})
-navigate ("/")
+
+try {
+  
+
+  const response = await fetch ("http://localhost:3001/auth/login", { //käytetään fetchiä ja lähetetään kirjautumistiedot palvelimelle ./Login routeen
+    method: "POST",
+    headers: {"Content-Type": "application/json"}, //lähetämme pyynnön JSON-muodossa
+    body: JSON.stringify({ //muutetaan json muotoon
+      accountname: username,
+      password: password
+    })
+  })
+
+if(response.ok){ // jos vastaus ok
+setUser({user: username,password: password}) //asetetaan tilamuuttujaan oikeat arvot
+navigate ("/") // sen jälkeen navigoidaan kotisivulle
+} else {
+  alert(console.error)
+} 
+ } catch (error) {
+  console.log("error", error);
+ }
 
 
-}//kovakoodattu tähän nuo tunnarit
 
 
   }
