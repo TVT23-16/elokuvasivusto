@@ -5,7 +5,6 @@ export default function Home() {
   return (
     <div>
       <h1>TOP 3 MOVIES </h1>
-
       <div id="content">
         <section id="main">
           <article>
