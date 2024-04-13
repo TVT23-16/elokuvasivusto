@@ -30,7 +30,6 @@ export default function Home() {
   return (
     <div>
       <h1>Top 3 Movies of the Month</h1>
-
       <div id="content">
         <section id="main">
           {/* Näytetään kolme parhaiten arvosteltua elokuvaa */}

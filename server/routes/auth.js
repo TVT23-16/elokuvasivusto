@@ -20,15 +20,16 @@ router.post("/add", async (req,res) => {
 
 
 router.post("/login", async (req,res) => {
-    const uname = req.body.accountname
-    const pw = req.body.password
-    const db_pw = await getPw(uname)
+    const uname = req.body.accountname // otetaan saapuvasta pyynnöstä talteen accountname
+    const pw = req.body.password // salasana
+    const db_pw = await getPw(uname) // kutsutaan getpw funktiota jolle annetaan parametrina tunnus
 
-    if(db_pw) {
-        const authenticated = await bcrypt.compare(pw, db_pw)
-        if(authenticated){  
-            const token = jwt.sign({username: uname}, process.env.JWT_SECRET )
+    if(db_pw) { // jos salasana löytyy, ajetaan if lause
+        const authenticated = await bcrypt.compare(pw, db_pw) // verrataan tietokannata löytyvää cryptattyä salasanaa ja käyttäjän syöttämää salasanaa
+        if(authenticated){   // jos true
+            const token = jwt.sign({username: uname}, process.env.JWT_SECRET ) // luodaan jwt tokeni
             res.status(200).json({jwtToken: token})
+            console.log(token);
         }else{
             res.status(401).json({error: "Wrong password"})
         }

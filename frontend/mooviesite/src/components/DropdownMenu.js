@@ -12,15 +12,18 @@ const DropdownMenu = ({ user }) => {
   return (
     <div className="dropdown">
       <button className="dropdown-toggle" onClick={toggleDropdown} >
-        Ovilogo
+        photo
       </button>
       {isOpen && (
         <ul className="dropdown-menu">
           <li>
-            <Link to="/profiili/asetukset">Poista tilini</Link>
+            <Link to="/profiili/asetukset">Delete account</Link>
           </li>
           <li>
-            <Link to="/profiili/uloskirjautuminen">Kirjaudu ulos</Link>
+            <Link to="/profiili/uloskirjautuminen">Logout</Link>
+          <li>
+            </li>
+          <Link to="/myprofile">My profile</Link>
           </li>
           {/* Lisää vaihtoehtoja tarpeen mukaan */}
         </ul>
