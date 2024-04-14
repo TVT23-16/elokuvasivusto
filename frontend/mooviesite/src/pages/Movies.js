@@ -1,37 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Movies.css';
 
-// Alustetaan React-komponentti nimeltään Elokuvalista
 function Elokuvalista() {
-  // Käytetään useState-hookia määrittelemään tilamuuttujat haku ja tulokset
-  const [haku, setHaku] = useState(''); // Tilamuuttuja haku, alustetaan tyhjällä merkkijonolla
-  const [tulokset, setTulokset] = useState([]); // Tilamuuttuja tulokset, alustetaan tyhjällä taulukolla
+  const [haku, setHaku] = useState('');
+  const [genre, setGenre] = useState('');
+  const [genres, setGenres] = useState([]);
+  const [tulokset, setTulokset] = useState([]);
 
-  // Määritellään API-avain ja API:n URL-osoite
-  const apiKey = 'cfaf3af7360c5b3c0549dd08762cb811'; // Lisää tähän oma API-avaimesi
-  const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=`;
+  const apiKey = 'cfaf3af7360c5b3c0549dd08762cb811';
+  const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genre}&sort_by=popularity.desc`;
+  const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${(haku)}`;
+  const genresUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`;
 
-  // Määritellään handleSubmit-funktio, joka käsittelee lomakkeen lähetyksen
-  const handleSubmit = async (event) => {
-    event.preventDefault(); // Estetään lomakkeen oletustoiminto
+  useEffect(() => {
+    fetchGenres();
+    fetchPopularMovies();
+  }, [genre]);
 
+  const fetchGenres = async () => {
     try {
-      // Haetaan elokuvat API:sta annetun hakusanan perusteella
-      const response = await fetch(apiUrl + haku);
-      
-      // Muutetaan vastaus JSON-muotoon
+      const response = await fetch(genresUrl);
       const data = await response.json();
-      // Asetetaan saadut tulokset tilamuuttujaan tulokset
-      setTulokset(data.results);
+      setGenres(data.genres);
     } catch (error) {
-      console.error('Virhe:', error); // Tulostetaan virhe konsoliin
+      console.error('Virhe:', error);
     }
   };
 
-  // Palautetaan JSX-muotoinen komponentti
+  const fetchPopularMovies = async () => {
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      setTulokset(data.results);
+    } catch (error) {
+      console.error('Virhe:', error);
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      let url = '';
+
+      if (genre && haku) {
+        url = `${searchUrl}&with_genres=${genre}`;
+      } else if (genre) {
+        url = apiUrl;
+      } else if (haku) {
+        url = searchUrl;
+      } 
+
+      const response = await fetch(url);
+      const data = await response.json();
+      setTulokset(data.results);
+      setHaku('');
+    } catch (error) {
+      console.error('Virhe:', error);
+    }
+  };
+
   return (
     <div>
-      {/* Lomake, jossa käyttäjä voi syöttää hakusanan */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -39,12 +69,18 @@ function Elokuvalista() {
           onChange={(event) => setHaku(event.target.value)}
           placeholder="Search for a movie"
         />
-        <button type="submit">Hae</button>
+        <select value={genre} onChange={(event) => setGenre(event.target.value)}>
+          <option value="">All Genres</option>
+          {genres.map((genre) => (
+            <option key={genre.id} value={genre.id}>
+              {genre.name}
+            </option>
+          ))}
+        </select>
+        <button type="submit">Search</button>
       </form>
 
-      
       <div className="tulokset">
-        {/* Karttaa käytetään tulosten läpikäymiseen ja renderöintiin */}
         {tulokset.map((elokuva, index) => (
           <div key={index} className="elokuva">
             <h2>{elokuva.title}</h2>
@@ -53,7 +89,7 @@ function Elokuvalista() {
             {elokuva.poster_path && (
               <img
                 src={`https://image.tmdb.org/t/p/w500/${elokuva.poster_path}`}
-                
+                alt={elokuva.title}
                 className="elokuvan-kuva"
               />
             )}
@@ -64,5 +100,4 @@ function Elokuvalista() {
   );
 }
 
-// Komponentin exportointi
 export default Elokuvalista;
