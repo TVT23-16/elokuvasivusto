@@ -1,5 +1,5 @@
 nav{
-    background-image: linear-gradient(to bottom, rgb(64, 62, 62), black);
+    background-image: url('backr2.png');
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -17,18 +17,17 @@ nav a {
     padding: 1em var(--gutter);
     text-decoration: none;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     color: rgb(180, 0, 0);
 
 }
 nav a:hover{
-    color: rgb(255, 0, 0);
-    font-weight: 700;
+    color: #fcff44;
+    font-weight: 600;
 }
 nav div{
 display: inline-block;
 }
-
 
 .dropdown-menu {
     left: auto; /* Poista automaattinen asettelu */
@@ -43,3 +42,20 @@ display: inline-block;
     }
   }
 
+/* kielen vaihtopainikkeen ulkoasu */
+.language-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fcff44;
+    margin-right: 10px;
+  }
+  
+   /* kielen vaihtopainikkeen väri kun hiiri on päällä */
+  .language-button:hover {
+    color: #ff0000;
+  }
+
+  
