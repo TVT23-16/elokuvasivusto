@@ -1,43 +1,43 @@
-import { Link } from 'react-router-dom'
-import './Navbar.css'
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
+import { useLanguage } from '../LanguageContext';
 import DropdownMenu from './DropdownMenu';
 
-
 const Navbar = ({ user }) => {
-  /* alasvetovalikoon muutos tekstistä ovi-kuvakkeeksi, koodi alkaa *
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-
-  const handleProfileClick = () => {
-    setIsDropdownVisible(!isDropdownVisible);
-  };
-  * alasvetovalikoon muutos tekstistä ovi-kuvakkeeksi, koodi päättyy */
+  const { language, toggleLanguage } = useLanguage();
 
   return (
     <nav>
       <div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">{language === 'ENG' ? 'Home' : 'Etusivu'}</Link>
           </li>
           <li>
-            <Link to="/series">Series</Link>
+            <Link to="/series">{language === 'ENG' ? 'Series' : 'Sarjat'}</Link>
           </li>
           <li>
-            <Link to="/movies">Movies</Link>
+            <Link to="/movies">{language === 'ENG' ? 'Movies' : 'Elokuvat'}</Link>
           </li>
         </ul>
       </div>
+
       <div>
         <ul>
           <li>
-            
+            <button className="language-button" onClick={toggleLanguage}>
+              {language}
+            </button>
           </li>
           <li>
-            {user === null && <Link to="/login">Login</Link>}
-            {user && <Link to="/logout">Logout</Link>}
+            {user === null ? (
+              <Link to="/login">{language === 'ENG' ? 'Login' : 'Kirjaudu sisään'}</Link>
+            ) : (
+              <Link to="/logout">{language === 'ENG' ? 'Logout' : 'Kirjaudu ulos'}</Link>
+            )}
           </li>
-          <DropdownMenu user={user} />  
+          <DropdownMenu user={user} />
         </ul>
       </div>
     </nav>
@@ -45,12 +45,3 @@ const Navbar = ({ user }) => {
 };
 
 export default Navbar;
-
-/* korvaa button-dropdown osio tällä
-
-          <li>
-          <button onClick={handleProfileClick}>
-              <img src="path/to/door-icon.png" alt="My Profile" />
-            </button>
-            {isDropdownVisible && <DropdownMenu user={user} />}
-            </li>*/
