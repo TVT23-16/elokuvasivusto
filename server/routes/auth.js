@@ -11,11 +11,14 @@ router.post("/add", async (req,res) => {
     const password = req.body.password
 
     const hashPw = await bcrypt.hash(password,10)
+    if(accountname && password) {
     await addUser(hashPw, accountname) // Kutsutaan addUser-funktiota uuden käyttäjän lisäämiseksi
     console.log(req.body.password);
 
-    res.end();
-   
+    res.status(200).json({success:"account created"})
+} else if (!accountname && password) {
+    res.status(401).json({error: "you must give username and password"})
+}
 })
 
 

@@ -12,6 +12,7 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from './pages/Notfound';
 import { useState } from 'react';
 import { LanguageProvider } from './LanguageContext'; // Tuodaan LanguageProvider
+import Register from './pages/Register';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,6 +32,7 @@ function App() {
             <Route path="/series" element={<Series />} />
             <Route path="/myprofile" element={<Myprofile user={user} />} />
             <Route path="/home" exact element={<Home />} />
+            <Route path="register"  element={<Register/>} />
           </Routes>
         </div>
         <Footer></Footer>

@@ -1,0 +1,16 @@
+div#register-form{
+    background-color: brown;
+    display: flex;
+    justify-content: center;
+}
+
+
+div#register-form div{
+    margin: var(--gutter) 0;
+}
+
+
+label{
+    display: inline-block;
+    width: 100px;
+}
