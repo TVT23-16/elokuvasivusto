@@ -3,7 +3,7 @@ const pgPool = require("./pg_connection")
 const sql = {
     GET_ALL_USERS : "SELECT * from table_account",
     GET_USER : "SELECT * from table_account WHERE userId=$1",
-    DELETE_USER: "DELETE FROM table_account WHERE userId = ($1)"
+    DELETE_USER: "DELETE FROM table_account WHERE accountname = ($1)"
 }
 
 const reviewsql = {

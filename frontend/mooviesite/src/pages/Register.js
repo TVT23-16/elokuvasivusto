@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Register.css"
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
-export default function Register() {
+export default function Register({setUser}) {
 
     const [username,setUsername] = useState('')
     const [password,setPassword] = useState('')
@@ -23,6 +23,7 @@ export default function Register() {
       console.log(response)
       if(response.ok && response != null) {
         navigate("/")
+        setUser({ user: username, password: password });
       }
 
     } catch (error) {}

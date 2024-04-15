@@ -17,7 +17,7 @@ const DropdownMenu = ({ user }) => {
       {isOpen && (
         <ul className="dropdown-menu">
           <li>
-            <Link to="/profiili/asetukset">Delete account</Link>
+            <Link to="/myprofile/delete">Delete account</Link>
           </li>
           <li>
             <Link to="/profiili/uloskirjautuminen">Logout</Link>
