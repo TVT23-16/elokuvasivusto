@@ -7,7 +7,7 @@ const sql = {
 }
 
 const reviewsql = {
-    ADD_REVIEW: "INSERT INTO table_reviews ( media_id, userreview, accountname) VALUES ($1, $2, $3)"
+    
 }
 
 async function getUsers() {
@@ -21,9 +21,6 @@ async function delUser(delet){
     console.log(delet)
 }
 
-async function addReview( mediaid, userreview,accountname){
-    console.log(mediaid);
-    await pgPool.query(reviewsql.ADD_REVIEW, [ mediaid, userreview, accountname])
-}
 
-module.exports = {getUsers, delUser, addReview}
+
+module.exports = {getUsers, delUser}
