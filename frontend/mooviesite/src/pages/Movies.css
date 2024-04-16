@@ -1,20 +1,24 @@
-.tulokset-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
+.results {
+  display: flex;
+  flex-wrap: wrap;
+      
+}
+
+.movie {
+  width: 25.00%; 
+  padding: 10px;
+  box-sizing: border-box; 
   
-  .elokuva {
-    width: 25%;
-    margin: 0 2% 2% 0;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .elokuvan-kuva {
-    width: 100%;
-    height: auto;
-  }
-  
-  .elokuva-info {
-    padding: 10px;
-  }
+
+}
+.load-more-button {
+  width: 100%; /* Venytä nappi koko leveydelle */
+  padding: 15px; /* Lisää tyhjää tilaa ylä- ja alapuolelle */
+  margin-top: 20px; /* Lisää tilaa yläpuolelle */
+  background-color: #007bff; /* Vaihda taustaväri haluamaksesi */
+  color: white; /* Vaihda tekstiväri kontrastin varmistamiseksi */
+  border: none; /* Poista reunus */
+  border-radius: 5px; /* Pyöristä kulmat */
+  font-size: 16px; /* Aseta fontin koko */
+}
+

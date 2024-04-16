@@ -1,0 +1,22 @@
+.tulokset {
+    display: flex;
+    flex-wrap: wrap;
+        
+  }
+  
+  .sarja {
+    width: 25.00%; 
+    padding: 10px;
+    box-sizing: border-box; 
+    
+  }
+  .load-more-button {
+    width: 100%; /* Venytä nappi koko leveydelle */
+    padding: 15px; /* Lisää tyhjää tilaa ylä- ja alapuolelle */
+    margin-top: 20px; /* Lisää tilaa yläpuolelle */
+    background-color: #007bff; /* Vaihda taustaväri haluamaksesi */
+    color: white; /* Vaihda tekstiväri kontrastin varmistamiseksi */
+    border: none; /* Poista reunus */
+    border-radius: 5px; /* Pyöristä kulmat */
+    font-size: 16px; /* Aseta fontin koko */
+  }
