@@ -13,6 +13,7 @@ import NotFound from './pages/Notfound';
 import { useState } from 'react';
 import { LanguageProvider } from './LanguageContext'; // Tuodaan LanguageProvider
 import Register from './pages/Register';
+import Schedules from './pages/Schedules';
 import DeleteAccount from './pages/DeleteAccount';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route path="/home" exact element={<Home />} />
             <Route path="register"  element={<Register setUser={setUser}/>} />
             <Route path="myprofile/delete"  element={<DeleteAccount user={user}/>} />
+            <Route path="/schedules" element={<Schedules />} />
           </Routes>
         </div>
         <Footer></Footer>

@@ -1,6 +1,6 @@
 const {addReview } = require("../database/reviews_db");
-
-router.post("/addreview/:username", authjwt, async (req, res) => {
+const router = require("express").Router();
+router.post("/addreview", async (req, res) => {
     console.log(req.body);
 
     
@@ -10,13 +10,6 @@ router.post("/addreview/:username", authjwt, async (req, res) => {
     await addReview(mediaid, userreview, accountname)
     
     res.end()
-})
-
-router.delete("/delete/:username", authjwt, async (req,res) => {
-    console.log(req.query);
-    const usernam = req.params.username
-    await delUser(usernam)
-    res.status(200).json({message:"käyttäjä poistettu."})
 })
 
 

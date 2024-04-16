@@ -9,7 +9,7 @@ const sql = {
 
 async function addReview( mediaid, userreview,accountname){
     console.log(mediaid);
-    await pgPool.query(reviewsql.ADD_REVIEW, [ mediaid, userreview, accountname])
+    await pgPool.query(sql.ADD_REVIEW, [ mediaid, userreview, accountname])
 }
 
 module.exports = {addReview}
