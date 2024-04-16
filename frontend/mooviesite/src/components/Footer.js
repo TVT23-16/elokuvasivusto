@@ -14,6 +14,7 @@ export default function Footer() {
           <img src="https://www.finnkino.fi/CustomAssets/new-finnkino-fi/Images/header-logo.png" alt="Finnkino Logo" width="80px;" />
         </a>
       </div>
+      
     </footer>
   );
 }

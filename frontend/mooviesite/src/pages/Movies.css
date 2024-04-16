@@ -9,6 +9,7 @@
   padding: 10px;
   box-sizing: border-box; 
   
+
 }
 .load-more-button {
   width: 100%; /* Venytä nappi koko leveydelle */
@@ -20,3 +21,4 @@
   border-radius: 5px; /* Pyöristä kulmat */
   font-size: 16px; /* Aseta fontin koko */
 }
+
