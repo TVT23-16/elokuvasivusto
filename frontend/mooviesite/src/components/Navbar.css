@@ -24,6 +24,7 @@ nav a {
 nav a:hover{
     color: #fcff44;
     font-weight: 600;
+    transform: scale(1.1); /* Suurennuskerroin 1.1 */
 }
 nav div{
 display: inline-block;
@@ -56,6 +57,7 @@ display: inline-block;
    /* kielen vaihtopainikkeen väri kun hiiri on päällä */
   .language-button:hover {
     color: #ff0000;
+    transform: scale(1.1); /* Suurennuskerroin 1.1 */
   }
 
   
