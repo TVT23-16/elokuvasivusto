@@ -7,7 +7,8 @@ const router = require("express").Router();
 router.get("/all", async (req,res) => {
     const users = await getUsers();
     console.log(users);
-    res.json(users);
+    res.json(users)
+    res.status(200).json({message:"kaikki käyttäjät"})
 })
 
 
@@ -17,6 +18,7 @@ router.delete("/delete/:username", authjwt, async (req,res) => {
     const usernam = req.params.username
     await delUser(usernam)
     res.status(200).json({message:"käyttäjä poistettu."})
+    
 })
 
 

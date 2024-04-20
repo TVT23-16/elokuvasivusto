@@ -10,7 +10,7 @@ try{
     res.locals.username = username;
     next();
 } catch(err) {
-    res.status(403),json({error: "access forbidden"})
+    res.status(403).json({error: "access forbidden"})
     }
 }
 
