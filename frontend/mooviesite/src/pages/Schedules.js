@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import muuntaja from "xml2js";
 import { format } from 'date-fns';
+import "./Schedules.css"
 
 export default function Schedules() {
   const [teatteri, setTeatteri] = useState([]);
   const [alueID, setalueID] = useState("");
   const [aikataulu, setAikataulu] = useState([]);
   const [eventID, seteventID] = useState([]);
-  const [schedules, setSchedules] = useState([]);
+  const [schedules, setSchedules] = useState("");
   const [eventname, setEventname]= useState("");
-  const [result, setResult]=useState("")
+  const [results, setResult]=useState([])
   async function getXML() {
     try {
       const response = await axios.get(
@@ -36,8 +37,8 @@ export default function Schedules() {
   }, []); // [] tarkoittaa, että koodi suoritetaan vain kerran komponentin latauksen yhteydessä
 
   useEffect(() => {
-    console.log("aaaa" + alueID);
-  }, [alueID]);
+    
+  }, []);
 
   const handleAlueid = async (e) => {
     const selected = e.target.value.toString();
@@ -63,6 +64,8 @@ export default function Schedules() {
         const dates = result.Dates.dateTime
         const yksiaika = result.Dates.dateTime[0]
         setAikataulu(dates); // asetetaan objekti aikataulu muuttujaan
+
+
         console.log(yksiaika);
       });
     } catch (error) {
@@ -109,10 +112,15 @@ const handleSubmit =  async (e) => {
     
     muuntaja.parseString(schedule.data, (err, result) => {
       const data = result.Schedule.Shows
-      setSchedules(data)
-      console.log(schedules);
-    }
+      //const title = data.Show[0].Title
+      console.log(typeof data);
+      
+      //console.log(data);
+      
+      setResult(data)
+   
     
+  }
   )} catch (error) {
     console.log(error);
   }
@@ -147,7 +155,7 @@ const handleSubmit =  async (e) => {
       <select defaultValue={aikataulu[0]} onChange={handleaikataulu}>
       {aikataulu.map((item, index) => (
         <option key={index} value={item}>
-          {item}
+          {format(new Date(item), "dd.MM.yyyy")}
         </option>
   ))}
 </select>
@@ -158,10 +166,25 @@ const handleSubmit =  async (e) => {
         </form>
       </div>
       
- 
-
-      
-      
+      <div className="asd">
+  {results && results.length > 0 ? (
+    results.map((resultData, index) => (
+      <div key={index} className="movie">
+        {resultData.Show && resultData.Show.length > 0 ? (
+          resultData.Show.map((show, showIndex) => (
+            <div key={showIndex}>
+              <h2>{format(new Date(show.dttmShowStart[0]), 'dd.MM.yyyy HH:mm')}</h2>
+            </div>
+          ))
+        ) : (
+          <div>No shows found</div>
+        )}
+      </div>
+    ))
+  ) : (
+    <div>No results found</div>
+  )}
+</div>
     </div>
   );
 }
