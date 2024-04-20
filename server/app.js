@@ -32,3 +32,5 @@ app.get("/login", (req, res) => {
   console.log("getting root");
   res.send("anna käyttäjätiedot");
 });
+
+module.exports = app
