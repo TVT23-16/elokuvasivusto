@@ -155,7 +155,9 @@ export default function Schedules() {
       </div>
     ))
   ) : (
+
     <div>{language === 'ENG' ? 'No results found' : 'Tuloksia ei löytynyt'}</div>
+
   )}
 </div>
     </div>
