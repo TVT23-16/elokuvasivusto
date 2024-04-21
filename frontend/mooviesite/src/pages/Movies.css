@@ -1,7 +1,6 @@
 .results {
   display: flex;
   flex-wrap: wrap;
-
 }
 
 h2 {
@@ -30,12 +29,10 @@ p {
   background-color: rgba(52, 52, 52, 0.3); /* Lisää väri ja läpinäkyvyys kehykselle */
   padding: 40px;
   text-align: center;
-
 }
 
 .load-more-button {
   margin-left: 33%;
-
   width: 30%; /* Venytä nappi koko leveydelle */
   padding: 15px; /* Lisää tyhjää tilaa ylä- ja alapuolelle */
   margin-top: 40px; /* Lisää tilaa yläpuolelle */
@@ -47,7 +44,6 @@ p {
   font-weight: 400;
   border-radius: 5px; /* Pyöristä kulmat */
   font-size: 18px; /* Aseta fontin koko */
-
 }
 
 .load-more-button:hover {
@@ -56,13 +52,11 @@ p {
 }
 
 .movie-poster {
-  border-radius: 5px;
-  max-width: 80%; /* Adjust the maximum width of the poster */
-  transition: transform 0.3s; /* Smooth transition for hover effect */
+  border-radius: 15px;
+  /* Pyöristää elokuvan kuvakkeen kulmat */
+  transition: transform 0.3s; /* Lisää siirtymä hover-tilassa */
 }
 
 .movie-poster:hover {
-
   transform: scale(1.1); /* Suurennuskerroin 1.1 */
 }
-
