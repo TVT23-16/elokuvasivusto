@@ -5,34 +5,30 @@
 }
 
 body {
-    position: relative;
-    margin-bottom: 0px;
+    position: absolute;
+    margin-bottom: 60px; /* Lisää marginaali, joka vastaa footerin korkeutta, jotta footer ei peitä sisältöä */
 }
 
 footer {
-    background-image: linear-gradient(to bottom, rgb(64, 62, 62), black);
+    background-image: url('backr2.png');
     padding: 0px;
     position: absolute;
-    right: 0;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 60px;
+    z-index: 999; /* Varmistaa, että footer pysyy päällimmäisenä */
 }
 
 footer p {
     display: flex;
-    font-weight: 800;
-    font-size:14px;
+    font-weight: 600;
+    font-size: 16px;
     text-align: center;
-    color: black;
+    color: rgb(180, 0, 0);
     margin-right: 40px; 
     margin-left: 20px; 
-    text-shadow: 2px 1px 4px darkgrey;
-}
-
-.logo-container a {
-    cursor: url('popcorn_cursor2.png'), auto;
+    text-shadow: 2px 1px 4px rgb(0, 0, 0);
 }
 
 .logo-container {

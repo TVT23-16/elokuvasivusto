@@ -12,9 +12,9 @@ router.get("/all", async (req,res) => {
 
 
 
-router.delete("/delete/:usernam", authjwt, async (req,res) => {
-    console.log(req.params);
-    const usernam = req.params.usernam
+router.delete("/delete/:username", authjwt, async (req,res) => {
+    console.log(req.query);
+    const usernam = req.params.username
     await delUser(usernam)
     res.status(200).json({message:"käyttäjä poistettu."})
 })

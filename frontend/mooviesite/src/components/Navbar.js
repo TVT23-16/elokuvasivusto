@@ -1,43 +1,47 @@
-import { Link } from 'react-router-dom'
-import './Navbar.css'
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
+import { useLanguage } from '../LanguageContext';
+import DropdownMenu from './DropdownMenu';
 
+const Navbar = ({ user }) => {
+  const { language, toggleLanguage } = useLanguage();
 
-export default function Navbar({user}) {
   return (
-    
     <nav>
       <div>
-      <ul>
-        <li>
-          <Link to ="/Home"> Home</Link>
+        <ul>
+          <li>
+            <Link to="/">{language === 'ENG' ? 'Home' : 'Etusivu'}</Link>
           </li>
           <li>
-          <Link to ="/Series">Series</Link>
+            <Link to="/series">{language === 'ENG' ? 'Series' : 'Sarjat'}</Link>
           </li>
-        <li>
-         <Link to ="/movies">Movies</Link> 
-        </li>
-        
-        
-        
-      </ul>
+          <li>
+            <Link to="/movies">{language === 'ENG' ? 'Movies' : 'Elokuvat'}</Link>
+          </li>
+        </ul>
       </div>
+
       <div>
-       <ul>
-       <li> <Link to ="/myprofile">My profile</Link></li>
-       <li>
-      {user === null &&
-       <Link to ="/Login">Login</Link> 
-      }
-      </li>
-      <li>
-       {user &&
-      <Link to ="/Logout">Logout</Link> 
-       }
-     </li>
-      </ul> 
+        <ul>
+          <li>
+            <button className="language-button" onClick={toggleLanguage}>
+              {language}
+            </button>
+          </li>
+          <li>
+            {user === null ? (
+              <Link to="/login">{language === 'ENG' ? 'Login' : 'Kirjaudu sisään'}</Link>
+            ) : (
+              <Link to="/logout">{language === 'ENG' ? 'Logout' : 'Kirjaudu ulos'}</Link>
+            )}
+          </li>
+          <DropdownMenu user={user} />
+        </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
+
+export default Navbar;
