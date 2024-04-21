@@ -1,5 +1,6 @@
 nav{
     background-image: url('backr2.png');
+    
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -17,13 +18,15 @@ nav a {
     padding: 1em var(--gutter);
     text-decoration: none;
     font-size: 18px;
-    font-weight: 600;
+    
     color: rgb(180, 0, 0);
-
+    font-weight: 600;
+   
 }
 nav a:hover{
     color: #fcff44;
-    font-weight: 600;
+    
+    transform: scale(1.1); /* Suurennuskerroin 1.1 */
 }
 nav div{
 display: inline-block;
@@ -56,6 +59,7 @@ display: inline-block;
    /* kielen vaihtopainikkeen väri kun hiiri on päällä */
   .language-button:hover {
     color: #ff0000;
+    transform: scale(1.1); /* Suurennuskerroin 1.1 */
   }
 
   

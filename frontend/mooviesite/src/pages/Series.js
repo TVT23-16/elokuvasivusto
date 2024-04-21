@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Series.css';
+import { useLanguage } from '../LanguageContext'; // Ota käyttöön useLanguage-koukku
 
 function Series() {
   // State variables to manage search, filters, and results
@@ -101,7 +102,7 @@ function Series() {
           placeholder="Search for a TV series"
         />
         <select value={genre} onChange={(event) => setGenre(event.target.value)}>
-          <option value="">All Genres</option>
+          <option value="">{language === 'ENG' ? 'All Genres' : 'Kaikki Tyylit'}</option>
           {genres.map((genre) => (
             <option key={genre.id} value={genre.id}>
               {genre.name}
@@ -131,6 +132,11 @@ function Series() {
                 alt={series.name}
                 className="series-poster"
               />
+            )}
+            <h2>{series.name}</h2>
+            <p>{language === 'ENG' ? 'Rating' : 'Arvosana'}: series.vote_average}</p>
+            {series.number_of_episodes && (
+              <p>{language === 'ENG' ? 'Number of Episodes' : 'Jaksojen määrä'}: {series.number_of_episodes}</p>
             )}
           </div>
         ))}
