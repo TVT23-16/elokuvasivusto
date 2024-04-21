@@ -182,7 +182,7 @@ const handleSubmit =  async (e) => {
       </div>
     ))
   ) : (
-    <div>No results found</div>
+    <div></div>
   )}
 </div>
     </div>
