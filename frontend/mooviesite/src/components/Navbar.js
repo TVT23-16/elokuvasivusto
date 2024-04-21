@@ -12,13 +12,16 @@ const Navbar = ({ user }) => {
       <div>
         <ul>
           <li>
-            <Link to="/">{language === 'ENG' ? 'Home' : 'Etusivu'}</Link>
+            <Link to="/">{language === 'ENG' ? 'HOME' : 'ETUSIVU'}</Link>
           </li>
           <li>
-            <Link to="/series">{language === 'ENG' ? 'Series' : 'Sarjat'}</Link>
+            <Link to="/series">{language === 'ENG' ? 'SERIES' : 'SARJAT'}</Link>
           </li>
           <li>
-            <Link to="/movies">{language === 'ENG' ? 'Movies' : 'Elokuvat'}</Link>
+            <Link to="/movies">{language === 'ENG' ? 'MOVIES' : 'ELOKUVAT'}</Link>
+          </li>
+          <li>
+            <Link to="/schedules">{language === 'ENG' ? 'FINNKINO SHOWTIMES' : 'FINNKINO NÄYTÖSAJAT'}</Link>
           </li>
         </ul>
       </div>
@@ -32,9 +35,9 @@ const Navbar = ({ user }) => {
           </li>
           <li>
             {user === null ? (
-              <Link to="/login">{language === 'ENG' ? 'Login' : 'Kirjaudu sisään'}</Link>
+              <Link to="/login">{language === 'ENG' ? 'LOGIN' : 'KIRJAUDU SISÄÄN'}</Link>
             ) : (
-              <Link to="/logout">{language === 'ENG' ? 'Logout' : 'Kirjaudu ulos'}</Link>
+              <Link to="/logout">{language === 'ENG' ? 'LOGOUT' : 'KIRJAUDU ULOS'}</Link>
             )}
           </li>
           <DropdownMenu user={user} />

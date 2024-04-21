@@ -1,17 +1,32 @@
 .results {
   display: flex;
   flex-wrap: wrap;
+}
 
+h2 {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(207, 207, 207);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 20px;
+  display: block;
+}
+
+p {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(119, 119, 119);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 .movie {
-  width: 25.00%;
+  width: 25.00%; 
   padding: 10px;
-  box-sizing: border-box;
-  border-radius: 30px;
-  /* Pyöristää kulmat */
-  background-color: rgba(52, 52, 52, 0.3);
-  /* Lisää väri ja läpinäkyvyys kehykselle */
+  box-sizing: border-box; 
+  border-radius: 30px; /* Pyöristää kulmat */
+  background-color: rgba(52, 52, 52, 0.3); /* Lisää väri ja läpinäkyvyys kehykselle */
   padding: 40px;
   text-align: center;
 }
@@ -24,16 +39,16 @@
   margin-bottom: 40px;
   background-color: rgba(52, 52, 52, 0.3); /* Lisää väri ja läpinäkyvyys kehykselle */
   text-shadow: 2px 1px 4px rgb(0, 0, 0);
-  color: rgb(180, 0, 0); /* Vaihda tekstiväri kontrastin varmistamiseksi */
+  color: rgb(207, 207, 207);
   border: none; /* Poista reunus */
-  font-weight: 600;
+  font-weight: 400;
   border-radius: 5px; /* Pyöristä kulmat */
   font-size: 18px; /* Aseta fontin koko */
-  outline: 3px solid rgb(0, 0, 0); /* Musta reunus */
 }
 
 .load-more-button:hover {
-  color: #fcff44;
+  transform: scale(1.1); /* Suurennuskerroin 1.1 */
+  background-color: rgba(52, 52, 52, 0.6);
 }
 
 .movie-poster {
@@ -44,19 +59,4 @@
 
 .movie-poster:hover {
   transform: scale(1.1); /* Suurennuskerroin 1.1 */
-}
-
-h2 {
-  color: rgb(180, 0, 0);
-  text-shadow: 2px 2px 2px rgb(0, 0, 0);
-  font-size: 22px;
-  margin-top: 18px;
-  display: block;
-}
-
-p {
-  color: rgb(180, 0, 0);
-  text-shadow: 2px 2px 2px rgb(0, 0, 0);
-  font-size: 20px;
-  margin-top: 10px;
 }

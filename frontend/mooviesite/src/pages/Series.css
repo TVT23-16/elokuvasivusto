@@ -1,20 +1,22 @@
 .tulokset {
     display: flex;
-    flex-wrap: wrap;
-        
+    flex-wrap: wrap;  
   }
 
   h2 {
-    color: rgb(180, 0, 0); /* Punainen teksti */
-    text-shadow: 2px 2px 2px black; /* Mustat reunukset */
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(207, 207, 207);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
     font-size: 22px;
+    font-weight: 400;
     margin-top: 20px;
     display: block;
   }
 
   p {
-    color: rgb(180, 0, 0);
-    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(119, 119, 119);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
     font-size: 18px;
     margin-top: 10px;
   }
@@ -36,18 +38,18 @@
     margin-top: 40px; /* Lisää tilaa yläpuolelle */
     margin-bottom: 40px;
     background-color: rgba(52, 52, 52, 0.3); /* Lisää väri ja läpinäkyvyys kehykselle */
-    text-shadow: 2px 1px 4px rgb(0, 0, 0);
-    color: rgb(180, 0, 0); /* Vaihda tekstiväri kontrastin varmistamiseksi */
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(207, 207, 207);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
     border: none; /* Poista reunus */
-    font-weight: 600;
+    font-weight: 400;
     border-radius: 5px; /* Pyöristä kulmat */
     font-size: 18px; /* Aseta fontin koko */
-    outline: 3px solid rgb(0, 0, 0); /* Musta reunus */
   }
 
   .load-more-button:hover {
-    color: #fcff44;  
     transform: scale(1.1); /* Suurennuskerroin 1.1 */
+    background-color: rgba(52, 52, 52, 0.6);
   }
 
   .sarjan-kuva {
