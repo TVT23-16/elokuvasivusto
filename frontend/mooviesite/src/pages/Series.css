@@ -1,62 +1,41 @@
-.tulokset {
-    display: flex;
-    flex-wrap: wrap;  
-  }
-
-  h2 {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(207, 207, 207);
-    text-shadow: 1px 1px 1px rgb(0, 0, 0);
-    font-size: 22px;
-    font-weight: 400;
-    margin-top: 20px;
-    display: block;
-  }
-
-  p {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(119, 119, 119);
-    text-shadow: 1px 1px 1px rgb(0, 0, 0);
-    font-size: 18px;
-    margin-top: 10px;
-  }
-  
-  .sarja {
-    width: 25.00%; 
-    padding: 10px;
-    box-sizing: border-box; 
-    border-radius: 30px; /* Pyöristää kulmat */
-    background-color: rgba(52, 52, 52, 0.3); /* Lisää väri ja läpinäkyvyys kehykselle */
-    padding: 40px;
-    text-align: center;
-  }
-
-  .load-more-button {
-    margin-left: 33%;
-    width: 30%; /* Venytä nappi koko leveydelle */
-    padding: 15px; /* Lisää tyhjää tilaa ylä- ja alapuolelle */
-    margin-top: 40px; /* Lisää tilaa yläpuolelle */
-    margin-bottom: 40px;
-    background-color: rgba(52, 52, 52, 0.3); /* Lisää väri ja läpinäkyvyys kehykselle */
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(207, 207, 207);
-    text-shadow: 1px 1px 1px rgb(0, 0, 0);
-    border: none; /* Poista reunus */
-    font-weight: 400;
-    border-radius: 5px; /* Pyöristä kulmat */
-    font-size: 18px; /* Aseta fontin koko */
-  }
-
-  .load-more-button:hover {
-    transform: scale(1.1); /* Suurennuskerroin 1.1 */
-    background-color: rgba(52, 52, 52, 0.6);
-  }
-
-  .sarjan-kuva {
-    border-radius: 15px; /* Pyöristää elokuvan kuvakkeen kulmat */
-    transition: transform 0.3s; /* Lisää siirtymä hover-tilassa */
+.results {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns /
+  gap: 20px; / Gap between columns */
 }
 
-.sarjan-kuva:hover {
+.series {
+  background-color: rgba(52, 52, 52, 0.3);
+  padding: 20px;
+  text-align: center;
+}
+
+.series h2 {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.series-poster {
+  max-width: 100%;
+  height: auto;
+}
+.load-more-button {
+  margin-left: 33%;
+  width: 30%;
+  padding: 15px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: rgba(52, 52, 52, 0.3);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(207, 207, 207);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  border: none;
+  font-weight: 400;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.load-more-button:hover {
   transform: scale(1.1); /* Suurennuskerroin 1.1 */
+  background-color: rgba(52, 52, 52, 0.6);
 }
