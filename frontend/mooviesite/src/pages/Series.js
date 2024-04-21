@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Series.css';
+import { useLanguage } from '../LanguageContext'; // Ota käyttöön useLanguage-koukku
 
 function Series() {
   const [haku, setHaku] = useState('');
@@ -7,6 +8,7 @@ function Series() {
   const [genres, setGenres] = useState([]);
   const [tulokset, setTulokset] = useState([]);
   const [sivu, setSivu] = useState(1); // Sivunumeron tilamuuttuja
+  const { language } = useLanguage(); // Hae nykyinen kieli
 
   const apiKey = 'cfaf3af7360c5b3c0549dd08762cb811';
   const apiUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&with_genres=${genre}&sort_by=popularity.desc&page=${sivu}`;
@@ -52,12 +54,6 @@ function Series() {
         // Muuten lisätään uudet tulokset olemassa oleviin tuloksiin
         setTulokset(prevTulokset => [...prevTulokset, ...data.results]);
       }
-
-
-
-
-
-      
     } catch (error) {
       console.error('Virhe:', error);
     }
@@ -84,27 +80,22 @@ function Series() {
           type="text"
           value={haku}
           onChange={(event) => setHaku(event.target.value)}
-          placeholder="Search for a series"
+          placeholder={language === 'ENG' ? 'Search for a series' : 'Etsi sarjaa'}
         />
         <select value={genre} onChange={(event) => setGenre(event.target.value)}>
-          <option value="">All Genres</option>
+          <option value="">{language === 'ENG' ? 'All Genres' : 'Kaikki Tyylit'}</option>
           {genres.map((genre) => (
             <option key={genre.id} value={genre.id}>
               {genre.name}
             </option>
           ))}
         </select>
-        <button type="submit">Search</button>
+        <button type="submit">{language === 'ENG' ? 'Search' : 'Haku'}</button>
       </form>
 
       <div className="tulokset">
         {tulokset.map((sarja, index) => (
           <div key={index} className="sarja">
-            <h2>{sarja.name}</h2>
-            <p>Arvosana: {sarja.vote_average}</p>
-            {sarja.number_of_episodes && (
-              <p>Jaksojen määrä: {sarja.number_of_episodes}</p>
-            )}
             {sarja.poster_path && (
               <img
                 src={`https://image.tmdb.org/t/p/w500/${sarja.poster_path}`}
@@ -112,12 +103,17 @@ function Series() {
                 className="sarjan-kuva"
               />
             )}
+            <h2>{sarja.name}</h2>
+            <p>{language === 'ENG' ? 'Rating' : 'Arvosana'}: {sarja.vote_average}</p>
+            {sarja.number_of_episodes && (
+              <p>{language === 'ENG' ? 'Number of Episodes' : 'Jaksojen määrä'}: {sarja.number_of_episodes}</p>
+            )}
           </div>
         ))}
       </div>
 
       {/* Lisää napin "Lataa lisää", joka käynnistää loadMore-funktion */}
-      <button onClick={loadMore} className="load-more-button">Load More</button>
+      <button onClick={loadMore} className="load-more-button">{language === 'ENG' ? 'Load More' : 'Lataa Lisää'}</button>
     </div>
   );
 }

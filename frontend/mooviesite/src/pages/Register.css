@@ -1,16 +1,57 @@
-div#register-form{
-    background-color: brown;
-    display: flex;
-    justify-content: center;
+.register-h3 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(207, 207, 207);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    font-size: 30px;
+    margin-top: 10px;
+    font-weight: 400;
 }
 
+div#register-form{
+    background-color: rgba(52, 52, 52, 0.3);
+    display: flex;
+    justify-content: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(207, 207, 207);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 
 div#register-form div{
     margin: var(--gutter) 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(207, 207, 207);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    font-size: 18px;
+    margin-top: 10px;    
 }
 
 
-label{
+label {
     display: inline-block;
     width: 100px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(207, 207, 207);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    font-size: 18px;
+    margin-top: 10px;
 }
+
+.register-button {
+    background-color: rgba(52, 52, 52, 0.3);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(207, 207, 207);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    border-radius: 4px; /* Pyöristetyt reunat */
+    padding: 10px 20px; /* Sisäinen marginaali */
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+  
+  .register-button:hover {
+    transform: scale(1.1); /* Suurennuskerroin*/
+    background-color: rgba(52, 52, 52, 0.8);
+  }

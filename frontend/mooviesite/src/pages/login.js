@@ -43,7 +43,7 @@ export default function Login({ setUser }) {
   return (
     <div id="login-form">
       <form onSubmit={validate}>
-        <h3>{language === "ENG" ? "Login" : "Kirjaudu sisään"}</h3>
+        <h3 className="login-h3">{language === "ENG" ? "Login" : "Kirjaudu sisään"}</h3>
         <div>
           <label>{language === "ENG" ? "Username" : "Käyttäjänimi"}</label>
           <input
@@ -60,13 +60,14 @@ export default function Login({ setUser }) {
           />
         </div>
         
-        <button>{language === "ENG" ? "Login" : "Kirjaudu"}</button>
+        <button className="login-button">{language === "ENG" ? "Login" : "Kirjaudu"}</button>
         <div>
+
         {language === 'ENG' ? 'Not a user yet? Create your Moovies account from the button down below!' : 'Etkö ole vielä käyttäjä? Luo Moovies tunnuksesi alla olevasta napista!'}
          
         </div>
         <div>
-        <button onClick={() => navigate("/register")}>{language === "ENG" ? "Register" : "Rekisteröidy"}</button>
+        <button onClick={() => navigate("/register")} className="login-button">{language === "ENG" ? "Register" : "Rekisteröidy"}</button>
         </div>
       </form>
     </div>

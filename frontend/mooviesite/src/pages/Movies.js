@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './Movies.css';
+import { useLanguage } from '../LanguageContext'; // Ota käyttöön useLanguage-koukku
 
 function Movies() {
   const [search, setSearch] = useState('');
   const [genre, setGenre] = useState('');
   const [genres, setGenres] = useState([]);
   const [results, setResults] = useState([]);
-  const [page, setPage] = useState(1); 
+  const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true); // Whether there are more movies to load
+  const { language } = useLanguage(); // Hae nykyinen kieli
 
   const apiKey = 'cfaf3af7360c5b3c0549dd08762cb811';
   const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genre}&sort_by=popularity.desc&page=${page}`;
@@ -41,7 +43,7 @@ function Movies() {
         url = searchUrl;
       } else {
         url = apiUrl;
-      } 
+      }
 
       const response = await fetch(url);
       const data = await response.json();
@@ -66,6 +68,7 @@ function Movies() {
     setPage(1);
     setHasMore(true); // Reset hasMore when submitting new search
     fetchMovies();
+    setSearch('');
   };
 
   const loadMore = () => {
@@ -79,24 +82,22 @@ function Movies() {
           type="text"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
-          placeholder="Search for a movie"
+          placeholder={language === 'ENG' ? 'Search for a movie' : 'Etsi elokuvaa'}
         />
         <select value={genre} onChange={(event) => setGenre(event.target.value)}>
-          <option value="">All Genres</option>
+          <option value="">{language === 'ENG' ? 'All Genres' : 'Kaikki Tyylit'}</option>
           {genres.map((genre) => (
-            <option key   ={genre.id} value={genre.id}>
+            <option key={genre.id} value={genre.id}>
               {genre.name}
             </option>
           ))}
         </select>
-        <button type="submit">Search</button>
+        <button type="submit">{language === 'ENG' ? 'Search' : 'Haku'}</button>
       </form>
 
       <div className="results">
         {results.map((movie, index) => (
           <div key={index} className="movie">
-            <h2>{movie.title}</h2>
-            <p>Rating: {movie.vote_average}</p>
             {movie.poster_path && (
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -104,12 +105,16 @@ function Movies() {
                 className="movie-poster"
               />
             )}
+            <div className="movie-info">
+              <h2>{movie.title}</h2>
+              <p>{language === 'ENG' ? 'Rating' : 'Arvostelu'}: {movie.vote_average}</p>
+            </div>
           </div>
         ))}
       </div>
 
       {/* Show "Load More" button only if there are more movies to load */}
-      {hasMore && <button onClick={loadMore} className="load-more-button">Load More</button>}
+      {hasMore && <button onClick={loadMore} className="load-more-button">{language === 'ENG' ? 'Load More' : 'Lataa Lisää'}</button>}
     </div>
   );
 }

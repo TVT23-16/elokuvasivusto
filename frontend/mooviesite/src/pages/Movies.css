@@ -1,24 +1,62 @@
 .results {
   display: flex;
   flex-wrap: wrap;
-      
+}
+
+h2 {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(207, 207, 207);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 20px;
+  display: block;
+}
+
+p {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(119, 119, 119);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 .movie {
   width: 25.00%; 
   padding: 10px;
   box-sizing: border-box; 
-  
-
+  border-radius: 30px; /* Pyöristää kulmat */
+  background-color: rgba(52, 52, 52, 0.3); /* Lisää väri ja läpinäkyvyys kehykselle */
+  padding: 40px;
+  text-align: center;
 }
+
 .load-more-button {
-  width: 100%; /* Venytä nappi koko leveydelle */
+  margin-left: 33%;
+  width: 30%; /* Venytä nappi koko leveydelle */
   padding: 15px; /* Lisää tyhjää tilaa ylä- ja alapuolelle */
-  margin-top: 20px; /* Lisää tilaa yläpuolelle */
-  background-color: #007bff; /* Vaihda taustaväri haluamaksesi */
-  color: white; /* Vaihda tekstiväri kontrastin varmistamiseksi */
+  margin-top: 40px; /* Lisää tilaa yläpuolelle */
+  margin-bottom: 40px;
+  background-color: rgba(52, 52, 52, 0.3); /* Lisää väri ja läpinäkyvyys kehykselle */
+  text-shadow: 2px 1px 4px rgb(0, 0, 0);
+  color: rgb(207, 207, 207);
   border: none; /* Poista reunus */
+  font-weight: 400;
   border-radius: 5px; /* Pyöristä kulmat */
-  font-size: 16px; /* Aseta fontin koko */
+  font-size: 18px; /* Aseta fontin koko */
 }
 
+.load-more-button:hover {
+  transform: scale(1.1); /* Suurennuskerroin 1.1 */
+  background-color: rgba(52, 52, 52, 0.6);
+}
+
+.movie-poster {
+  border-radius: 15px;
+  /* Pyöristää elokuvan kuvakkeen kulmat */
+  transition: transform 0.3s; /* Lisää siirtymä hover-tilassa */
+}
+
+.movie-poster:hover {
+  transform: scale(1.1); /* Suurennuskerroin 1.1 */
+}
