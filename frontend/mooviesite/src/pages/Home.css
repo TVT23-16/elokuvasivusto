@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: radial-gradient(circle at center, rgb(64, 62, 62), black);
     position: relative;
     padding-bottom: 35px;
@@ -14,12 +14,13 @@ body {
 
 h1 {
     text-align: center;
-    color: rgb(180, 0, 0);
+    color: rgb(207, 207, 207);
     margin-top: 40px;
     margin-bottom: 10px;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.674);
     font-size: 40px; /* tässä muodossa fontin koko skaalautuu ikkunan koon mukaan */
-    font-weight: 700;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 p {
@@ -59,23 +60,54 @@ article div img {
 }
 
 .movie-title {
-    color: rgb(180, 0, 0);
+    color: rgb(207, 207, 207);
     text-shadow: 2px 2px 2px rgb(0, 0, 0);
     font-size: 24px;
     margin-top: 20px;
     font-size: 30px;
     display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .movie-rating {
-    color: rgb(180, 0, 0);
+    color: rgb(136, 125, 125);
     text-shadow: 2px 2px 2px rgb(0, 0, 0);
     font-size: 20px;
     margin-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
 #empty-space {
     margin-bottom: 100px;
+}
+
+.logo-and-link {
+    display: flex;
+    align-items: center; /* Keskitä sisältö vertikaalisesti */
+    margin-left: 30%;
+  }
+
+.linkki_finnkino {
+    color: rgb(207, 207, 207);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    font-size: 40px;
+    display: inline-block;
+    width: 100%;      
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 30px; /* Pyöristää kulmat */
+    background-color: rgba(52, 52, 52, 0.3); /* Lisää väri ja läpinäkyvyys kehykselle */
+  }
+
+  .linkki_finnkino:hover {
+    transform: scale(1.1); /* Suurennuskerroin 1.1 */
+    background-color: rgba(52, 52, 52, 0.7);
+    transition: transform 0.3s; /* Lisää siirtymäefekti */
 }
 
