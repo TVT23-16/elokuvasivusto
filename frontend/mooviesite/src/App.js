@@ -15,7 +15,7 @@ import { LanguageProvider } from './LanguageContext'; // Tuodaan LanguageProvide
 import Register from './pages/Register';
 import Schedules from './pages/Schedules';
 import DeleteAccount from './pages/DeleteAccount';
-
+import MovieDetail from './components/MovieDetail';
 function App() {
   const [user, setUser] = useState(null);
 
@@ -37,6 +37,7 @@ function App() {
             <Route path="register"  element={<Register setUser={setUser}/>} />
             <Route path="myprofile/delete"  element={<DeleteAccount user={user}/>} />
             <Route path="/schedules" element={<Schedules />} />
+            <Route path="/movie/:id" element={<MovieDetail />} />
           </Routes>
         </div>
         <Footer></Footer>
