@@ -3,22 +3,28 @@ import './Series.css';
 import { useLanguage } from '../LanguageContext'; // Ota käyttöön useLanguage-koukku
 
 function Series() {
-  const [haku, setHaku] = useState('');
+  // State variables to manage search, filters, and results
+  const [search, setSearch] = useState('');
   const [genre, setGenre] = useState('');
+  
+  const [language, setLanguage] = useState('');
+  const [languages, setLanguages] = useState([]);
   const [genres, setGenres] = useState([]);
-  const [tulokset, setTulokset] = useState([]);
-  const [sivu, setSivu] = useState(1); // Sivunumeron tilamuuttuja
-  const { language } = useLanguage(); // Hae nykyinen kieli
+  const [results, setResults] = useState([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
   const apiKey = 'cfaf3af7360c5b3c0549dd08762cb811';
-  const apiUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&with_genres=${genre}&sort_by=popularity.desc&page=${sivu}`;
-  const searchUrl = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${encodeURIComponent(haku)}&page=${sivu}`;
+  const apiUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&with_genres=${genre}&certification_country=US&with_original_language=${language}&sort_by=popularity.desc&page=${page}`;
+  const searchUrl = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${encodeURIComponent(search)}&page=${page}&with_original_language=${language}`;
   const genresUrl = `https://api.themoviedb.org/3/genre/tv/list?api_key=${apiKey}`;
+  const languagesUrl = `https://api.themoviedb.org/3/configuration/languages?api_key=${apiKey}`;
 
   useEffect(() => {
     fetchGenres();
+    fetchLanguages();
     fetchSeries();
-  }, [genre, sivu]); // Huomaa, että sivu lisätään riippuvuuslistalle
+  }, [genre,  language, page]);
 
   const fetchGenres = async () => {
     try {
@@ -26,7 +32,17 @@ function Series() {
       const data = await response.json();
       setGenres(data.genres);
     } catch (error) {
-      console.error('Virhe:', error);
+      console.error('Error:', error);
+    }
+  };
+
+  const fetchLanguages = async () => {
+    try {
+      const response = await fetch(languagesUrl);
+      const data = await response.json();
+      setLanguages(data);
+    } catch (error) {
+      console.error('Error:', error);
     }
   };
 
@@ -34,11 +50,11 @@ function Series() {
     try {
       let url = '';
 
-      if (genre && haku) {
+      if (genre && search) {
         url = `${searchUrl}&with_genres=${genre}`;
       } else if (genre) {
         url = apiUrl;
-      } else if (haku) {
+      } else if (search) {
         url = searchUrl;
       } else {
         url = apiUrl;
@@ -47,30 +63,33 @@ function Series() {
       const response = await fetch(url);
       const data = await response.json();
 
-      // Jos sivu on 1, korvataan aiemmat tulokset uusilla
-      if (sivu === 1) {
-        setTulokset(data.results);
+      if (page === 1) {
+        setResults(data.results);
       } else {
-        // Muuten lisätään uudet tulokset olemassa oleviin tuloksiin
-        setTulokset(prevTulokset => [...prevTulokset, ...data.results]);
+        setResults(prevResults => [...prevResults, ...data.results]);
+      }
+
+      if (data.total_pages <= page) {
+        setHasMore(false);
       }
     } catch (error) {
-      console.error('Virhe:', error);
+      console.error('Error:', error);
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Asetetaan sivunumero takaisin 1, kun tehdään uusi haku
-    setSivu(1);
+    setPage(1);
+    setHasMore(true);
 
     fetchSeries();
+
+    setSearch('');
   };
 
   const loadMore = () => {
-    // Lisätään sivunumeroa yhdellä
-    setSivu(prevPage => prevPage + 1);
+    setPage(prevPage => prevPage + 1);
   };
 
   return (
@@ -78,9 +97,9 @@ function Series() {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={haku}
-          onChange={(event) => setHaku(event.target.value)}
-          placeholder={language === 'ENG' ? 'Search for a series' : 'Etsi sarjaa'}
+          value={search}
+          onChange={(event) => setSearch(event.target.value)} 
+          placeholder="Search for a TV series"
         />
         <select value={genre} onChange={(event) => setGenre(event.target.value)}>
           <option value="">{language === 'ENG' ? 'All Genres' : 'Kaikki Tyylit'}</option>
@@ -90,30 +109,40 @@ function Series() {
             </option>
           ))}
         </select>
-        <button type="submit">{language === 'ENG' ? 'Search' : 'Haku'}</button>
+        
+        <select value={language} onChange={(event) => setLanguage(event.target.value)}>
+          <option value="">All Languages</option>
+          {languages.map((lang) => ( 
+            <option key={lang.iso_639_1} value={lang.iso_639_1}>
+              {lang.english_name} ({lang.iso_639_1})
+            </option>
+          ))}
+        </select>
+        <button type="submit">Search</button>
       </form>
 
-      <div className="tulokset">
-        {tulokset.map((sarja, index) => (
-          <div key={index} className="sarja">
-            {sarja.poster_path && (
+      <div className="results">
+        {results.map((series, index) => (
+          <div key={index} className="series">
+            <h2>{series.name}</h2>
+            <p>Rating: {series.vote_average}</p>
+            {series.poster_path && (
               <img
-                src={`https://image.tmdb.org/t/p/w500/${sarja.poster_path}`}
-                alt={sarja.name}
-                className="sarjan-kuva"
+                src={`https://image.tmdb.org/t/p/w500/${series.poster_path}`}
+                alt={series.name}
+                className="series-poster"
               />
             )}
-            <h2>{sarja.name}</h2>
-            <p>{language === 'ENG' ? 'Rating' : 'Arvosana'}: {sarja.vote_average}</p>
-            {sarja.number_of_episodes && (
-              <p>{language === 'ENG' ? 'Number of Episodes' : 'Jaksojen määrä'}: {sarja.number_of_episodes}</p>
+            <h2>{series.name}</h2>
+            <p>{language === 'ENG' ? 'Rating' : 'Arvosana'}: series.vote_average}</p>
+            {series.number_of_episodes && (
+              <p>{language === 'ENG' ? 'Number of Episodes' : 'Jaksojen määrä'}: {series.number_of_episodes}</p>
             )}
           </div>
         ))}
       </div>
 
-      {/* Lisää napin "Lataa lisää", joka käynnistää loadMore-funktion */}
-      <button onClick={loadMore} className="load-more-button">{language === 'ENG' ? 'Load More' : 'Lataa Lisää'}</button>
+      {hasMore && <button onClick={loadMore} className="load-more-button">Load More</button>}
     </div>
   );
 }

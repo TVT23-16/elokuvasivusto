@@ -1,3 +1,4 @@
+require("dotenv").config()
 const pgPool = require("./pg_connection")
 
 const sql = {

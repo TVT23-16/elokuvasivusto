@@ -1,3 +1,4 @@
+
 .tulokset {
     display: flex;
     flex-wrap: wrap;  
@@ -52,11 +53,13 @@
     background-color: rgba(52, 52, 52, 0.6);
   }
 
-  .sarjan-kuva {
-    border-radius: 15px; /* Pyöristää elokuvan kuvakkeen kulmat */
-    transition: transform 0.3s; /* Lisää siirtymä hover-tilassa */
+
+.series:hover {
+  transform: scale(1.05); /* Enlarge the series picture on hover */
 }
+
 
 .sarjan-kuva:hover {
   transform: scale(1.1); /* Suurennuskerroin 1.1 */
 }
+
