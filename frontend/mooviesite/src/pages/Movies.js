@@ -133,22 +133,22 @@ const fetchMovies = async () => {
       </form>
 
       <div className="results">
-        {results.map((movie, index) => (
-          <Link key={index} to={`/movie/${movie.id}`} className="movie-link">
-            <div key={index} className="movie">
-              <h2>{movie.title}</h2>
-              <p>Rating: {movie.vote_average}</p>
-              {movie.poster_path && (
-                <img
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  alt={movie.title}
-                  className="movie-poster"
-                />
-              )}
-            </div>
-          </Link>
-        ))}
+  {results.map((movie, index) => (
+    <Link key={index} to={`/movie/${movie.id}`} className="movie-link">
+      <div key={index} className="movie">
+        {movie.poster_path && (
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            alt={movie.title}
+            className="movie-poster"
+          />
+        )}
+        <h2>{movie.title}</h2>
+        <p>Rating: {movie.vote_average}</p>
       </div>
+    </Link>
+  ))}
+</div>
 
       {hasMore && <button onClick={loadMore} className="load-more-button">Load More</button>}
     </div>

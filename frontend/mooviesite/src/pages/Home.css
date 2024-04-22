@@ -47,16 +47,12 @@ article div {
     float: left;
     justify-content: center;
     width: 33.33%;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
-    margin-bottom: 50px; /* tila top3 alapuolella */
+    margin-bottom: 100px; /* tila top3 alapuolella */
 
     border-radius: 30px; /* Pyöristää kulmat */
     background-color: rgba(52, 52, 52, 0.3); /* Lisää väri ja läpinäkyvyys kehykselle */
-}
-
-article div img {
-    width: 100%;
 }
 
 /* Lisää hover-tila kuville */
@@ -80,11 +76,6 @@ article div:hover img {
     font-size: 18px;
     margin-top: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-
-#empty-space {
-    margin-bottom: 100px;
 }
 
 .logo-and-link {
