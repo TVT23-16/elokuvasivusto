@@ -19,7 +19,8 @@ const DropdownMenu = ({ user }) => {
         <ul className="dropdown-menu">
          
           <li>
-            <Link to="/Deleteaccount">Delete account</Link>
+            <Link to="/myprofile/delete">Delete account</Link>
+
           </li>
           <li>
             <Link to="/Logout">Logout</Link>

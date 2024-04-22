@@ -20,13 +20,19 @@ const { language, toggleLanguage } = useLanguage();
       <div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+
+
+            <Link to="/">{language === 'ENG' ? 'HOME' : 'ETUSIVU'}</Link>
           </li>
           <li>
-            <Link to="/series">Series</Link>
+            <Link to="/series">{language === 'ENG' ? 'SERIES' : 'SARJAT'}</Link>
           </li>
           <li>
-            <Link to="/movies">Movies</Link>
+            <Link to="/movies">{language === 'ENG' ? 'MOVIES' : 'ELOKUVAT'}</Link>
+          </li>
+          <li>
+            <Link to="/schedules">{language === 'ENG' ? 'FINNKINO SHOWTIMES' : 'FINNKINO NÄYTÖSAJAT'}</Link>
+
           </li>
           <li>
             <li>
@@ -39,28 +45,20 @@ const { language, toggleLanguage } = useLanguage();
          <li>
           </li>
           <li>
-            <li>
-              <li>
-              
-              </li>
-              <DropdownMenu user={user} />  
-            </li>
-            {user === null && <Link to="/login">Login</Link>}
-            {user && <Link to="/logout">Logout</Link>}
+            {user === null ? (
+              <Link to="/login">{language === 'ENG' ? 'LOGIN' : 'KIRJAUDU SISÄÄN'}</Link>
+            ) : (
+              <Link to="/logout">{language === 'ENG' ? 'LOGOUT' : 'KIRJAUDU ULOS'}</Link>
+            )}
+
           </li>
+<DropdownMenu user={user} />
         </ul>
       </div>
     </nav>
   );
 };
 
+
 export default Navbar;
 
-/* korvaa button-dropdown osio tällä
-
-          <li>
-          <button onClick={handleProfileClick}>
-              <img src="path/to/door-icon.png" alt="My Profile" />
-            </button>
-            {isDropdownVisible && <DropdownMenu user={user} />}
-            </li>*/
