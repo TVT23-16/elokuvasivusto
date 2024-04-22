@@ -34,8 +34,9 @@ display: inline-block;
 }
 
 .dropdown-menu {
+    right: auto;
     left: auto; /* Poista automaattinen asettelu */
-    right: 0; /* Aseta oikea reuna 0:ksi */
+  
   }
   
   @media (max-width: 768px) {
@@ -62,5 +63,7 @@ display: inline-block;
     color: #e9ff24;
     transform: scale(1.1); /* Suurennuskerroin 1.1 */
   }
+
+ 
 
   

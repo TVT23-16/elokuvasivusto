@@ -1,35 +1,38 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState,} from 'react';
+import { Link, useLinkClickHandler } from 'react-router-dom';
 import './DropdownMenu.css';
+import Myprofile from '../pages/Myprofile';
+
 
 const DropdownMenu = ({ user }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
+  const [isOpen, setisOpen] = useState(false);
+  const toggleDropdown =()=> {setisOpen(!isOpen)}
   return (
-    <div className="dropdown">
+
+       <div id="profile.png">
+       
       <button className="dropdown-toggle" onClick={toggleDropdown} >
-        photo
+      <img src='./profile.png' alt="profilepic" ></img>
       </button>
+      
       {isOpen && (
         <ul className="dropdown-menu">
+         
           <li>
             <Link to="/myprofile/delete">Delete account</Link>
+
           </li>
           <li>
-            <Link to="/profiili/uloskirjautuminen">Logout</Link>
+            <Link to="/Logout">Logout</Link>
           <li>
-            </li>
+          </li>
           <Link to="/myprofile">My profile</Link>
           </li>
-          {/* Lisää vaihtoehtoja tarpeen mukaan */}
+          
         </ul>
       )}
     </div>
-  );
+)
 };
 
 export default DropdownMenu;

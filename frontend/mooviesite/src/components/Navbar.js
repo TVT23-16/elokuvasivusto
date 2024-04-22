@@ -1,17 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
-import { useLanguage } from '../LanguageContext';
+import { Link } from 'react-router-dom'
+import './Navbar.css'
+import React from 'react'
 import DropdownMenu from './DropdownMenu';
+import { useLanguage } from '../LanguageContext';
+
 
 const Navbar = ({ user }) => {
-  const { language, toggleLanguage } = useLanguage();
+const { language, toggleLanguage } = useLanguage();
+  /* alasvetovalikoon muutos tekstistä ovi-kuvakkeeksi, koodi alkaa *
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
+  const handleProfileClick = () => {
+    setIsDropdownVisible(!isDropdownVisible);
+  };
+  * alasvetovalikoon muutos tekstistä ovi-kuvakkeeksi, koodi päättyy */
 
   return (
     <nav>
       <div>
         <ul>
           <li>
+
+
             <Link to="/">{language === 'ENG' ? 'HOME' : 'ETUSIVU'}</Link>
           </li>
           <li>
@@ -22,16 +32,17 @@ const Navbar = ({ user }) => {
           </li>
           <li>
             <Link to="/schedules">{language === 'ENG' ? 'FINNKINO SHOWTIMES' : 'FINNKINO NÄYTÖSAJAT'}</Link>
-          </li>
-        </ul>
-      </div>
 
-      <div>
-        <ul>
+          </li>
           <li>
-            <button className="language-button" onClick={toggleLanguage}>
-              {language}
-            </button>
+            <li>
+              <li>
+
+              </li>
+            </li>
+            
+          </li>
+         <li>
           </li>
           <li>
             {user === null ? (
@@ -39,12 +50,15 @@ const Navbar = ({ user }) => {
             ) : (
               <Link to="/logout">{language === 'ENG' ? 'LOGOUT' : 'KIRJAUDU ULOS'}</Link>
             )}
+
           </li>
-          <DropdownMenu user={user} />
+<DropdownMenu user={user} />
         </ul>
       </div>
     </nav>
   );
 };
 
+
 export default Navbar;
+
