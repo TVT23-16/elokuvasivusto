@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Series.css';
-import { useLanguage } from '../LanguageContext'; // Ota käyttöön useLanguage-koukku
+import { Link } from 'react-router-dom';
 
 function Series() {
   // State variables to manage search, filters, and results
   const [search, setSearch] = useState('');
   const [genre, setGenre] = useState('');
-  
   const [language, setLanguage] = useState('');
   const [languages, setLanguages] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -123,22 +122,19 @@ function Series() {
 
       <div className="results">
         {results.map((series, index) => (
-          <div key={index} className="series">
-            <h2>{series.name}</h2>
-            <p>Rating: {series.vote_average}</p>
-            {series.poster_path && (
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${series.poster_path}`}
-                alt={series.name}
-                className="series-poster"
-              />
-            )}
-            <h2>{series.name}</h2>
-            <p>{language === 'ENG' ? 'Rating' : 'Arvosana'}: {series.vote_average}</p>
-            {series.number_of_episodes && (
-              <p>{language === 'ENG' ? 'Number of Episodes' : 'Jaksojen määrä'}: {series.number_of_episodes}</p>
-            )}
-          </div>
+          <Link key={index} to={`/serie/${series.id}`} className="series-link">
+            <div key={index} className="series">
+              {series.poster_path && (
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${series.poster_path}`}
+                  alt={series.name}
+                  className="series-poster"
+                />
+              )}
+              <h2>{series.name}</h2>
+              <p>Rating: {series.vote_average}</p>
+            </div>
+          </Link>
         ))}
       </div>
 
