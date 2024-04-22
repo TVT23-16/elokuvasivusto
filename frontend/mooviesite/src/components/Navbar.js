@@ -1,43 +1,53 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
-import { useLanguage } from '../LanguageContext';
+import { Link } from 'react-router-dom'
+import './Navbar.css'
+import React from 'react'
 import DropdownMenu from './DropdownMenu';
+import { useLanguage } from '../LanguageContext';
+
 
 const Navbar = ({ user }) => {
-  const { language, toggleLanguage } = useLanguage();
+const { language, toggleLanguage } = useLanguage();
+  /* alasvetovalikoon muutos tekstistä ovi-kuvakkeeksi, koodi alkaa *
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
+  const handleProfileClick = () => {
+    setIsDropdownVisible(!isDropdownVisible);
+  };
+  * alasvetovalikoon muutos tekstistä ovi-kuvakkeeksi, koodi päättyy */
 
   return (
     <nav>
       <div>
         <ul>
           <li>
-            <Link to="/">{language === 'ENG' ? 'Home' : 'Etusivu'}</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/series">{language === 'ENG' ? 'Series' : 'Sarjat'}</Link>
+            <Link to="/series">Series</Link>
           </li>
           <li>
-            <Link to="/movies">{language === 'ENG' ? 'Movies' : 'Elokuvat'}</Link>
+            <Link to="/movies">Movies</Link>
           </li>
-        </ul>
-      </div>
+          <li>
+            <li>
+              <li>
 
-      <div>
-        <ul>
-          <li>
-            <button className="language-button" onClick={toggleLanguage}>
-              {language}
-            </button>
+              </li>
+            </li>
+            
+          </li>
+         <li>
           </li>
           <li>
-            {user === null ? (
-              <Link to="/login">{language === 'ENG' ? 'Login' : 'Kirjaudu sisään'}</Link>
-            ) : (
-              <Link to="/logout">{language === 'ENG' ? 'Logout' : 'Kirjaudu ulos'}</Link>
-            )}
+            <li>
+              <li>
+              
+              </li>
+              <DropdownMenu user={user} />  
+            </li>
+            {user === null && <Link to="/login">Login</Link>}
+            {user && <Link to="/logout">Logout</Link>}
           </li>
-          <DropdownMenu user={user} />
         </ul>
       </div>
     </nav>
@@ -45,3 +55,12 @@ const Navbar = ({ user }) => {
 };
 
 export default Navbar;
+
+/* korvaa button-dropdown osio tällä
+
+          <li>
+          <button onClick={handleProfileClick}>
+              <img src="path/to/door-icon.png" alt="My Profile" />
+            </button>
+            {isDropdownVisible && <DropdownMenu user={user} />}
+            </li>*/
