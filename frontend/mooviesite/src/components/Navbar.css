@@ -36,9 +36,25 @@ display: inline-block;
 .dropdown-menu {
     right: auto;
     left: auto; /* Poista automaattinen asettelu */
-  
   }
-  
+
+  .dropdown-toggle {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    background-color: #333;
+    margin-top: -33px;
+    margin-right: 20px;
+    width: 50px; /* Aseta kuvakkeen leveys */
+    height: 50px; /* Aseta kuvakkeen korkeus */
+    border-radius: 10px;
+    padding: 5px; /* Lisää tyhjää tilaa kuvakkeen ympärille tarvittaessa */
+  }
+
+  .dropdown-toggle:hover {
+    transform: scale(1.1); /* Suurennuskerroin 1.1 */
+  }
+
   @media (max-width: 768px) {
     /* Muokkaa responsiivista asettelua tarvittaessa */
     .dropdown-menu {
@@ -56,6 +72,7 @@ display: inline-block;
     font-weight: 600;
     color: #b80000;
     margin-right: 10px;
+    margin-left:500px;
   }
   
    /* kielen vaihtopainikkeen väri kun hiiri on päällä */

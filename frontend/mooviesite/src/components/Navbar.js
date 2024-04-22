@@ -37,7 +37,9 @@ const { language, toggleLanguage } = useLanguage();
           <li>
             <li>
               <li>
-
+              <button className="language-button" onClick={toggleLanguage}>
+              {language}
+            </button>
               </li>
             </li>
             
