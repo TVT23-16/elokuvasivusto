@@ -1,17 +1,3 @@
-button {
-  position: small;
-  top: 1%;
-  right: 1%;
-  height: 1%;
-  width: 5%;
-  border-radius: 2%;
-  overflow: hidden; 
-  cursor: pointer;
-  background-color: #333; 
-}
-
-
-
 .dropdown-menu {
     width: 160px; /* Muuta leveyttä tarpeidesi mukaan */
     background-color: #333; /* Aseta taustaväri tumman harmaaksi */
@@ -26,6 +12,8 @@ button {
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12);
     border-radius: 5px; /* Pyöristää kaikki reunat 10 pikseliä */
+    position: absolute;
+    right: 0;
   }
 
  .dropdown-menu.active{
@@ -40,5 +28,9 @@ button {
     visibility: hidden;
     transform: translateY(-20px);
     transition: var(--speed) ease;
+  }
+
+  .myprofile:hover {
+    transform: scale(1.1); /* Suurennuskerroin 1.1 */
   }
 
