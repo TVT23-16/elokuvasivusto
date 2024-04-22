@@ -47,8 +47,11 @@ function MovieDetail({user}) {
         userreview: Userreview,
         accountname: uname
       }),
-
+      
       })
+      if (response.ok) {
+        setResult([...result, { userreview: Userreview, accountname: uname }]); //...result tekee kopion result taulukosta ja lisää sinne suoraan uuden arvostelun
+      }
     } catch (error) {
       console.log(error);
     }
@@ -76,7 +79,7 @@ function MovieDetail({user}) {
   
       getReview();
     }
-  }, [id, movie]);
+  }, [id, movie,Userreview]);
   
   console.log("what type" + result);
   
@@ -120,7 +123,7 @@ function MovieDetail({user}) {
       {result.length > 0 && (
   result.map((review, index) => (
     <label key={index}>
-      <textarea value={review.userreview + review.media_id} rows={4} cols={40} readOnly />
+      <textarea value={review.userreview + review.accountname} rows={4} cols={40} readOnly />
     </label>
   ))
 )}
