@@ -16,6 +16,7 @@ import Register from './pages/Register';
 import Schedules from './pages/Schedules';
 import DeleteAccount from './pages/DeleteAccount';
 import MovieDetail from './components/MovieDetail';
+import SerieDetail from './components/SerieDetail';
 function App() {
   const [user, setUser] = useState(null);
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="myprofile/delete"  element={<DeleteAccount user={user}/>} />
             <Route path="/schedules" element={<Schedules />} />
             <Route path="/movie/:id" element={<MovieDetail />} />
+            <Route path="/serie/:id" element={<SerieDetail />} />
           </Routes>
         </div>
         <Footer></Footer>
