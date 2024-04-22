@@ -38,7 +38,7 @@ function App() {
             <Route path="register"  element={<Register setUser={setUser}/>} />
             <Route path="myprofile/delete"  element={<DeleteAccount user={user}/>} />
             <Route path="/schedules" element={<Schedules />} />
-            <Route path="/movie/:id" element={<MovieDetail />} />
+            <Route path="/movie/:id" element={<MovieDetail user = {user} />} />
             <Route path="/serie/:id" element={<SerieDetail />} />
           </Routes>
         </div>
