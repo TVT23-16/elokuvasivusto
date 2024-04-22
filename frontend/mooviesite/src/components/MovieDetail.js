@@ -6,7 +6,17 @@ function MovieDetail({user}) {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [Userreview, setUserreview] = useState("");
-  const { username }  = user;
+  const [uname, setUname] = useState("")
+  
+  useEffect(() => {
+    if (user) {
+      const { user: username } = user; // Destructure username from user object
+      console.log(user);
+      setUname(username)
+      console.log(uname);
+    }
+  }, [user]);
+  console.log(typeof movie);
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
@@ -27,13 +37,14 @@ function MovieDetail({user}) {
 
     const review= ""
     try {
-      const response = await fetch(`https://localhost:3001/user/addreview`, {
+      console.log(movie);
+      const response = await fetch(`http://localhost:3001/reviews/addreview`, {
       method: "POST", 
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         media_id: id,
-        userreview: review,
-        accountname: username
+        userreview: Userreview,
+        accountname: uname
       }),
 
       })
@@ -44,8 +55,16 @@ function MovieDetail({user}) {
   }
   const handleuserReview = async (e) => {
     const selected = e.target.value
-    
+    setUserreview(selected)
+    console.log(Userreview);
+
+   
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    addReview()
+  }
 
   if (!movie) {
     return <div>Loading...</div>;
@@ -63,12 +82,13 @@ function MovieDetail({user}) {
           alt={movie.title}
         />
       )}
-
+      <form onSubmit={handleSubmit}>
       <div className='writeRating'>
       <textarea name="postContent" rows={4} cols={40} value={Userreview} onChange={handleuserReview} />
-       
+      <button type='submit'>submit</button>
       </div>
-
+      </form>
+      <label><textarea value="Tämä on vain luettavissa" rows={4} cols={40} readOnly /></label>
     </div>
   );
 }
