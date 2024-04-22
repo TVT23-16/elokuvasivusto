@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-function MovieDetail() {
+function MovieDetail({user}) {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
-
+  const [Userreview, setUserreview] = useState("");
+  const { username }  = user;
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
@@ -21,6 +22,30 @@ function MovieDetail() {
 
     fetchMovieDetails();
   }, [id]);
+
+  const addReview = async () => {
+
+    const review= ""
+    try {
+      const response = await fetch(`https://localhost:3001/user/addreview`, {
+      method: "POST", 
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        media_id: id,
+        userreview: review,
+        accountname: username
+      }),
+
+      })
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+  const handleuserReview = async (e) => {
+    const selected = e.target.value
+    
+  };
 
   if (!movie) {
     return <div>Loading...</div>;
@@ -38,6 +63,12 @@ function MovieDetail() {
           alt={movie.title}
         />
       )}
+
+      <div className='writeRating'>
+      <textarea name="postContent" rows={4} cols={40} value={Userreview} onChange={handleuserReview} />
+       
+      </div>
+
     </div>
   );
 }

@@ -32,8 +32,8 @@ describe("/GET users", () => {
 
     describe("/user add", () => {
         it("should add account", (done) => {
-            const accountname = "asdsd"
-            const password = "sssds"
+            const accountname = "adfasdfasfas"
+            const password = "asdfafdasfdasfsadfasf"
             chai.request(server)
             .post("/auth/add/" )
             .send({ password,accountname  })
