@@ -8,7 +8,6 @@
 }
 
 div#register-form{
-    background-color: rgba(52, 52, 52, 0.3);
     display: flex;
     justify-content: center;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

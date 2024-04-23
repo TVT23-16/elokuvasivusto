@@ -135,12 +135,16 @@ function Movies() {
         {results.map((movie, index) => (
           <Link key={index} to={`/movie/${movie.id}`} className="movie-link">
             <div key={index} className="movie">
-              {movie.poster_path && (
+              {movie.poster_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   alt={movie.title}
                   className="movie-poster"
                 />
+              ) : (
+                <div className="empty-poster">
+                   <p className="empty-poster-text">No image available</p>
+                </div>
               )}
               <h2>{movie.title}</h2>
               <p>{language === 'ENG' ? 'Rating' : 'Arvostelu'}: {movie.vote_average}</p>

@@ -23,7 +23,7 @@ function Series() {
     fetchGenres();
     fetchLanguages();
     fetchSeries();
-  }, [genre,  language, page]);
+  }, [genre, language, page]);
 
   const fetchGenres = async () => {
     try {
@@ -101,7 +101,7 @@ function Series() {
           placeholder="Search for a TV series"
         />
         <select value={genre} onChange={(event) => setGenre(event.target.value)}>
-          <option value="">{language === 'ENG' ? 'All Genres' : 'Kaikki Tyylit'}</option>
+          <option value="">All Genres</option>
           {genres.map((genre) => (
             <option key={genre.id} value={genre.id}>
               {genre.name}
@@ -130,6 +130,11 @@ function Series() {
                   alt={series.name}
                   className="series-poster"
                 />
+              )}
+              {!series.poster_path && (
+                <div className="empty-poster">
+                  <p className="empty-poster-text">No image available</p>
+                </div>
               )}
               <h2>{series.name}</h2>
               <p>Rating: {series.vote_average}</p>
