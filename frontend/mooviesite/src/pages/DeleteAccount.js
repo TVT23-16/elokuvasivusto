@@ -36,24 +36,7 @@ try {
 }
        
     }
-    /*const delreview = async () => {
-    try {
-      const response =await fetch(`http://localhost:3001/reviews/deletereview/${username}`, {
-        
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" }, //lähetämme pyynnön JSON-muodossa
-        body: JSON.stringify({
-          //muutetaan json muotoon
-          //accountname: username,
-          
-        }),
-        
-      })
-      console.log("asdsad" + response);
-    } catch (error) {
-      
-    }
-    */
+
     return (
       <div id='delete-form'>
           <form onSubmit={poistha}>

@@ -1,3 +1,5 @@
+// Login.js
+
 import React, { useState } from "react";
 import "./login.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -45,29 +47,31 @@ export default function Login({ setUser }) {
       <form onSubmit={validate}>
         <h3 className="login-h3">{language === "ENG" ? "Login" : "Kirjaudu sisään"}</h3>
         <div>
-          <label>{language === "ENG" ? "Username" : "Käyttäjänimi"}</label>
+          <label className="custom-label">{language === "ENG" ? "Username" : "Käyttäjänimi"}</label>
           <input
+            className="custom-input"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div>
-          <label>{language === "ENG" ? "Password" : "Salasana"}</label>
+          <label className="custom-label">{language === "ENG" ? "Password" : "Salasana"}</label>
           <input
+            className="custom-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         
-        <button className="login-button">{language === "ENG" ? "Login" : "Kirjaudu"}</button>
+        <button className="custom-button">{language === "ENG" ? "Login" : "Kirjaudu"}</button>
         <div>
 
         {language === 'ENG' ? 'Not a user yet? Create your Moovies account from the button down below!' : 'Etkö ole vielä käyttäjä? Luo Moovies tunnuksesi alla olevasta napista!'}
          
         </div>
         <div>
-        <button onClick={() => navigate("/register")} className="login-button">{language === "ENG" ? "Register" : "Rekisteröidy"}</button>
+        <button onClick={() => navigate("/register")} className="custom-button">{language === "ENG" ? "Register" : "Rekisteröidy"}</button>
         </div>
       </form>
     </div>
