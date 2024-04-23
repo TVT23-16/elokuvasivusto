@@ -1,3 +1,5 @@
+// Register.js
+
 import React, { useState } from "react";
 import "./Register.css";
 import { useNavigate } from "react-router-dom";
@@ -34,14 +36,14 @@ export default function Register({ setUser }) {
       <form onSubmit={registration}>
         <h3 className="register-h3">{language === "ENG" ? "Register" : "Rekisteröidy"}</h3>
         <div>
-          <label>{language === "ENG" ? "Username" : "Käyttäjänimi"}</label>
-          <input value={username} onChange={(e) => setUsername(e.target.value)} />
+          <label className="custom-label">{language === "ENG" ? "Username" : "Käyttäjänimi"}</label>
+          <input className="custom-input" value={username} onChange={(e) => setUsername(e.target.value)} />
         </div>
         <div>
-          <label>{language === "ENG" ? "Password" : "Salasana"}</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <label className="custom-label">{language === "ENG" ? "Password" : "Salasana"}</label>
+          <input className="custom-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <button type="submit" className="register-button">
+        <button type="submit" className="custom-button">
           {language === "ENG" ? "Register" : "Rekisteröidy"}
         </button>
       </form>

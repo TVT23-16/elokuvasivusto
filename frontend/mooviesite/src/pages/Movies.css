@@ -46,6 +46,15 @@ p {
   margin-bottom: 15px;
 }
 
+.empty-poster {
+  border-radius: 30px;
+  margin-bottom: 15px;
+  height: 490px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .load-more-button {
   margin-left: 33%;
   width: 30%;
