@@ -1,0 +1,30 @@
+/* FavoriteMoviesutton.css */
+
+.favoritemovies-button {
+    /* General styles */
+    display: inline-block;
+    /*padding: 10px 15px; */
+    /*border: 1px solid #ccc; */
+    /*border-radius: 5px; */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    background-color: red; /* Punainen taustaväri */
+    color: white; /* Valkoinen tekstiväri */
+    border: none; /* Poista reunus */
+    padding: 10px 15px; /* Täyttö */
+    border-radius: 5px; /* Pyöristetyt kulmat */
+    
+  }
+  
+  .favoritemovies-button:hover {
+    /* Hover state styles */
+    background-color: #e0e0e0;
+  }
+  
+  .favoritemovies-button.is-favorite {
+    /* Active state styles for a favorite button */
+    background-color: #f00;
+    color: #fff;
+  }
+  
