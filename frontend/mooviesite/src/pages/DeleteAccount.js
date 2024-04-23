@@ -36,7 +36,7 @@ try {
 }
        
     }
-
+    
     return (
       <div id='delete-form'>
           <form onSubmit={poistha}>
