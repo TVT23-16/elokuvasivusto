@@ -13,7 +13,7 @@ function MovieDetail({ user }) {
 
   useEffect(() => {
     if (user) {
-      const { user: username } = user; // Destructure username from user object
+      const { user: username } = user; //puretaan user propsista pelkkä käyttäjätunnus
       setUname(username);
     }
   }, [user]);
@@ -41,6 +41,7 @@ function MovieDetail({ user }) {
       method: "POST", 
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        movie_title: movie.title,
         media_id: id,
         userreview: Userreview,
         accountname: uname
@@ -68,8 +69,6 @@ function MovieDetail({ user }) {
           console.log("tuleeks mitään" + response);
           if (response.ok) {
             const result = await response.json();
-            
-            console.log("Vastaus:", result);
             setResult(result);
           }
         } catch (error) {
@@ -81,10 +80,6 @@ function MovieDetail({ user }) {
     }
   }, [id, movie,Userreview]);
   
-  console.log("what type" + result);
-  
-
-
   const handleuserReview = (e) => {
     setUserreview(e.target.value);
   };
@@ -129,7 +124,7 @@ function MovieDetail({ user }) {
         {result.length > 0 && (
           result.map((review, index) => (
             <label key={index}>
-              <textarea value={review.userreview + review.media_id} rows={4} cols={40} readOnly className="postContent" />
+              <textarea value={review.userreview + review.accountname} rows={4} cols={40} readOnly className="postContent" />
             </label>
           ))
         )}

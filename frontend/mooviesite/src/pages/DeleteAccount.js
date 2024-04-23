@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function DeleteAccount({user}) {
     const token = localStorage.getItem("jwtToken")
@@ -6,6 +7,7 @@ export default function DeleteAccount({user}) {
     console.log("tuleeks tää" + token);
     const {user:username} = user
     console.log("tässä kirjautuneen käyttäjän tunnus" + username);
+    const navigate = useNavigate()
     const poistha = async(e) => {
         e.preventDefault()
 
@@ -25,9 +27,7 @@ try {
       })
       if(response.ok) {
         alert("käyttäjä poistettu")
-        
-      //delreview()
-
+        navigate("/logout")
       }
     }
     
@@ -36,24 +36,7 @@ try {
 }
        
     }
-    /*const delreview = async () => {
-    try {
-      const response =await fetch(`http://localhost:3001/reviews/deletereview/${username}`, {
-        
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" }, //lähetämme pyynnön JSON-muodossa
-        body: JSON.stringify({
-          //muutetaan json muotoon
-          //accountname: username,
-          
-        }),
-        
-      })
-      console.log("asdsad" + response);
-    } catch (error) {
-      
-    }
-    */
+
     return (
       <div id='delete-form'>
           <form onSubmit={poistha}>
