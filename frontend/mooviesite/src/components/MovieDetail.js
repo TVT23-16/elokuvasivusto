@@ -37,6 +37,7 @@ function MovieDetail({ user }) {
   const addReview = async () => {
     try {
       const response = await fetch(`http://localhost:3001/reviews/addreview`, {
+
       method: "POST", 
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -49,10 +50,12 @@ function MovieDetail({ user }) {
       if (response.ok) {
         setResult([...result, { userreview: Userreview, accountname: uname }]); //...result tekee kopion result taulukosta ja lisää sinne suoraan uuden arvostelun
       }
+
     } catch (error) {
       console.log(error);
     }
   };
+
 
   useEffect(() => {
     if (movie) {
@@ -80,6 +83,7 @@ function MovieDetail({ user }) {
   
   console.log("what type" + result);
   
+
 
   const handleuserReview = (e) => {
     setUserreview(e.target.value);
@@ -110,16 +114,6 @@ function MovieDetail({ user }) {
                 <button type='submit'>{language === 'ENG' ? 'Submit' : 'Lähetä'}</button>
               </div>
             </form>
-            <div className="reviews">
-              {result.length > 0 && (
-                result.map((review, index) => (
-                  <label key={index}>
-                    <textarea value={review.userreview + review.media_id} rows={4} cols={40} readOnly className="postContent" />
-                  </label>
-                ))
-              )}
-            </div>
-            <h2>{language === 'ENG' ? 'Other users reviews' : 'Muiden käyttäjien arvostelut'}</h2>
           </div>
           {movie.poster_path && (
             <img
@@ -130,8 +124,19 @@ function MovieDetail({ user }) {
           )}
         </div>
       </div>
+      <h2>{language === 'ENG' ? 'Other users reviews' : 'Muiden käyttäjien arvostelut'}</h2>
+      <div className="reviews">
+        {result.length > 0 && (
+          result.map((review, index) => (
+            <label key={index}>
+              <textarea value={review.userreview + review.media_id} rows={4} cols={40} readOnly className="postContent" />
+            </label>
+          ))
+        )}
+      </div>
     </div>
   );
 }
 
 export default MovieDetail;
+

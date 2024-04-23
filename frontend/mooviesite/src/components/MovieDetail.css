@@ -78,7 +78,6 @@
     padding: 10px 20px; /* Sisäinen marginaali */
     font-weight: 600;
     font-size: 18px;
-    margin-bottom: 25px;
     margin-top: 10px;
     width: 30%;
     margin-left: 35%;
@@ -88,3 +87,33 @@
     transform: scale(1.1);
     background-color: rgba(52, 52, 52, 0.6);
   }
+
+  .reviews {
+    margin-bottom: 10px;
+    color: rgb(136, 125, 125);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 40px;
+  }
+  
+  .reviews textarea {
+    resize: none; /* Estää tekstikentän venyttämisen */
+    max-width: 100%; /* Rajoittaa maksimileveyden */
+    width: 100%; /* Lisää leveyttä täyttämään koko käytettävissä oleva tila */
+    max-height: 200px; /* Rajoittaa maksimikorkeuden */
+    color: rgb(207, 207, 207);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    text-align: center;
+  }
+  
+  .reviews label {
+    margin-right: 20px;
+    width: 270px;
+  }
+
+  .reviews label:hover {
+    transform: scale(1.1);
+  }
+  
+  

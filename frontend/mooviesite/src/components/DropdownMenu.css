@@ -1,9 +1,9 @@
 .dropdown-menu {
-    width: 160px; /* Muuta leveyttä tarpeidesi mukaan */
-    background-color: rgba(52, 52, 52);
+    width: 200px; /* Muuta leveyttä tarpeidesi mukaan */
+    background-color: rgba(52, 52, 52, 0.8);
     color: #fff; /* Aseta tekstin väri valkoiseksi */
     text-shadow: 0 0 1px #fff; /* Lisää vaalea varjo tekstin taustalle */
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: left;
     margin: 10px;
@@ -13,6 +13,10 @@
     border-radius: 5px; /* Pyöristää kaikki reunat 10 pikseliä */
     position: absolute;
     right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
  .dropdown-menu.active{

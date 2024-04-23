@@ -13,6 +13,7 @@ export default function Schedules() {
   const [schedules, setSchedules] = useState("");
   const [eventname, setEventname] = useState("");
   const [results, setResult] = useState([]);
+  const [searchPerformed, setSearchPerformed] = useState(false); // Tilamuuttuja haku suoritettu / ei suoritettu
   const { language } = useLanguage(); // Get the current language from the LanguageContext
 
   async function getXML() {
@@ -89,6 +90,7 @@ export default function Schedules() {
       muuntaja.parseString(schedule.data, (err, result) => {
         const data = result.Schedule.Shows;
         setResult(data);
+        setSearchPerformed(true); // Merkitse, että haku on suoritettu
       });
     } catch (error) {
       console.log(error);
@@ -139,27 +141,31 @@ export default function Schedules() {
         </div>
       </div>
 
-      <div className="asd">
-  {results && results.length > 0 ? (
-    results.map((resultData, index) => (
-      <div key={index} className="leffa">
-        {resultData.Show && resultData.Show.length > 0 ? (
-          resultData.Show.map((show, showIndex) => (
-            <div key={showIndex}>
-              <h2>{format(new Date(show.dttmShowStart[0]), 'dd.MM.yyyy HH:mm')}</h2>
+      {searchPerformed && (
+        <div className="asd">
+          {results && results.length > 0 ? (
+            results.map((resultData, index) => (
+              <div key={index} className="leffa">
+                {resultData.Show && resultData.Show.length > 0 ? (
+                  resultData.Show.map((show, showIndex) => (
+                    <div key={showIndex}>
+                      <h2>{format(new Date(show.dttmShowStart[0]), 'dd.MM.yyyy HH:mm')}</h2>
+                    </div>
+                  ))
+                ) : (
+                  <div>
+                    <h2>{language === 'ENG' ? 'No shows found' : 'Näytöksiä ei löytynyt'}</h2>
+                  </div>
+                )}
+              </div>
+            ))
+          ) : (
+            <div>
+              <h2>{language === 'ENG' ? 'No results found' : 'Tuloksia ei löytynyt'}</h2>
             </div>
-          ))
-        ) : (
-          <div>{language === 'ENG' ? 'No shows found' : 'Näytöksiä ei löytynyt'}</div>
-        )}
-      </div>
-    ))
-  ) : (
-
-    <div>{language === 'ENG' ? 'No results found' : 'Tuloksia ei löytynyt'}</div>
-
-  )}
-</div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
