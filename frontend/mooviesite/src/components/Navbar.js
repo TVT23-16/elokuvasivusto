@@ -46,14 +46,6 @@ const { language, toggleLanguage } = useLanguage();
           </li>
          <li>
           </li>
-          <li>
-            {user === null ? (
-              <Link to="/login">{language === 'ENG' ? 'LOGIN' : 'KIRJAUDU SISÄÄN'}</Link>
-            ) : (
-              <Link to="/logout">{language === 'ENG' ? 'LOGOUT' : 'KIRJAUDU ULOS'}</Link>
-            )}
-
-          </li>
 <DropdownMenu user={user} />
         </ul>
       </div>
