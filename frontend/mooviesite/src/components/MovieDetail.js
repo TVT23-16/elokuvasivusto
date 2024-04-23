@@ -129,7 +129,7 @@ function MovieDetail({ user }) {
         {result.length > 0 && (
           result.map((review, index) => (
             <label key={index}>
-              <textarea value={review.userreview + review.media_id} rows={4} cols={40} readOnly className="postContent" />
+              <textarea value={"Arvostelija:"+review.accountname +"\n\n" +review.userreview} rows={4} cols={40} readOnly className="postContent" />
             </label>
           ))
         )}
