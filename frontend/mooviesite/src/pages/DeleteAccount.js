@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function DeleteAccount({user}) {
     const token = localStorage.getItem("jwtToken")
@@ -6,6 +7,7 @@ export default function DeleteAccount({user}) {
     console.log("tuleeks tää" + token);
     const {user:username} = user
     console.log("tässä kirjautuneen käyttäjän tunnus" + username);
+    const navigate = useNavigate()
     const poistha = async(e) => {
         e.preventDefault()
 
@@ -25,9 +27,7 @@ try {
       })
       if(response.ok) {
         alert("käyttäjä poistettu")
-        
-      //delreview()
-
+        navigate("/logout")
       }
     }
     
@@ -36,7 +36,7 @@ try {
 }
        
     }
-    
+
     return (
       <div id='delete-form'>
           <form onSubmit={poistha}>
