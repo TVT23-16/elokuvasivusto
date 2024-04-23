@@ -1,27 +1,30 @@
-import { Link } from 'react-router-dom'
-import './Navbar.css'
-import React from 'react'
+import { Link } from 'react-router-dom';
+import './Navbar.css';
+import React, { useState } from 'react';
 import DropdownMenu from './DropdownMenu';
 import { useLanguage } from '../LanguageContext';
 
-
 const Navbar = ({ user }) => {
-const { language, toggleLanguage } = useLanguage();
-  /* alasvetovalikoon muutos tekstistä ovi-kuvakkeeksi, koodi alkaa *
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
+  const [isHover, setIsHover] = useState(false);
 
-  const handleProfileClick = () => {
-    setIsDropdownVisible(!isDropdownVisible);
+  const handleMouseEnter = () => {
+    setIsHover(true);
   };
-  * alasvetovalikoon muutos tekstistä ovi-kuvakkeeksi, koodi päättyy */
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
+  const handleLanguageToggle = () => {
+    toggleLanguage();
+  };
 
   return (
     <nav>
       <div>
         <ul>
           <li>
-
-
             <Link to="/">{language === 'ENG' ? 'HOME' : 'ETUSIVU'}</Link>
           </li>
           <li>
@@ -32,27 +35,27 @@ const { language, toggleLanguage } = useLanguage();
           </li>
           <li>
             <Link to="/schedules">{language === 'ENG' ? 'FINNKINO SHOWTIMES' : 'FINNKINO NÄYTÖSAJAT'}</Link>
-
           </li>
           <li>
-            <li>
-              <li>
-              <button className="language-button" onClick={toggleLanguage}>
-              {language}
+            <button
+              className="language-button"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onClick={handleLanguageToggle}
+            >
+              <img
+                src={`${process.env.PUBLIC_URL}/${isHover ? (language === 'ENG' ? 'finnish.png' : 'english.png') : (language === 'ENG' ? 'english.png' : 'finnish.png')}`}
+                alt="Language flag"
+              />
             </button>
-              </li>
-            </li>
-            
           </li>
-         <li>
+          <li>
+            <DropdownMenu user={user} />
           </li>
-<DropdownMenu user={user} />
         </ul>
       </div>
     </nav>
   );
 };
 
-
 export default Navbar;
-
