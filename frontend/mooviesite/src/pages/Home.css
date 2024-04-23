@@ -107,3 +107,13 @@ article div:hover img {
     transition: transform 0.3s; /* Lisää siirtymäefekti */
 }
 
+@media only screen and (max-width: 800px) {
+    body {
+      font-size: 14px; /* Esimerkiksi pienennä tekstin kokoa */
+    }
+  
+    img {
+      max-width: 100%; /* Kuvien maksimileveys täyttämään näytön leveyden */
+      height: auto; /* Säilytä kuvan alkuperäinen kuvasuhde */
+    }
+  }
