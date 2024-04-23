@@ -18,4 +18,9 @@ async function getReview(mediaid) {
     
 }
 
-module.exports = {addReview, getReview}
+async function delReview(accountname) {
+    await pgPool.query(sql.DELETE_REVIEW, [accountname])
+}
+
+    
+module.exports = {addReview, getReview,delReview }

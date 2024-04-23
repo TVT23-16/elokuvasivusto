@@ -37,35 +37,53 @@ function MovieDetail({ user }) {
   const addReview = async () => {
     try {
       const response = await fetch(`http://localhost:3001/reviews/addreview`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          media_id: id,
-          userreview: Userreview,
-          accountname: uname
-        }),
-      });
-      // Päivitetään arvostelut heti, kun uusi arvostelu on lisätty
-      getReview();
+
+      method: "POST", 
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        media_id: id,
+        userreview: Userreview,
+        accountname: uname
+      }),
+      
+      })
+      if (response.ok) {
+        setResult([...result, { userreview: Userreview, accountname: uname }]); //...result tekee kopion result taulukosta ja lisää sinne suoraan uuden arvostelun
+      }
+
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getReview = async () => {
-    try {
-      const response = await fetch(`http://localhost:3001/reviews/getreview/${id}`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      });
-      if (response.ok) {
-        const result = await response.json();
-        setResult(result);
-      }
-    } catch (error) {
-      console.log(error);
+
+  useEffect(() => {
+    if (movie) {
+      const getReview = async () => {
+        try {
+          const response = await fetch(`http://localhost:3001/reviews/getreview/${id}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          });
+          console.log("tuleeks mitään" + response);
+          if (response.ok) {
+            const result = await response.json();
+            
+            console.log("Vastaus:", result);
+            setResult(result);
+          }
+        } catch (error) {
+          alert(error);
+        }
+      };
+  
+      getReview();
     }
-  };
+  }, [id, movie,Userreview]);
+  
+  console.log("what type" + result);
+  
+
 
   const handleuserReview = (e) => {
     setUserreview(e.target.value);

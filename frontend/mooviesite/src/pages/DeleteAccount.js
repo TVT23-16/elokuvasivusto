@@ -13,19 +13,21 @@ try {
     
         
     if(token) {
-    
-        const response = await fetch(`http://localhost:3001/user/delete/${username}`, {
+      console.log(username);
+      await fetch(`http://localhost:3001/reviews/deletereview/${username}`, {
         
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" }, //lähetämme pyynnön JSON-muodossa
+    })
+        const response = await fetch(`http://localhost:3001/user/delete/${username}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }, //lähetämme pyynnön JSON-muodossa
-        body: JSON.stringify({
-          //muutetaan json muotoon
-          //accountname: username,
-          
-        }),
       })
       if(response.ok) {
         alert("käyttäjä poistettu")
+        
+      //delreview()
+
       }
     }
     
@@ -34,13 +36,32 @@ try {
 }
        
     }
-
-  return (
-    <div id='delete-form'>
-        <form onSubmit={poistha}>
-        <button type='submit'>Delete your account pls dont press</button>
-        </form>
-    </div>
+    /*const delreview = async () => {
+    try {
+      const response =await fetch(`http://localhost:3001/reviews/deletereview/${username}`, {
+        
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" }, //lähetämme pyynnön JSON-muodossa
+        body: JSON.stringify({
+          //muutetaan json muotoon
+          //accountname: username,
+          
+        }),
+        
+      })
+      console.log("asdsad" + response);
+    } catch (error) {
+      
+    }
+    */
+    return (
+      <div id='delete-form'>
+          <form onSubmit={poistha}>
+          <button type='submit'>Delete your account</button>
+          </form>
+      </div>
+  
+  
   )
 }
 

@@ -1,4 +1,4 @@
-const {addReview,getReview } = require("../database/reviews_db");
+const {addReview,getReview,delReview} = require("../database/reviews_db");
 const router = require("express").Router();
 router.post("/addreview", async (req, res) => {
     console.log(req.body);
@@ -23,5 +23,18 @@ router.get("/getreview/:mediaid", async (req, res) => {
         res.status(500).json({ error: "Error retrieving reviews" })
     }
 });
+
+router.delete("/deletereview/:username", async (req,res) => {
+    const accountname = req.params.username
+    console.log("tuleeko läpi" + accountname);
+    try {
+        await delReview(accountname)
+        res.status(200).json({message: "Reviews deleted"})
+        console.log(res);
+    } catch (error) {
+        res.status(500).json({error: "Error deleting reviews"});
+
+    }
+})
 
 module.exports = router;
