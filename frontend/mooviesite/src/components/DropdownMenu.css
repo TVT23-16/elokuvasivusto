@@ -1,14 +1,13 @@
 .dropdown-menu {
     width: 160px; /* Muuta leveyttä tarpeidesi mukaan */
-    background-color: #333; /* Aseta taustaväri tumman harmaaksi */
+    background-color: rgba(52, 52, 52);
     color: #fff; /* Aseta tekstin väri valkoiseksi */
     text-shadow: 0 0 1px #fff; /* Lisää vaalea varjo tekstin taustalle */
     font-size: 16px;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: left;
     margin: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12);
     border-radius: 5px; /* Pyöristää kaikki reunat 10 pikseliä */

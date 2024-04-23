@@ -71,8 +71,8 @@ display: inline-block;
     font-size: 18px;
     font-weight: 600;
     color: #b80000;
-    margin-right: 10px;
-    margin-left:500px;
+    margin-right: 0px;
+    margin-left: 0px;
   }
   
    /* kielen vaihtopainikkeen väri kun hiiri on päällä */
