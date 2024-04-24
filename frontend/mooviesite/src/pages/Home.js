@@ -46,17 +46,19 @@ export default function Home() {
           <section id="main">
             {/* Näytetään kolme parhaiten arvosteltua elokuvaa */}
             {topMovies.map((elokuva, index) => (
-              <article key={index}>
-                <div className="movie-container">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${elokuva.poster_path}`}
-                    alt={elokuva.title}
-                    className="center"
-                  />
-                  <h3 className="movie-title">{elokuva.title}</h3>
-                  <p className="movie-rating">{language === 'ENG' ? 'Rating' : 'Arvosana'}: {elokuva.vote_average}</p>
-                </div>
-              </article>
+              <Link key={index} to={`/movie/${elokuva.id}`}>
+                <article>
+                  <div className="movie-container">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${elokuva.poster_path}`}
+                      alt={elokuva.title}
+                      className="center"
+                    />
+                    <h3 className="movie-title">{elokuva.title}</h3>
+                    <p className="movie-rating">{language === 'ENG' ? 'Rating' : 'Arvosana'}: {elokuva.vote_average}</p>
+                  </div>
+                </article>
+              </Link>
             ))}
           </section>
         </div>
