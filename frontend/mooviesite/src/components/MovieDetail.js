@@ -4,6 +4,7 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext'; // Ota käyttöön useLanguage-koukku
 import { FaStar } from 'react-icons/fa';
 
+
 function MovieDetail({ user }) {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
@@ -21,8 +22,10 @@ function MovieDetail({ user }) {
       setUname(username);
     }
   }, [user]);
-
+  console.log(process.env.API_KEY);
   useEffect(() => {
+    
+    
     const fetchMovieDetails = async () => {
       try {
         const apiKey = 'cfaf3af7360c5b3c0549dd08762cb811';
