@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Myprofile.css';
+import { useLanguage } from '../LanguageContext';
 
 export default function Myprofile({ user }) {
   const [uname, setUname] = useState("");
-  const [Result, setResult] = useState([]);
+  const [result, setResult] = useState([]);
+  const { language } = useLanguage();
 
   useEffect(() => {
     if (user) {
@@ -35,11 +37,11 @@ export default function Myprofile({ user }) {
 
   return (
     <div>
-      <h1>MY PROFILE</h1>
+      <h1>{language === 'ENG' ? 'MY PROFILE' : 'OMA PROFIIILI'}</h1>
       <br />
       <div className="profile-box">
         <div className="profile-list">
-          <h2>My favourites</h2>
+          <h2>{language === 'ENG' ? 'My favourites' : 'Suosikkini'}</h2>
           <br />
           <ul>
             <li>Movie 1</li>
@@ -51,11 +53,11 @@ export default function Myprofile({ user }) {
       </div>
       <div className="profile-box">
         <div className="profile-list">
-          <h2>My reviews</h2>
+          <h2>{language === 'ENG' ? 'My reviews' : 'Arvosteluni'}</h2>
           <br />
           <ul className="reviews">
-            {Result.length > 0 && (
-              Result.map((review, index) => (
+            {result.length > 0 && (
+              result.map((review, index) => (
                 <label key={index}>
                   <textarea value={review.userreview + "\n" + review.movietitle} rows={4} cols={40} readOnly className="postContent" />
                 </label>
@@ -65,9 +67,8 @@ export default function Myprofile({ user }) {
           <br />
         </div>
         <br />
-        {/* Lisätään Link-komponentti, joka ohjaa deleteaccount.js -sivulle */}
         <Link to="/myprofile/delete">
-          <button className="delete-button">Delete account</button>
+          <button className="delete-button">{language === 'ENG' ? 'Delete account' : 'Poista käyttäjä'}</button>
         </Link>
       </div>
     </div>
