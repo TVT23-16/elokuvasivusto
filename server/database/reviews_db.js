@@ -4,13 +4,13 @@ const sql = {
     GET_ALL_REVIEWS : "SELECT * from table_reviews",
     GET_REVIEW: "SELECT * from table_reviews WHERE media_id=$1",
     DELETE_REVIEW: "DELETE FROM table_reviews WHERE accountname = $1",
-    ADD_REVIEW: "INSERT INTO table_reviews ( media_id, userreview, accountname, movietitle) VALUES ($1, $2, $3,$4)",
+    ADD_REVIEW: "INSERT INTO table_reviews ( media_id, userreview, accountname, movietitle, stars) VALUES ($1, $2, $3,$4 ,$5)",
     GET_MY_REVIEWS: "SELECT * from table_reviews WHERE accountname=$1"
 }
 
-async function addReview( mediaid, userreview,accountname,movietitle){
+async function addReview( mediaid, userreview,accountname,movietitle, stars){
     console.log(mediaid);
-    await pgPool.query(sql.ADD_REVIEW, [ mediaid, userreview, accountname, movietitle])
+    await pgPool.query(sql.ADD_REVIEW, [ mediaid, userreview, accountname, movietitle, stars])
 }
 
 async function getReview(mediaid) {
