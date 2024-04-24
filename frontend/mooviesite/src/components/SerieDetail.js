@@ -69,9 +69,11 @@ function SeriesDetail({ user }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          movie_title: series.name,
           media_id: id,
           userreview: UserReview,
-          accountname: uname
+          accountname: uname,
+          stars: "5"
         }),
       })
       if (response.ok) {
