@@ -8,16 +8,20 @@ router.get("/all", async (req,res) => {
     const users = await getUsers();
     console.log(users);
     res.json(users)
-    res.status(200).json({message:"kaikki käyttäjät"})
+    res.status(200).json({message:"all users"})
 })
 
 
 
 router.delete("/delete/:username", authjwt, async (req,res) => {
-    console.log(req.query);
+    try {
     const usernam = req.params.username
     await delUser(usernam)
-    res.status(200).json({message:"käyttäjä poistettu."})
+    res.status(200).json({message:"user deleted."})
+    } catch (error) {
+        res.status(404).json({error: " error deleting user"})
+    }
+    
     
 })
 
