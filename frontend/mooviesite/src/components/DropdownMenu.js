@@ -45,7 +45,6 @@ const DropdownMenu = ({ user }) => {
             ) : (
               <>
                 <Link to="/myprofile" onClick={closeDropdown}>{language === 'ENG' ? 'My profile' : 'Profiili'}</Link>
-                <Link to="/myprofile/delete" onClick={closeDropdown}>{language === 'ENG' ? 'Delete account' : 'Poista käyttäjä'}</Link>
                 <Link to="/Logout" onClick={closeDropdown}>{language === 'ENG' ? 'Logout' : 'Kirjaudu ulos'}</Link>
               </>
             )}
