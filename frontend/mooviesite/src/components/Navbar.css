@@ -69,7 +69,6 @@ display: inline-block;
   
    /* kielen vaihtopainikkeen väri kun hiiri on päällä */
   .language-button:hover {
-    color: rgb(136, 125, 125);
     transform: scale(1.1); /* Suurennuskerroin 1.1 */
   }
 

@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import './MovieDetail.css';
 import { useParams } from 'react-router-dom';
+import { useLanguage } from '../LanguageContext';
 
-function SeriesDetail({user}) {
+function SeriesDetail({ user }) {
   const { id } = useParams();
   const [series, setSeries] = useState(null);
-  const [uname, setUname] = useState("")
-  const [UserReview, setUserReview] =useState("")
-  const [Result, setResult] =useState ([])
-  
+  const [uname, setUname] = useState("");
+  const [UserReview, setUserReview] = useState("");
+  const [Result, setResult] = useState([]);
+  const { language } = useLanguage(); // Hae nykyinen kieli
+
   useEffect(() => {
     if (user) {
       const { user: username } = user; // Destructure username from user object
@@ -15,7 +18,7 @@ function SeriesDetail({user}) {
       console.log(username);
     }
   }, [user]);
-  
+
   useEffect(() => {
     const fetchSeriesDetails = async () => {
       try {
@@ -28,7 +31,6 @@ function SeriesDetail({user}) {
         console.error('Error fetching series details:', error);
       }
     };
-    
 
     fetchSeriesDetails();
   }, [id]);
@@ -44,7 +46,7 @@ function SeriesDetail({user}) {
           console.log("tuleeks mitään" + response);
           if (response.ok) {
             const result = await response.json();
-            
+
             console.log("Vastaus:", result);
             setResult(result);
           }
@@ -53,29 +55,24 @@ function SeriesDetail({user}) {
         }
       };
 
-    getReview()
-  
-    
+      getReview();
     }
-  }, [id, series,UserReview]);
+  }, [id, series, UserReview]);
 
   if (!series) {
     return <div>Loading...</div>;
   }
 
-
   const addReview = async () => {
     try {
       const response = await fetch(`http://localhost:3001/reviews/addreview`, {
-
-      method: "POST", 
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        media_id: id,
-        userreview: UserReview,
-        accountname: uname
-      }),
-      
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          media_id: id,
+          userreview: UserReview,
+          accountname: uname
+        }),
       })
       if (response.ok) {
         setResult([...Result, { userreview: UserReview, accountname: uname }]); //...result tekee kopion result taulukosta ja lisää sinne suoraan uuden arvostelun
@@ -85,50 +82,54 @@ function SeriesDetail({user}) {
       console.log(error);
     }
   };
-   
-
-  
-
-
-
-
 
   const handleuserReview = (e) => {
     const selected = e.target.value
     setUserReview(selected);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addReview();
   };
 
-
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-      <div>
-      <textarea name="postContent" rows={4} cols={40} value={UserReview} onChange={handleuserReview} className="postContent" />
-      <button type='submit'></button>
-      </div>
-      </form>
-      <h1>{series.name}</h1>
-      <p>Overview: {series.overview}</p>
-      <p>First Air Date: {series.first_air_date}</p>
-      <p>Rating: {series.vote_average}</p>
-      {series.poster_path && (
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${series.poster_path}`}
-          alt={series.name}
-        />
-      )}
-      <div className="reviews">
-        {Result.length > 0 && (
-          Result.map((review, index) => (
-            <label key={index}>
-              <textarea value={"Arvostelija:"+review.accountname +"\n\n" +review.userreview} rows={4} cols={40} readOnly className="postContent" />
-            </label>
-          ))
-        )}
+    <div className="movie-details-container">
+      <div className="movie-details-content">
+        <div className="text-details">
+          <div className="text-container">
+            <h1>{series.name}</h1>
+            <p className='p-overview'>Overview: {series.overview}</p>
+            <p className='p-overview'>First Air Date: {series.first_air_date}</p>
+            <p className='p-overview'>Rating: {series.vote_average}</p>
+            <h2>{language === 'ENG' ? 'Leave rating' : 'Jätä arvostelu'}</h2>
+            <form onSubmit={handleSubmit}>
+              <div className='writeRating'>
+                <textarea name="postContent" rows={4} cols={40} value={UserReview} onChange={handleuserReview} className="postContent" />
+                <button type='submit'>{language === 'ENG' ? 'Submit' : 'Lähetä'}</button>
+              </div>
+            </form>
+            </div>
+            {series.poster_path && (
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${series.poster_path}`}
+                alt={series.name}
+                className="moviedetail-pic"
+              />
+            )}
+            </div>
+            <h2>{language === 'ENG' ? 'Other users reviews' : 'Muiden käyttäjien arvostelut'}</h2>
+            <div className="reviews">
+              {Result.length > 0 && (
+                Result.map((review, index) => (
+                  <label key={index}>
+
+                    <textarea value={"Reviewer:" + review.accountname + "\n\n" + review.userreview} rows={4} cols={40} readOnly className="postContent" />
+
+                  </label>
+                ))
+              )}
+        </div>
       </div>
     </div>
   );
