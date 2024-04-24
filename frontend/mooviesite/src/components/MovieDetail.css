@@ -1,119 +1,119 @@
 .moviedetail-pic {
-    max-width: 100%;
-    height: 500px;
-    border-radius: 30px;
-    margin-bottom: 15px;
-    margin-right: 80px;
+  max-width: 100%;
+  height: 500px;
+  border-radius: 30px;
+  margin-bottom: 15px;
+  margin-right: 80px;
 }
 
-  .movie-details-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-left: 80px;
-  }
+.movie-details-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 80px;
+}
 
-  p {
-    margin-left: 50px;
-    margin-right: 50px;
-  }
+p {
+  margin-left: 50px;
+  margin-right: 50px;
+}
 
-  .p-overview {
-    color: rgb(207, 207, 207);
-    margin-left: 200px;
-    margin-right: 200px;
-  }
+.p-overview {
+  color: rgb(207, 207, 207);
+  margin-left: 200px;
+  margin-right: 200px;
+}
 
-  h2 {
-    font-size: 22px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    color: rgb(207, 207, 207);
-    text-shadow: 2px 2px 2px rgb(0, 0, 0);
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+h2 {
+  font-size: 22px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: rgb(207, 207, 207);
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  .text-details {
-    display: flex;
-  }
-  
-  .writeRating {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .writeRating textarea {
-    margin-bottom: 10px;
-    resize: none; /* Estää tekstikentän venyttämisen */
-    text-align: center;
-    color: rgb(136, 125, 125);
-    text-shadow: 2px 2px 2px rgb(0, 0, 0);
-    font-size: 18px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+.text-details {
+  display: flex;
+}
 
-  .writeRating textarea:hover{
-    transform: scale(1.1);
-    background-color: rgba(52, 52, 52, 0.6);
-  }
+.writeRating {
+  display: flex;
+  flex-direction: column;
+}
 
-  .postContent {
-    background-color: rgba(52, 52, 52, 0.3);
-    border: 1px solid #000000;
-    border-radius: 8px;
-    padding: 10px;
-    margin-top: 10px;
-    margin-left: 10%;
-    margin-right: 10%;
-  }
+.writeRating textarea {
+  margin-bottom: 10px;
+  resize: none; /* Estää tekstikentän venyttämisen */
+  text-align: center;
+  color: rgb(136, 125, 125);
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  .writeRating button {
-    background-color: rgba(52, 52, 52, 0.3);
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(207, 207, 207);
-    text-shadow: 1px 1px 1px rgb(0, 0, 0);
-    border-radius: 4px; /* Pyöristetyt reunat */
-    padding: 10px 20px; /* Sisäinen marginaali */
-    font-weight: 600;
-    font-size: 18px;
-    margin-top: 10px;
-    width: 30%;
-    margin-left: 35%;
-  }
-  
-  .writeRating button:hover {
-    transform: scale(1.1);
-    background-color: rgba(52, 52, 52, 0.6);
-  }
+.writeRating textarea:hover {
+  transform: scale(1.1);
+  background-color: rgba(52, 52, 52, 0.6);
+}
 
-  .reviews {
-    margin-bottom: 10px;
-    color: rgb(136, 125, 125);
-    text-shadow: 2px 2px 2px rgb(0, 0, 0);
-    font-size: 18px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 40px;
-  }
-  
-  .reviews textarea {
-    resize: none; /* Estää tekstikentän venyttämisen */
-    max-width: 100%; /* Rajoittaa maksimileveyden */
-    width: 100%; /* Lisää leveyttä täyttämään koko käytettävissä oleva tila */
-    max-height: 200px; /* Rajoittaa maksimikorkeuden */
-    color: rgb(207, 207, 207);
-    text-shadow: 1px 1px 1px rgb(0, 0, 0);
-    text-align: center;
-  }
-  
-  .reviews label {
-    margin-right: 20px;
-    width: 260px;
-  }
+.postContent {
+  background-color: rgba(52, 52, 52, 0.3);
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
 
-  .reviews label:hover {
-    transform: scale(1.1);
-  }
-  
-  
+.writeRating button {
+  margin-top: 10px;
+  width: 30%;
+  margin-left: 35%;
+}
+
+.writeRating button:hover {
+  transform: scale(1.1);
+  background-color: rgba(52, 52, 52, 0.6);
+}
+
+.reviews {
+  margin-bottom: 10px;
+  color: rgb(136, 125, 125);
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 40px;
+}
+
+.reviews textarea {
+  resize: none;
+  /* Estää tekstikentän venyttämisen */
+  max-width: 100%;
+  /* Rajoittaa maksimileveyden */
+  width: 100%;
+  max-height: 200px;
+  color: rgb(207, 207, 207);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  text-align: center;
+}
+
+.reviews label {
+  margin-right: 20px;
+  width: 260px;
+}
+
+.reviews label:hover {
+  transform: scale(1.1);
+}
+
+input[type=radio] {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+}

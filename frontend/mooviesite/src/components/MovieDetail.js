@@ -2,15 +2,19 @@ import React, { useState, useEffect } from 'react';
 import './MovieDetail.css';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext'; // Ota käyttöön useLanguage-koukku
+import { FaStar } from 'react-icons/fa';
 
 function MovieDetail({ user }) {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [Userreview, setUserreview] = useState("");
-  const [uname, setUname] = useState("")
+  const [uname, setUname] = useState("");
   const [result, setResult] = useState([]);
   const { language } = useLanguage(); // Hae nykyinen kieli
-  const navigate = useNavigate()
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (user) {
       const { user: username } = user; //puretaan user propsista pelkkä käyttäjätunnus
@@ -37,26 +41,22 @@ function MovieDetail({ user }) {
   const addReview = async () => {
     try {
       const response = await fetch(`http://localhost:3001/reviews/addreview`, {
-
-      method: "POST", 
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        movie_title: movie.title,
-        media_id: id,
-        userreview: Userreview,
-        accountname: uname
-      }),
-      
-      })
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          movie_title: movie.title,
+          media_id: id,
+          userreview: Userreview,
+          accountname: uname
+        }),
+      });
       if (response.ok) {
-        setResult([...result, { userreview: Userreview, accountname: uname }]); //...result tekee kopion result taulukosta ja lisää sinne suoraan uuden arvostelun
+        setResult([...result, { userreview: Userreview, accountname: uname }]);
       }
-
     } catch (error) {
       console.log(error);
     }
   };
-
 
   useEffect(() => {
     if (movie) {
@@ -66,7 +66,6 @@ function MovieDetail({ user }) {
             method: "GET",
             headers: { "Content-Type": "application/json" },
           });
-          console.log("tuleeks mitään" + response);
           if (response.ok) {
             const result = await response.json();
             setResult(result);
@@ -75,22 +74,21 @@ function MovieDetail({ user }) {
           alert(error);
         }
       };
-  
       getReview();
     }
-  }, [id, movie,Userreview]);
-  
+  }, [id, movie, Userreview]);
+
   const handleuserReview = (e) => {
     setUserreview(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(user) {
-    addReview();
-  } else {
-    navigate("/login")
-  }
+    if (user) {
+      addReview();
+    } else {
+      navigate("/login");
+    }
   };
 
   if (!movie) {
@@ -107,8 +105,25 @@ function MovieDetail({ user }) {
             <p className='p-overview'>{language === 'ENG' ? 'Release Date' : 'Julkaisupäivä'}: {movie.release_date}</p>
             <p className='p-overview'>{language === 'ENG' ? 'Rating' : 'Arvostelu'}: {movie.vote_average}</p>
             <h2>{language === 'ENG' ? 'Leave rating' : 'Jätä arvostelu'}</h2>
+
             <form onSubmit={handleSubmit}>
               <div className='writeRating'>
+                {[...Array(5)].map((star, index) => {
+                  const currentRating = index + 1;
+                  return (
+                    <div key={index} className='star-container'>
+                      <FaStar
+                        className='star'
+                        size={50}
+                        color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                        onMouseEnter={() => setHover(currentRating)}
+                        onMouseLeave={() => setHover(null)}
+                        onClick={() => setRating(currentRating)}
+                      />
+                    </div>
+                  );
+                })}
+                <p>Your star rating is {rating}</p>
                 <textarea name="postContent" rows={4} cols={40} value={user ? Userreview : "Kirjaudu sisään kirjoittaaksesi arvostelun"} onChange={handleuserReview} className="postContent" />
                 <button type='submit'>{language === 'ENG' ? 'Submit' : 'Lähetä'}</button>
               </div>
@@ -128,9 +143,7 @@ function MovieDetail({ user }) {
         {result.length > 0 && (
           result.map((review, index) => (
             <label key={index}>
-
-              <textarea value={"Arvostelija:"+review.accountname +"\n\n" +review.userreview} rows={4} cols={40} readOnly className="postContent" />
-
+              <textarea value={"Arvostelija:" + review.accountname + "\n\n" + review.userreview} rows={4} cols={40} readOnly className="postContent" />
             </label>
           ))
         )}
@@ -140,4 +153,3 @@ function MovieDetail({ user }) {
 }
 
 export default MovieDetail;
-
