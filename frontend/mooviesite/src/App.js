@@ -8,7 +8,7 @@ import Myprofile from './pages/Myprofile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import NotFound from './pages/Notfound';
 import { useState, useEffect } from 'react'; // Tuodaan useEffect
 import { LanguageProvider } from './LanguageContext'; // Tuodaan LanguageProvider
@@ -51,7 +51,7 @@ function App() {
             <Route path="/movies" element={<Movies />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/series" element={<Series />} />
-            <Route path="/myprofile" element={<Myprofile user={user} />} />
+            <Route path="/myprofile" element={user ? <Myprofile user={user} /> : <Navigate to="/login" />}/>
             <Route path="/home" exact element={<Home />} />
             <Route path="register"  element={<Register setUser={setUser}/>} />
             <Route path="myprofile/delete"  element={<DeleteAccount user={user}/>} />

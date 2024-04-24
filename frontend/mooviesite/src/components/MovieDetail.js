@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './MovieDetail.css';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext'; // Ota käyttöön useLanguage-koukku
 
 function MovieDetail({ user }) {
@@ -10,7 +10,7 @@ function MovieDetail({ user }) {
   const [uname, setUname] = useState("")
   const [result, setResult] = useState([]);
   const { language } = useLanguage(); // Hae nykyinen kieli
-
+  const navigate = useNavigate()
   useEffect(() => {
     if (user) {
       const { user: username } = user; //puretaan user propsista pelkkä käyttäjätunnus
@@ -86,7 +86,11 @@ function MovieDetail({ user }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(user) {
     addReview();
+  } else {
+    navigate("/login")
+  }
   };
 
   if (!movie) {
@@ -105,7 +109,7 @@ function MovieDetail({ user }) {
             <h2>{language === 'ENG' ? 'Leave rating' : 'Jätä arvostelu'}</h2>
             <form onSubmit={handleSubmit}>
               <div className='writeRating'>
-                <textarea name="postContent" rows={4} cols={40} value={Userreview} onChange={handleuserReview} className="postContent" />
+                <textarea name="postContent" rows={4} cols={40} value={user ? Userreview : "Kirjaudu sisään kirjoittaaksesi arvostelun"} onChange={handleuserReview} className="postContent" />
                 <button type='submit'>{language === 'ENG' ? 'Submit' : 'Lähetä'}</button>
               </div>
             </form>
