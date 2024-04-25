@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import './MovieDetail.css';
-import { useParams, useNavigate } from 'react-router-dom';
-import { useLanguage } from '../LanguageContext';
-import { FaStar } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import "./MovieDetail.css";
+import { useParams, useNavigate } from "react-router-dom";
+import { useLanguage } from "../LanguageContext";
+import { FaStar } from "react-icons/fa";
 
 function SeriesDetail({ user }) {
   const { id } = useParams();
@@ -26,13 +26,13 @@ function SeriesDetail({ user }) {
   useEffect(() => {
     const fetchSeriesDetails = async () => {
       try {
-        const apiKey = 'cfaf3af7360c5b3c0549dd08762cb811';
+        const apiKey = "cfaf3af7360c5b3c0549dd08762cb811";
         const url = `https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}`;
         const response = await fetch(url);
         const data = await response.json();
         setSeries(data);
       } catch (error) {
-        console.error('Error fetching series details:', error);
+        console.error("Error fetching series details:", error);
       }
     };
 
@@ -43,10 +43,13 @@ function SeriesDetail({ user }) {
     if (series) {
       const getReview = async () => {
         try {
-          const response = await fetch(`http://localhost:3001/reviews/getreview/${id}`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-          });
+          const response = await fetch(
+            `http://localhost:3001/reviews/getreview/${id}`,
+            {
+              method: "GET",
+              headers: { "Content-Type": "application/json" },
+            }
+          );
           console.log("tuleeks mitään" + response);
           if (response.ok) {
             const result = await response.json();
@@ -77,35 +80,37 @@ function SeriesDetail({ user }) {
           media_id: id,
           userreview: UserReview,
           accountname: uname,
-          stars: rating
+          stars: rating,
         }),
-      })
+      });
       if (response.ok) {
         setResult([...Result, { userreview: UserReview, accountname: uname }]);
         setRating(null);
       }
-
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleuserReview = (e) => {
-    const selected = e.target.value
+    const selected = e.target.value;
     setUserReview(selected);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (rating === null) {
-      alert(language === 'ENG' ? 'Please select stars before submitting your review!' : 'Valitse tähdet ennen kuin lähetät arvostelun!');
+      alert(
+        language === "ENG"
+          ? "Please select stars before submitting your review!"
+          : "Valitse tähdet ennen kuin lähetät arvostelun!"
+      );
 
       return;
     }
     addReview();
     setUserReview("");
   };
-  
 
   return (
     <div className="movie-details-container">
@@ -113,21 +118,30 @@ function SeriesDetail({ user }) {
         <div className="text-details">
           <div className="text-container">
             <h1>{series.name}</h1>
-            <p className='p-overview'>Overview: {series.overview}</p>
-            <p className='p-overview'>First Air Date: {series.first_air_date}</p>
-            <p className='p-overview'>Rating: {series.vote_average}</p>
-            <h2>{language === 'ENG' ? 'Leave rating' : 'Jätä arvostelu'}</h2>
+            <p className="p-overview">Overview: {series.overview}</p>
+            <p className="p-overview">
+              First Air Date: {series.first_air_date}
+            </p>
+            <p className="p-overview">Rating: {series.vote_average}</p>
+            <h2>{language === "ENG" ? "Leave rating" : "Jätä arvostelu"}</h2>
 
             <form onSubmit={handleSubmit}>
-              <div className='writeRating'>
+              <div className="tahdet">
+             
                 {[...Array(5)].map((star, index) => {
+                   
                   const currentRating = index + 1;
                   return (
-                    <div key={index} className='star-container'>
+                    <div key={index} className="star-container">
+                      
                       <FaStar
-                        className='star'
+                        className="star"
                         size={50}
-                        color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                        color={
+                          currentRating <= (hover || rating)
+                            ? "#ffc107"
+                            : "#e4e5e9"
+                        }
                         onMouseEnter={() => setHover(currentRating)}
                         onMouseLeave={() => setHover(null)}
                         onClick={() => setRating(currentRating)}
@@ -135,23 +149,44 @@ function SeriesDetail({ user }) {
                     </div>
                   );
                 })}
-                <p>
-                  {language === 'ENG'
-                    ? rating
-                      ? rating === 1
-                        ? 'Your rating: 1 star'
-                        : `Your rating: ${rating} stars`
-                      : 'Add stars to your rating'
-                    : rating
-                      ? rating === 1
-                        ? 'Arviosi: 1 tähti'
-                        : `Arviosi: ${rating} tähteä`
-                      : 'Lisää tähdet arvosteluusi'}
-                </p>
-
-                <textarea name="postContent" rows={4} cols={40} value={user ? UserReview : "Kirjaudu sisään kirjoittaaksesi arvostelun"} onChange={handleuserReview} className="postContent" />
-                <button type='submit'>{language === 'ENG' ? 'Submit' : 'Lähetä'}</button>
               </div>
+              <div className="review-form">
+      <p>
+        {language === "ENG"
+          ? rating
+            ? rating === 1
+              ? "Your rating: 1 star"
+              : `Your rating: ${rating} stars`
+            : "Add stars to your rating"
+          : rating
+          ? rating === 1
+            ? "Arviosi: 1 tähti"
+            : `Arviosi: ${rating} tähteä`
+          : "Lisää tähdet arvosteluusi"}
+      </p>
+      
+      <textarea
+        name="postContent"
+        rows={4}
+        cols={40}
+        value={
+          user
+            ? UserReview
+            : "Kirjaudu sisään kirjoittaaksesi arvostelun"
+        }
+        onChange={handleuserReview}
+        className="postContent"
+      />
+      
+      <button type="submit">
+        {language === "ENG" ? "Submit" : "Lähetä"}
+      </button>
+      <h2>
+        {language === "ENG"
+          ? "Other users reviews"
+          : "Muiden käyttäjien arvostelut"}
+      </h2>
+    </div>
             </form>
           </div>
           {series.poster_path && (
@@ -163,25 +198,25 @@ function SeriesDetail({ user }) {
           )}
         </div>
       </div>
-      <h2>{language === 'ENG' ? 'Other users reviews' : 'Muiden käyttäjien arvostelut'}</h2>
+      
       <div className="reviews">
-      {Result.length > 0 && (
-  Result.map((review, index) => (
-    <label key={index}>
-     <textarea 
-  value={`${
-    language === 'ENG' ? 'Reviewer' : 'Arvostelija'
-  } ${review.accountname}\n\n${
-    language === 'ENG' ? 'Stars' : 'Tähdet'
-  }: ${review.stars}\n\n${review.userreview}`} 
-  rows={4} 
-  cols={40} 
-  readOnly 
-  className="postContent" 
-/>
-    </label>
-  ))
-)}
+     
+        {Result.length > 0 &&
+          Result.map((review, index) => (
+            <label key={index} className="review-block">
+              <textarea
+                value={`${language === "ENG" ? "Reviewer" : "Arvostelija"} ${
+                  review.accountname
+                }\n\n${language === "ENG" ? "Stars" : "Tähdet"}: ${
+                  review.stars
+                }\n\n${review.userreview}`}
+                rows={4}
+                cols={40}
+                readOnly
+                className="postContent"
+              />
+            </label>
+          ))}
       </div>
     </div>
   );

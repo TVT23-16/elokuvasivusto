@@ -120,7 +120,7 @@ function MovieDetail({ user }) {
             <h2>{language === 'ENG' ? 'Leave rating' : 'Jätä arvostelu'}</h2>
 
             <form onSubmit={handleSubmit}>
-              <div className='writeRating'>
+              <div className='tahdet'>
                 {[...Array(5)].map((star, index) => {
                   const currentRating = index + 1;
                   return (
@@ -136,6 +136,8 @@ function MovieDetail({ user }) {
                     </div>
                   );
                 })}
+                </div>
+                <div className="review-form">
                 <p>
                   {language === 'ENG'
                     ? rating
@@ -152,9 +154,13 @@ function MovieDetail({ user }) {
 
                 <textarea name="postContent" rows={4} cols={40} value={user ? Userreview : "Kirjaudu sisään kirjoittaaksesi arvostelun"} onChange={handleuserReview} className="postContent" />
                 <button type='submit'>{language === 'ENG' ? 'Submit' : 'Lähetä'}</button>
-              </div>
+                <h2>{language === 'ENG' ? 'Other users reviews' : 'Muiden käyttäjien arvostelut'}</h2>
+                </div>
             </form>
           </div>
+
+
+          
           {movie.poster_path && (
             <img
               src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -164,11 +170,13 @@ function MovieDetail({ user }) {
           )}
         </div>
       </div>
-      <h2>{language === 'ENG' ? 'Other users reviews' : 'Muiden käyttäjien arvostelut'}</h2>
+      
+      
+      
       <div className="reviews">
         {result.length > 0 && (
           result.map((review, index) => (
-            <label key={index}>
+            <label key={index}className="review-block">
               <textarea 
   value={`${
     language === 'ENG' ? 'Reviewer' : 'Arvostelija'

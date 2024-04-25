@@ -1,3 +1,9 @@
+.movie-detailscontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .moviedetail-pic {
   max-width: 100%;
   height: 500px;
@@ -24,8 +30,16 @@ p {
   margin-left: 200px;
   margin-right: 200px;
 }
-
-h2 {
+.text-details h2 {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  text-align: center;
+  color: rgb(207, 207, 207);
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.review-form h2 {
   font-size: 22px;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -33,49 +47,56 @@ h2 {
   text-shadow: 2px 2px 2px rgb(0, 0, 0);
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  align-items: center;
+  
 }
 
 .text-details {
   display: flex;
 }
-
-.writeRating {
+.review-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.writeRating textarea {
+.review-form textarea {
   margin-bottom: 10px;
-  resize: none; /* Estää tekstikentän venyttämisen */
+  resize: none;
   text-align: center;
   color: rgb(136, 125, 125);
   text-shadow: 2px 2px 2px rgb(0, 0, 0);
   font-size: 18px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 80%;
 }
 
-.writeRating textarea:hover {
+.review-form textarea:hover {
   transform: scale(1.1);
-  background-color: rgba(52, 52, 52, 0.6);
 }
 
 .postContent {
+  display: flex;
+  align-items: center;
   background-color: rgba(52, 52, 52, 0.3);
   border: 1px solid #000000;
   border-radius: 8px;
   padding: 10px;
   margin-top: 10px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  width: 60%;
 }
 
-.writeRating button {
-  margin-top: 10px;
+.review-form button {
+  margin-top: 20px;
+  align-self: center;
   width: 30%;
-  margin-left: 35%;
 }
 
-.writeRating button:hover {
+.review-form button:hover {
   transform: scale(1.1);
   background-color: rgba(52, 52, 52, 0.6);
 }
@@ -87,6 +108,9 @@ h2 {
   font-size: 18px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-bottom: 40px;
+ 
+  margin-left: auto; /* Align to the left edge of the container */
+  margin-right: auto; /* Align to the right edge of the container */
 }
 
 .reviews textarea {
@@ -112,14 +136,33 @@ h2 {
 
 input[type=radio] {
   display: none;
+  
+
+}
+.star {
+  display: inline-block;
+  color:yellow;
 }
 
-.star-container {
-  cursor: pointer;
+.tahdet {
+   cursor: pointer;
   display: flex;
   justify-content: center;
+  flex-direction: row;
 }
 
-.star-container:hover {
+.star-container:hover .star {
   transform: scale(1.1);
+}
+
+.star:hover {
+  fill: yellow;
+}
+
+
+.review-block {
+  flex: 0 0 auto; /* Allow the review blocks to grow and shrink as needed */
+  width: 300px; /* Adjust the width of each review block as needed */
+  margin: 0 10px; /* Add margin between each review block */
+
 }
