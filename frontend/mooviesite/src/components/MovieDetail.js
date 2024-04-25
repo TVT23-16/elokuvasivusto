@@ -18,7 +18,7 @@ function MovieDetail({ user }) {
 
   useEffect(() => {
     if (user) {
-      const { user: username } = user; //puretaan user propsista pelkkä käyttäjätunnus
+      const { user: username } = user;
       setUname(username);
     }
   }, [user]);
@@ -50,11 +50,13 @@ function MovieDetail({ user }) {
           movie_title: movie.title,
           media_id: id,
           userreview: Userreview,
-          accountname: uname
+          accountname: uname,
+          stars: rating
         }),
       });
       if (response.ok) {
         setResult([...result, { userreview: Userreview, accountname: uname }]);
+        setRating(null);
       }
     } catch (error) {
       console.log(error);
@@ -87,12 +89,20 @@ function MovieDetail({ user }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (rating === null || rating === undefined) {
+      alert(language === 'ENG' ? 'Please select stars before submitting your review!' : 'Valitse tähdet ennen kuin lähetät arvostelun!');
+      return;
+    }
     if (user) {
       addReview();
+      // Tyhjennä tekstikentän arvo
+      setUserreview("");
+      // Nollaa tähtien arvostelu
+      setRating(null);
     } else {
       navigate("/login");
     }
-  };
+  };  
 
   if (!movie) {
     return <div>Loading...</div>;
@@ -126,7 +136,20 @@ function MovieDetail({ user }) {
                     </div>
                   );
                 })}
-                <p>Your star rating is {rating}</p>
+                <p>
+                  {language === 'ENG'
+                    ? rating
+                      ? rating === 1
+                        ? 'Your rating: 1 star'
+                        : `Your rating: ${rating} stars`
+                      : 'Add stars to your rating'
+                    : rating
+                      ? rating === 1
+                        ? 'Arviosi: 1 tähti'
+                        : `Arviosi: ${rating} tähteä`
+                      : 'Lisää tähdet arvosteluusi'}
+                </p>
+
                 <textarea name="postContent" rows={4} cols={40} value={user ? Userreview : "Kirjaudu sisään kirjoittaaksesi arvostelun"} onChange={handleuserReview} className="postContent" />
                 <button type='submit'>{language === 'ENG' ? 'Submit' : 'Lähetä'}</button>
               </div>
@@ -146,7 +169,17 @@ function MovieDetail({ user }) {
         {result.length > 0 && (
           result.map((review, index) => (
             <label key={index}>
-              <textarea value={"Arvostelija:" + review.accountname + "\n\n" + review.userreview} rows={4} cols={40} readOnly className="postContent" />
+              <textarea 
+  value={`${
+    language === 'ENG' ? 'Reviewer' : 'Arvostelija'
+  } ${review.accountname}\n\n${
+    language === 'ENG' ? 'Stars' : 'Tähdet'
+  }: ${review.stars}\n\n${review.userreview}`} 
+  rows={4} 
+  cols={40} 
+  readOnly 
+  className="postContent" 
+/>
             </label>
           ))
         )}
