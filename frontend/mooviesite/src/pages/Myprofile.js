@@ -6,6 +6,7 @@ import { useLanguage } from '../LanguageContext';
 export default function Myprofile({ user }) {
   const [uname, setUname] = useState("");
   const [result, setResult] = useState([]);
+  const [favourites, setFavourites]= useState([]);
   const { language } = useLanguage();
 
   useEffect(() => {
@@ -32,8 +33,30 @@ export default function Myprofile({ user }) {
         }
       };
       myReviews();
+      
+      const myFavourites = async () => {
+      try {
+        
+        const response = await fetch(`http://localhost:3001/favourites/getfavourites/${uname}`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        })
+        if (response.ok) {
+          const result = await response.json();
+          setFavourites(result);
+        }
+      
+    
+    }catch (error) {
+      alert(error)
     }
+  }
+  myFavourites()
+  } 
+  
   }, [uname]);
+
+
 
   return (
     <div>
@@ -43,10 +66,15 @@ export default function Myprofile({ user }) {
         <div className="profile-list">
           <h2>{language === 'ENG' ? 'My favourites' : 'Suosikkini'}</h2>
           <br />
-          <ul>
-            <li>Movie 1</li>
-            <li>Movie 2</li>
-            <li>Movie 3</li>
+          <ul className="favourites">
+          {favourites.length > 0 && (
+              favourites.map((favourites, index) => (
+                <label key={index}>
+                  <textarea value={  favourites.movietitle } rows={4} cols={40} readOnly className="postContent" />
+                </label>
+              ))
+            )}
+
           </ul>
           <br />
         </div>
