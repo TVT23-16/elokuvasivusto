@@ -14,6 +14,8 @@ function MovieDetail({ user }) {
   const { language } = useLanguage(); // Hae nykyinen kieli
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
+  const [heartClicked, setHeartClicked] = useState(false);
+  const [heartHover, setHeartHover] = useState(false); // Lisätty heartHover-muuttuja
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -117,6 +119,27 @@ function MovieDetail({ user }) {
             <p className='p-overview'>{language === 'ENG' ? 'Overview' : 'Yleiskatsaus'}: {movie.overview}</p>
             <p className='p-overview'>{language === 'ENG' ? 'Release Date' : 'Julkaisupäivä'}: {movie.release_date}</p>
             <p className='p-overview'>{language === 'ENG' ? 'Rating' : 'Arvostelu'}: {movie.vote_average}</p>
+
+            <div className="heart">
+              <button
+                type='button'
+                className='favourites-button'
+                onClick={() => {
+                  if (user) {
+                    setHeartClicked(!heartClicked);
+                  } else {
+                    navigate("/login");
+                  }
+                }}
+                onMouseEnter={() => setHeartHover(true)}
+                onMouseLeave={() => setHeartHover(false)}
+                style={{ color: heartClicked ? 'red' : 'black' }}
+              >
+                ❤ {/* Sydän-teksti */}
+                {heartHover ? (heartClicked ? (language === 'ENG' ? 'Added to favourites' : 'Lisätty suosikkeihin') : (language === 'ENG' ? 'Add to favourites' : 'Lisää suosikkeihin')) : ''}
+              </button>
+            </div>
+
             <h2>{language === 'ENG' ? 'Leave rating' : 'Jätä arvostelu'}</h2>
 
             <form onSubmit={handleSubmit}>
