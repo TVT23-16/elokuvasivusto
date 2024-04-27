@@ -5,6 +5,7 @@ import { useLanguage } from '../LanguageContext'; // Ota käyttöön useLanguage
 import { FaStar } from 'react-icons/fa';
 
 
+
 function MovieDetail({ user }) {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
@@ -64,6 +65,30 @@ function MovieDetail({ user }) {
       console.log(error);
     }
   };
+useEffect(() => {
+  if (heartClicked) {
+    const addFavourite = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/favourites/addfavourite`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            movie_title: movie.title,
+            media_id: id,
+            accountname: uname
+          }),
+        });
+       
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    addFavourite();
+  }
+ 
+},[heartClicked])
+  
+    
 
   useEffect(() => {
     if (movie) {
