@@ -12,6 +12,8 @@ function SeriesDetail({ user }) {
   const [Result, setResult] = useState([]);
   const { language } = useLanguage(); // Hae nykyinen kieli
   const [hover, setHover] = useState(null);
+  const [heartClicked, setHeartClicked] = useState(false);
+  const [heartHover, setHeartHover] = useState(false); // Lisätty heartHover-muuttuja
   const navigate = useNavigate();
   const [rating, setRating] = useState(null);
 
@@ -123,6 +125,27 @@ function SeriesDetail({ user }) {
               First Air Date: {series.first_air_date}
             </p>
             <p className="p-overview">Rating: {series.vote_average}</p>
+
+            <div className="heart">
+              <button
+                type='button'
+                className='favourites-button'
+                onClick={() => {
+                  if (user) {
+                    setHeartClicked(!heartClicked);
+                  } else {
+                    navigate("/login");
+                  }
+                }}
+                onMouseEnter={() => setHeartHover(true)}
+                onMouseLeave={() => setHeartHover(false)}
+                style={{ color: heartClicked ? 'red' : 'black' }}
+              >
+                ❤ {/* Sydän-teksti */}
+                {heartHover ? (heartClicked ? (language === 'ENG' ? 'Added to favourites' : 'Lisätty suosikkeihin') : (language === 'ENG' ? 'Add to favourites' : 'Lisää suosikkeihin')) : ''}
+              </button>
+            </div>
+
             <h2>{language === "ENG" ? "Leave rating" : "Jätä arvostelu"}</h2>
 
             <form onSubmit={handleSubmit}>
