@@ -59,7 +59,7 @@ export default function Myprofile({ user }) {
             {result.length > 0 && (
               result.map((review, index) => (
                 <label key={index}>
-                  <textarea value={review.userreview + "\n" + review.movietitle} rows={4} cols={40} readOnly className="postContent" />
+                  <textarea value={  review.movietitle + "\n"+" \n"+ "\n"+ "Stars: " +review.stars + "\n" + "\n" + review.userreview + "\n"} rows={4} cols={40} readOnly className="postContent" />
                 </label>
               ))
             )}
