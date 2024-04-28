@@ -141,8 +141,7 @@ function SeriesDetail({ user }) {
                 onMouseLeave={() => setHeartHover(false)}
                 style={{ color: heartClicked ? 'red' : 'black' }}
               >
-                ❤ {/* Sydän-teksti */}
-                {heartHover ? (heartClicked ? (language === 'ENG' ? 'Added to favorites' : 'Lisätty suosikkeihin') : (language === 'ENG' ? 'Add to favourites' : 'Lisää suosikkeihin')) : ''}
+                ❤
               </button>
             </div>
 
