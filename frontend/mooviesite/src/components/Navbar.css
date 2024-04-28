@@ -71,14 +71,3 @@ display: inline-block;
   .language-button:hover {
     transform: scale(1.1); /* Suurennuskerroin 1.1 */
   }
-
-  @media (max-width: 800px) {
-    /* Muokkaa responsiivista asettelua tarvittaessa */
-    .dropdown-menu {
-      left: 50%; /* Aseta vaaka-asento 50%:iin */
-      transform: translateX(-50%); /* Siirrä vaakatasossa 50% vasemmalle */
-    }
-  }
- 
-
-  
