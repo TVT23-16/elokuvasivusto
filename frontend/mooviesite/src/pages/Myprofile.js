@@ -56,15 +56,13 @@ export default function Myprofile({ user }) {
   
   }, [uname]);
 
-
-
   return (
     <div>
       <h1>{language === 'ENG' ? 'MY PROFILE' : 'OMA PROFIIILI'}</h1>
       <br />
       <div className="profile-box">
         <div className="profile-list">
-          <h2>{language === 'ENG' ? 'My favourites' : 'Suosikkini'}</h2>
+          <h2>{language === 'ENG' ? 'My favorites' : 'Suosikkini'}</h2>
           <br />
           <ul className="favourites">
           {favourites.length > 0 && (

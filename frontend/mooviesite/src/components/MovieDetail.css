@@ -30,6 +30,7 @@ p {
   margin-left: 200px;
   margin-right: 200px;
 }
+
 .text-details h2 {
   margin-top: 1%;
   margin-bottom: 1%;
@@ -39,6 +40,7 @@ p {
   font-size: 18px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .review-form h2 {
   font-size: 22px;
   margin-top: 30px;
@@ -48,12 +50,13 @@ p {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   align-items: center;
-  
+
 }
 
 .text-details {
   display: flex;
 }
+
 .review-form {
   display: flex;
   flex-direction: column;
@@ -108,9 +111,11 @@ p {
   font-size: 18px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-bottom: 40px;
- 
-  margin-left: auto; /* Align to the left edge of the container */
-  margin-right: auto; /* Align to the right edge of the container */
+
+  margin-left: auto;
+  /* Align to the left edge of the container */
+  margin-right: auto;
+  /* Align to the right edge of the container */
 }
 
 .reviews textarea {
@@ -128,7 +133,7 @@ p {
   margin-right: 20px;
   justify-content: center;
   width: 270px;
-  }
+}
 
 .reviews label:hover {
   transform: scale(1.1);
@@ -136,16 +141,17 @@ p {
 
 input[type=radio] {
   display: none;
-  
+
 
 }
+
 .star {
   display: inline-block;
-  color:yellow;
+  color: yellow;
 }
 
 .tahdet {
-   cursor: pointer;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -159,23 +165,30 @@ input[type=radio] {
   fill: yellow;
 }
 
-
-.review-block {
-  flex: 0 0 auto; /* Allow the review blocks to grow and shrink as needed */
-  width: 300px; /* Adjust the width of each review block as needed */
-  margin: 0 10px; /* Add margin between each review block */
-
+.heart button {
+  background-color: transparent;
+  border: none;
+  font-size: 50px;
+  /* Muuta koon */
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-.heart button {
-  background-color: rgba(52, 52, 52, 0.3);
-  font-size: 20px; /* Muuta koon */
-  padding: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+.heart:hover {
+  transform: scale(1.1);
 }
 
 .favourites-button {
   display: block;
   margin: 0 auto;
+}
+
+.already-liked {
+  color: rgb(207, 207, 207);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  text-align: center;
+  font-size: 13px;
+  margin-bottom: -20px;
+  margin-top: 30px;
 }

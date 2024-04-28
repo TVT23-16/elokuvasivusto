@@ -142,7 +142,7 @@ function SeriesDetail({ user }) {
                 style={{ color: heartClicked ? 'red' : 'black' }}
               >
                 ❤ {/* Sydän-teksti */}
-                {heartHover ? (heartClicked ? (language === 'ENG' ? 'Added to favourites' : 'Lisätty suosikkeihin') : (language === 'ENG' ? 'Add to favourites' : 'Lisää suosikkeihin')) : ''}
+                {heartHover ? (heartClicked ? (language === 'ENG' ? 'Added to favorites' : 'Lisätty suosikkeihin') : (language === 'ENG' ? 'Add to favourites' : 'Lisää suosikkeihin')) : ''}
               </button>
             </div>
 

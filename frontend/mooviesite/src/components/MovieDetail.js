@@ -16,7 +16,7 @@ function MovieDetail({ user }) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [heartClicked, setHeartClicked] = useState(false);
-  const [heartHover, setHeartHover] = useState(false); // Lisätty heartHover-muuttuja
+  const [heartHover, setHeartHover] = useState(false);
   const [hasLiked, setHasLiked] = useState(false);
   const navigate = useNavigate();
 
@@ -220,7 +220,7 @@ function MovieDetail({ user }) {
             <p className='p-overview'>{language === 'ENG' ? 'Rating' : 'Arvostelu'}: {movie.vote_average}</p>
             {hasLiked && (
             <div className="already-liked">
-              {language === 'ENG' ? 'This one is your favourite!.' : 'Tämä on suosikkisi!'}
+              {language === 'ENG' ? 'This one is your favorite!' : 'Tämä on suosikkisi!'}
             </div>
           )}
             <div className="heart">
@@ -238,8 +238,7 @@ function MovieDetail({ user }) {
                 onMouseLeave={() => setHeartHover(false)}
                 style={{ color: hasLiked ? 'red' : (heartClicked ? 'red' : 'black') }}
               >
-                ❤ {/* Sydän-teksti */}
-                {heartHover ? (heartClicked ? (language === 'ENG' ? 'Added to favourites' : 'Lisätty suosikkeihin') : (language === 'ENG' ? 'Add to favourites' : 'Lisää suosikkeihin')) : ''}
+                ❤
               </button>
             </div>
 
