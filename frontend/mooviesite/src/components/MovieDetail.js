@@ -79,7 +79,8 @@ function MovieDetail({ user }) {
         }),
       });
       if (response.ok) {
-        setResult([...result, { userreview: Userreview, accountname: uname }]);
+        
+        setResult([...result, {stars: rating, userreview: Userreview, accountname: uname }]);
         setRating(null);
       }
     } catch (error) {
