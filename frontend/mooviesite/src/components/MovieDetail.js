@@ -3,8 +3,7 @@ import './MovieDetail.css';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useLanguage } from '../LanguageContext'; // Ota käyttöön useLanguage-koukku
 import { FaStar } from 'react-icons/fa';
-
-
+import Series from '../pages/Series';
 
 function MovieDetail({ user }) {
   const { id } = useParams();
@@ -16,17 +15,17 @@ function MovieDetail({ user }) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [heartClicked, setHeartClicked] = useState(false);
-  const [heartHover, setHeartHover] = useState(false);
-  const [hasLiked, setHasLiked] = useState(false);
+  const [heartHover, setHeartHover] = useState(false); // Lisätty heartHover-muuttuja
   const navigate = useNavigate();
 
+  
   useEffect(() => {
     if (user) {
       const { user: username } = user;
       setUname(username);
     }
   }, [user]);
-  
+  console.log(process.env.API_KEY);
   useEffect(() => {
     
     
@@ -66,103 +65,6 @@ function MovieDetail({ user }) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    const checkIfLiked = async () => {
-      try {
-        const response = await fetch(`http://localhost:3001/favourites/hasLikedMovie`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            media_id: id,
-            accountname: uname
-          }),
-        });
-  
-        if (!response.ok) {
-          throw new Error("Error checking if user has liked the movie");
-        }
-  
-        const data = await response.json();
-  
-        if (data.error) {
-          console.log(data.error);
-          return;
-        }
-  
-        if (data.liked) {
-          console.log("User has already liked this movie");
-          setHasLiked(true);
-        }
-      } catch (error) {
-        console.error("Error checking if user has liked the movie:", error);
-      }
-    };
-  
-    checkIfLiked();
-  }, [id, uname]);
-
-
-  useEffect(() => {
-    const addFavourite = async () => {
-      try {
-        // tarkistetaan onko käyttäjä jo tykännyt elokuvasta
-        const response = await fetch(`http://localhost:3001/favourites/hasLikedMovie`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            media_id: id,
-            accountname: uname
-          }),
-        });
-  
-        if (!response.ok) {
-          console.log(data.error);
-        }
-        
-        const data = await response.json();
-        
-        if (data.error) {
-          console.log(data.error); 
-          return;
-        }
-        
-        if (data.liked) {
-          console.log("User has already liked this movie"); 
-          console.log(hasLiked);
-          setHasLiked(true) //jos jo tykätty, asetetaan muuttujan arvoksi true
-          return;
-        }
-  
-        // jos ei ole vielä tykätty, lisätään tykätyksi
-        const responseAdd = await fetch(`http://localhost:3001/favourites/addfavourite`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            movie_title: movie.title,
-            media_id: id,
-            accountname: uname
-          }),
-        });
-  
-        if (responseAdd.ok) {
-          //kun tykkäys ok, asetetaan muuttujan arvoksi true
-          console.log("Movie added to favourites");
-          setHasLiked(true); 
-        } else {
-          throw new Error("Error adding movie to favourites");
-        }
-      } catch (error) {
-        console.error("Error adding movie to favourites:", error);
-      }
-    };
-  
-    if (heartClicked) {
-      addFavourite();
-    }
-  }, [heartClicked, id, uname, movie]);
-  
-    
 
   useEffect(() => {
     if (movie) {
@@ -209,6 +111,88 @@ function MovieDetail({ user }) {
     return <div>Loading...</div>;
   }
 
+
+
+//myfavourites-koodi samaan tapaan kuin myreviews-koodit
+//const addReview-koodi muokattuna 
+//
+const addFavourite = async () => {
+  try {
+    const response = await fetch(`http://localhost:3001/favourites/addfavourite`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        movie_title: movie.title, 
+        media_id: id,
+        //userfavorite: Userfavorite,
+        accountname: uname,
+      }),
+    });
+    if (response.ok) {
+      console.log("Elokuva lisätty suosikkeihin onnistuneesti!");
+      // Vaihtoehtoisesti päivitä käyttöliittymä heijastamaan lisäystä (esim. muuta sydämen väriä)
+    }
+  } catch (error) {
+    console.error('Virhe lisättäessä suosikkeihin:', error);
+  }
+};
+//
+/*
+useEffect(() => {
+  if (movie) {
+    const getFavourite = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/favourites/getfavourite/${id}`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (response.ok) {
+          const result = await response.json();
+          setResult(result);
+        }
+      } catch (error) {
+        alert(error);
+      }
+    };
+    getFavourite();
+  }
+}, [id, movie, Userfavourite]);
+
+const handleuserFavourite = (e) => {
+  setUserfavourite(e.target.value);
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  if (rating === null || rating === undefined) {
+    alert(language === 'ENG' ? 'Please select stars before submitting your review!' : 'Valitse tähdet ennen kuin lähetät arvostelun!');
+    return;
+  }
+  if (user) {
+    addReview();
+    // Tyhjennä tekstikentän arvo
+    setUserreview("");
+    // Nollaa tähtien arvostelu
+    setRating(null);
+  } else {
+    navigate("/login");
+  }
+};  
+
+if (!movie) {
+  return <div>Loading...</div>;
+}
+//
+*/
+
+
+
+
+
+
+
+
+
   return (
     <div className="movie-details-container">
       <div className="movie-details-content">
@@ -218,11 +202,7 @@ function MovieDetail({ user }) {
             <p className='p-overview'>{language === 'ENG' ? 'Overview' : 'Yleiskatsaus'}: {movie.overview}</p>
             <p className='p-overview'>{language === 'ENG' ? 'Release Date' : 'Julkaisupäivä'}: {movie.release_date}</p>
             <p className='p-overview'>{language === 'ENG' ? 'Rating' : 'Arvostelu'}: {movie.vote_average}</p>
-            {hasLiked && (
-            <div className="already-liked">
-              {language === 'ENG' ? 'This one is your favorite!' : 'Tämä on suosikkisi!'}
-            </div>
-          )}
+
             <div className="heart">
               <button
                 type='button'
@@ -236,9 +216,10 @@ function MovieDetail({ user }) {
                 }}
                 onMouseEnter={() => setHeartHover(true)}
                 onMouseLeave={() => setHeartHover(false)}
-                style={{ color: hasLiked ? 'red' : (heartClicked ? 'red' : 'black') }}
+                style={{ color: heartClicked ? 'red' : 'black' }}
               >
-                ❤
+                ❤ {/* Sydän-teksti */}
+                {heartHover ? (heartClicked ? (language === 'ENG' ? 'Added to favourites' : 'Lisätty suosikkeihin') : (language === 'ENG' ? 'Add to favourites' : 'Lisää suosikkeihin')) : ''}
               </button>
             </div>
 

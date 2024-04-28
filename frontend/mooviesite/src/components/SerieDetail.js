@@ -114,6 +114,35 @@ function SeriesDetail({ user }) {
     setUserReview("");
   };
 
+//myfavourites-koodi samaan tapaan kuin myreviews-koodit
+//const addReview-koodi muokattuna 
+//
+const addFavourite = async () => {
+  try {
+    const response = await fetch(`http://localhost:3001/favourites/addfavourite`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        movie_title: series.name,
+        media_id: id,
+        //userfavorite: Userfavorite,
+        accountname: uname,
+        stars: rating,
+      }),
+    });
+    if (response.ok) {
+      //setResult([...Result, { UserFavourite: UserFavourite, accountname: uname }]);
+      //setRating(null);
+      console.log("Sarja lisätty suosikkeihin onnistuneesti!");
+      // Vaihtoehtoisesti päivitä käyttöliittymä heijastamaan lisäystä (esim. muuta sydämen väriä)
+
+    }
+  } catch (error) {
+    console.error('Virhe lisättäessä suosikkeihin:', error);
+  }
+};
+
+
   return (
     <div className="movie-details-container">
       <div className="movie-details-content">
@@ -142,7 +171,7 @@ function SeriesDetail({ user }) {
                 style={{ color: heartClicked ? 'red' : 'black' }}
               >
                 ❤ {/* Sydän-teksti */}
-                {heartHover ? (heartClicked ? (language === 'ENG' ? 'Added to favorites' : 'Lisätty suosikkeihin') : (language === 'ENG' ? 'Add to favourites' : 'Lisää suosikkeihin')) : ''}
+                {heartHover ? (heartClicked ? (language === 'ENG' ? 'Added to favourites' : 'Lisätty suosikkeihin') : (language === 'ENG' ? 'Add to favourites' : 'Lisää suosikkeihin')) : ''}
               </button>
             </div>
 

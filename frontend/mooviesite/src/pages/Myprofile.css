@@ -8,6 +8,20 @@
   margin-bottom: 30px;
 }
 
+.profile-list h2 {
+  color: white; /* Set text color to white */
+}
+
+.profile-list ul {
+  margin-left: 15px; /* Sijoita lista oikealle */
+  padding: 20px; /* Lisää tyhjennystä */ 
+}
+
+.favourite-text {
+  color: white; /* Aseta tekstin väri valkoiseksi */
+  width: 100px; /* Lisää leveys 400px:stä */
+  height: 150px; /* Lisää korkeus 100px:stä */
+}
 
 .favourites textarea {
   resize: none;
@@ -65,3 +79,52 @@ h2 {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+
+/* alla dropvalikon jutut */
+
+.profile-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.profile-dropdown {
+  position: absolute;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 150px;
+  z-index: 10;
+}
+
+.profile-button:hover .profile-dropdown {
+  display: block;
+}
+
+.profile-dropdown li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.profile-dropdown li:hover {
+  background-color: #ddd;
+}
+
+#delete-account-button {
+  background-color: red;
+  color: #fff;
+  border: none;
+}
+textarea {
+  resize: none;
+}
+
