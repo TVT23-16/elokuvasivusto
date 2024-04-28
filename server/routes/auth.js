@@ -11,24 +11,32 @@ router.post("/add", async (req,res) => {
     const password = req.body.password
 
     const hashPw = await bcrypt.hash(password,10)
+    if(accountname && password && accountname.length >= 5 && password.length >=6) {
     await addUser(hashPw, accountname) // Kutsutaan addUser-funktiota uuden käyttäjän lisäämiseksi
     console.log(req.body.password);
 
-    res.end();
-   
+    res.status(201).json({success:"account created"})
+} else if (!accountname && password) {
+    res.status(401).json({error: "you must give username and password"})
+} else if (accountname.length< 5) {
+    res.status(401).json({error: "username must be 5 letters or greater"})
+} else if (password.length< 5) {
+    res.status(401).json({error: "password must be 6 letters or greater"})
+}
 })
 
 
 router.post("/login", async (req,res) => {
-    const uname = req.body.accountname
-    const pw = req.body.password
-    const db_pw = await getPw(uname)
+    const uname = req.body.accountname // otetaan saapuvasta pyynnöstä talteen accountname
+    const pw = req.body.password // salasana
+    const db_pw = await getPw(uname) // kutsutaan getpw funktiota jolle annetaan parametrina tunnus
 
-    if(db_pw) {
-        const authenticated = await bcrypt.compare(pw, db_pw)
-        if(authenticated){  
-            const token = jwt.sign({username: uname}, process.env.JWT_SECRET )
+    if(db_pw) { // jos salasana löytyy, ajetaan if lause
+        const authenticated = await bcrypt.compare(pw, db_pw) // verrataan tietokannata löytyvää cryptattyä salasanaa ja käyttäjän syöttämää salasanaa
+        if(authenticated){   // jos true
+            const token = jwt.sign({username: uname}, process.env.JWT_SECRET ) // luodaan jwt tokeni
             res.status(200).json({jwtToken: token})
+            console.log(token);
         }else{
             res.status(401).json({error: "Wrong password"})
         }

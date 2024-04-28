@@ -1,0 +1,194 @@
+.movie-detailscontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.moviedetail-pic {
+  max-width: 100%;
+  height: 500px;
+  border-radius: 30px;
+  margin-bottom: 15px;
+  margin-right: 80px;
+}
+
+.movie-details-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 80px;
+}
+
+p {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.p-overview {
+  color: rgb(207, 207, 207);
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.text-details h2 {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  text-align: center;
+  color: rgb(207, 207, 207);
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.review-form h2 {
+  font-size: 22px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: rgb(207, 207, 207);
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  align-items: center;
+
+}
+
+.text-details {
+  display: flex;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-form textarea {
+  margin-bottom: 10px;
+  resize: none;
+  text-align: center;
+  color: rgb(136, 125, 125);
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 80%;
+}
+
+.review-form textarea:hover {
+  transform: scale(1.1);
+}
+
+.postContent {
+  display: flex;
+  align-items: center;
+  background-color: rgba(52, 52, 52, 0.3);
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  width: 60%;
+}
+
+.review-form button {
+  margin-top: 20px;
+  align-self: center;
+  width: 30%;
+}
+
+.review-form button:hover {
+  transform: scale(1.1);
+  background-color: rgba(52, 52, 52, 0.6);
+}
+
+.reviews {
+  margin-bottom: 10px;
+  color: rgb(136, 125, 125);
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 40px;
+
+  margin-left: auto;
+  /* Align to the left edge of the container */
+  margin-right: auto;
+  /* Align to the right edge of the container */
+}
+
+.reviews textarea {
+  resize: none;
+  width: 100%;
+  height: 300px;
+  max-width: 100%;
+  max-height: 200px;
+  color: rgb(207, 207, 207);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  text-align: center;
+}
+
+.reviews label {
+  margin-right: 20px;
+  justify-content: center;
+  width: 270px;
+}
+
+.reviews label:hover {
+  transform: scale(1.1);
+}
+
+input[type=radio] {
+  display: none;
+
+
+}
+
+.star {
+  display: inline-block;
+  color: yellow;
+}
+
+.tahdet {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.star-container:hover .star {
+  transform: scale(1.1);
+}
+
+.star:hover {
+  fill: yellow;
+}
+
+.heart button {
+  background-color: transparent;
+  border: none;
+  font-size: 50px;
+  /* Muuta koon */
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.heart:hover {
+  transform: scale(1.1);
+}
+
+.favourites-button {
+  display: block;
+  margin: 0 auto;
+}
+
+.already-liked {
+  color: rgb(207, 207, 207);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  text-align: center;
+  font-size: 13px;
+  margin-bottom: -20px;
+  margin-top: 30px;
+}

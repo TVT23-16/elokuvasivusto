@@ -1,43 +1,57 @@
-import { Link } from 'react-router-dom'
-import './Navbar.css'
-import React from 'react'
+import { Link } from 'react-router-dom';
+import './Navbar.css';
+import React, { useState } from 'react';
 import DropdownMenu from './DropdownMenu';
-
+import { useLanguage } from '../LanguageContext';
 
 const Navbar = ({ user }) => {
-  /* alasvetovalikoon muutos tekstistä ovi-kuvakkeeksi, koodi alkaa *
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
+  const [isHover, setIsHover] = useState(false);
 
-  const handleProfileClick = () => {
-    setIsDropdownVisible(!isDropdownVisible);
+  const handleMouseEnter = () => {
+    setIsHover(true);
   };
-  * alasvetovalikoon muutos tekstistä ovi-kuvakkeeksi, koodi päättyy */
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
+  const handleLanguageToggle = () => {
+    toggleLanguage();
+  };
 
   return (
     <nav>
       <div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">{language === 'ENG' ? 'HOME' : 'ETUSIVU'}</Link>
           </li>
           <li>
-            <Link to="/series">Series</Link>
+            <Link to="/series">{language === 'ENG' ? 'SERIES' : 'SARJAT'}</Link>
           </li>
           <li>
-            <Link to="/movies">Movies</Link>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li>
-            <Link to="/myprofile">My Profile</Link>
+            <Link to="/movies">{language === 'ENG' ? 'MOVIES' : 'ELOKUVAT'}</Link>
           </li>
           <li>
-            {user === null && <Link to="/login">Login</Link>}
-            {user && <Link to="/logout">Logout</Link>}
+            <Link to="/schedules">{language === 'ENG' ? 'FINNKINO SHOWTIMES' : 'FINNKINO NÄYTÖSAJAT'}</Link>
           </li>
-          <DropdownMenu user={user} />  
+          <li>
+            <button
+              className="language-button"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onClick={handleLanguageToggle}
+            >
+              <img
+                src={`${process.env.PUBLIC_URL}/${isHover ? (language === 'ENG' ? 'finnish.png' : 'english.png') : (language === 'ENG' ? 'english.png' : 'finnish.png')}`}
+                alt="Language flag"
+              />
+            </button>
+          </li>
+          <li>
+            <DropdownMenu user={user} />
+          </li>
         </ul>
       </div>
     </nav>
@@ -45,12 +59,3 @@ const Navbar = ({ user }) => {
 };
 
 export default Navbar;
-
-/* korvaa button-dropdown osio tällä
-
-          <li>
-          <button onClick={handleProfileClick}>
-              <img src="path/to/door-icon.png" alt="My Profile" />
-            </button>
-            {isDropdownVisible && <DropdownMenu user={user} />}
-            </li>*/

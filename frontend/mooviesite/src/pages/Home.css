@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-image: radial-gradient(circle at center, rgb(64, 62, 62), black);
     position: relative;
     padding-bottom: 35px;
@@ -9,22 +9,18 @@ body {
     background-size: cover; /* Täyttää koko näytön kuvalla */
     background-position: center; /* Kuvan keskittäminen */
     background-attachment: fixed;
-
-    cursor: url('popcorn_cursor.png'), auto;
 }
 
 
 h1 {
     text-align: center;
-    color: rgb(204, 0, 0);
+    color: rgb(207, 207, 207);
     margin-top: 40px;
-    margin-bottom: 40px;
-    text-shadow: 2px 2px 4px black;
-    font-size: 50px;
-}
-
-h2 {
-    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.674);
+    font-size: 40px; /* tässä muodossa fontin koko skaalautuu ikkunan koon mukaan */
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 p {
@@ -36,29 +32,90 @@ p {
     margin-left: auto;
     margin-right: auto;
     width: 60%;
+    border-radius: 30px; /* Pyöristää elokuvien kuvien kulmat */
   }
 
 div#content aside {
-    width: 80vw;
+    width: 60vw;
 }
 
 article {
-    flex: 33.33%
+    flex: 33.33%;
 }
 
 article div {
     float: left;
     justify-content: center;
-    width: 33.33%;
+    width: calc(33.33% - 40px); /* 40px vähentää tilaa oikealle ja vasemmalle puolelle */
     padding: 20px;
     text-align: center;
-    
+    margin-bottom: 100px; /* tila top3 alapuolella */
+    margin-right: 20px; /* Lisää tilaa oikealle puolelle */
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 30px; /* Pyöristää kulmat */
+    background-color: rgba(52, 52, 52, 0.3); /* Lisää väri ja läpinäkyvyys kehykselle */
 }
 
-article div img {
-    width: 100%;
+/* Lisää hover-tila kuville */
+article div:hover img {
+    transform: scale(1.1); /* Suurennuskerroin 1.1 */
+    transition: transform 0.3s; /* Lisää siirtymäefekti */
 }
 
-#empty-space {
-    margin-bottom:80px;
+.movie-title {
+    color: rgb(207, 207, 207);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    font-size: 22px;
+    margin-top: 20px;
+    display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.movie-rating {
+    color: rgb(136, 125, 125);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    font-size: 18px;
+    margin-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo-and-link {
+    display: flex;
+    align-items: center; /* Keskitä sisältö vertikaalisesti */
+    margin-left: 30%;
+  }
+
+.linkki_finnkino {
+    color: rgb(207, 207, 207);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    font-size: 40px;
+    display: inline-block;
+    width: 100%;      
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 30px; /* Pyöristää kulmat */
+    background-color: rgba(52, 52, 52, 0.3); /* Lisää väri ja läpinäkyvyys kehykselle */
+  }
+
+  .linkki_finnkino:hover {
+    transform: scale(1.1); /* Suurennuskerroin 1.1 */
+    background-color: rgba(52, 52, 52, 0.7);
+    transition: transform 0.3s; /* Lisää siirtymäefekti */
+}
+
+@media only screen and (max-width: 800px) {
+    body {
+      font-size: 14px; /* Esimerkiksi pienennä tekstin kokoa */
+    }
+  
+    img {
+      max-width: 100%; /* Kuvien maksimileveys täyttämään näytön leveyden */
+      height: auto; /* Säilytä kuvan alkuperäinen kuvasuhde */
+    }
+  }
