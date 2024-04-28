@@ -12,6 +12,11 @@ router.post("/add", async (req,res) => {
 
     const hashPw = await bcrypt.hash(password,10)
     if(accountname && password && accountname.length >= 5 && password.length >=6) {
+
+        const existingUser = await getPw(accountname);
+        if (existingUser) {
+            return res.status(409).json({ error: "Username already exists" });
+        }
     await addUser(hashPw, accountname) // Kutsutaan addUser-funktiota uuden käyttäjän lisäämiseksi
     console.log(req.body.password);
 

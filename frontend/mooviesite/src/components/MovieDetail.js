@@ -45,6 +45,26 @@ function MovieDetail({ user }) {
     fetchMovieDetails();
   }, [id, language]);
 
+  useEffect(() => {
+    if (movie) {
+      const getReview = async () => {
+        try {
+          const response = await fetch(`http://localhost:3001/reviews/getreview/${id}`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          });
+          if (response.ok) {
+            const result = await response.json();
+            setResult(result);
+          }
+        } catch (error) {
+          alert(error);
+        }
+      };
+      getReview();
+    }
+  }, [id, movie, Userreview]);
+
   const addReview = async () => {
     try {
       const response = await fetch(`http://localhost:3001/reviews/addreview`, {
@@ -164,25 +184,7 @@ function MovieDetail({ user }) {
   
     
 
-  useEffect(() => {
-    if (movie) {
-      const getReview = async () => {
-        try {
-          const response = await fetch(`http://localhost:3001/reviews/getreview/${id}`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-          });
-          if (response.ok) {
-            const result = await response.json();
-            setResult(result);
-          }
-        } catch (error) {
-          alert(error);
-        }
-      };
-      getReview();
-    }
-  }, [id, movie, Userreview]);
+
 
   const handleuserReview = (e) => {
     setUserreview(e.target.value);
