@@ -236,7 +236,7 @@ function MovieDetail({ user }) {
                 }}
                 onMouseEnter={() => setHeartHover(true)}
                 onMouseLeave={() => setHeartHover(false)}
-                style={{ color: (heartClicked || heartHover) ? 'red' : 'black' }}
+                style={{ color: hasLiked ? 'red' : (heartClicked ? 'red' : 'black') }}
               >
                 ❤
               </button>
