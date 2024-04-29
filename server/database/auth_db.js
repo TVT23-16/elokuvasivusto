@@ -10,6 +10,8 @@ async function addUser(password, accountname){
     if (existingUser) {
         throw new Error("Username already exists");
     }
+
+    await pgPool.query(sql.ADD_USER, [password,accountname])
 }
 
 async function getPw(username) {

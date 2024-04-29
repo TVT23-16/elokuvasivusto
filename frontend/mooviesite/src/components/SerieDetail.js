@@ -182,7 +182,7 @@ function SeriesDetail({ user }) {
         }),
       });
       if (response.ok) {
-        setResult([...Result, { userreview: UserReview, accountname: uname }]);
+        setResult([...Result, {stars: rating, userreview: UserReview, accountname: uname }]);
         setRating(null);
       }
     } catch (error) {
