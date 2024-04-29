@@ -5,9 +5,11 @@ import "./login.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useLanguage } from "../LanguageContext";
 
+
 export default function Login({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errormsg, setErrormsg] = useState("");
   const navigate = useNavigate();
   const { language, toggleLanguage } = useLanguage()
   const validate = async (e) => {
@@ -35,7 +37,8 @@ export default function Login({ setUser }) {
         setUser({ user: username, password: password }); //asetetaan tilamuuttujaan oikeat arvot
         navigate("/"); // sen jälkeen navigoidaan kotisivulle
       } else {
-        alert(console.error);
+        const errorRes = await response.json()
+        setErrormsg(errorRes.error)
       }
     } catch (error) {
       console.log("error", error);
@@ -66,7 +69,7 @@ export default function Login({ setUser }) {
         
         <button className="custom-button">{language === "ENG" ? "Login" : "Kirjaudu"}</button>
         <div>
-
+        <div>{errormsg && <p className="error-message">{errormsg}</p>}</div>
         {language === 'ENG' ? 'Not a user yet? Create your Moovies account from the button down below!' : 'Etkö ole vielä käyttäjä? Luo Moovies tunnuksesi alla olevasta napista!'}
          
         </div>

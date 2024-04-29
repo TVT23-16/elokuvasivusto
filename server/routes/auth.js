@@ -17,8 +17,8 @@ router.post("/add", async (req,res) => {
         if (existingUser) {
             return res.status(409).json({ error: "Username already exists" });
         }
-    await addUser(hashPw, accountname) // Kutsutaan addUser-funktiota uuden käyttäjän lisäämiseksi
-    console.log(req.body.password);
+    const add = await addUser(hashPw, accountname) // Kutsutaan addUser-funktiota uuden käyttäjän lisäämiseksi
+    console.log(add);
 
     res.status(201).json({success:"account created"})
 } else if (!accountname && password) {
