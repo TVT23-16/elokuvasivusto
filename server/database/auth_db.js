@@ -6,7 +6,12 @@ const sql = {
 }
 
 async function addUser(password, accountname){
-    await pgPool.query(sql.ADD_USER, [password, accountname])
+    const existingUser = await getPw(accountname);
+    if (existingUser) {
+        throw new Error("Username already exists");
+    }
+
+    await pgPool.query(sql.ADD_USER, [password,accountname])
 }
 
 async function getPw(username) {

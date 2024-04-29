@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {addFavourite, getFavourites,hasLikedMovie} = require("../database/favourites_db");
+const {addFavourite, getFavourites,hasLikedMovie, delFavourites} = require("../database/favourites_db");
 
 router.post("/addfavourite", async (req, res) => {
     try {
@@ -43,6 +43,19 @@ router.post("/hasLikedMovie", async (req, res) => {
         res.status(500).json({ error: "Error checking if user has liked the movie" });
     }
 });
+
+router.delete("/deletefavourite/:username", async (req,res) => {
+    const accountname = req.params.username
+    console.log("tuleeko läpi" + accountname);
+    try {
+        await delFavourites(accountname)
+        res.status(200).json({message: "Favourites deleted"})
+        
+    } catch (error) {
+        res.status(500).json({error: "Error deleting Favourites"});
+
+    }
+})
 
 
 module.exports = router;

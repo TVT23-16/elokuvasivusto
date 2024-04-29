@@ -16,6 +16,7 @@ function SeriesDetail({ user }) {
   const [heartHover, setHeartHover] = useState(false); // Lisätty heartHover-muuttuja
   const navigate = useNavigate();
   const [rating, setRating] = useState(null);
+  const [hasLiked, setHasLiked] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -40,6 +41,101 @@ function SeriesDetail({ user }) {
 
     fetchSeriesDetails();
   }, [id, language]);
+
+  useEffect(() => {
+    const checkIfLiked = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/favourites/hasLikedMovie`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            media_id: id,
+            accountname: uname
+          }),
+        });
+  
+        if (!response.ok) {
+          throw new Error("Error checking if user has liked the movie");
+        }
+  
+        const data = await response.json();
+  
+        if (data.error) {
+          console.log(data.error);
+          return;
+        }
+  
+        if (data.liked) {
+          console.log("User has already liked this movie");
+          setHasLiked(true);
+        }
+      } catch (error) {
+        console.error("Error checking if user has liked the movie:", error);
+      }
+    };
+  
+    checkIfLiked();
+  }, [id, uname]);
+
+  useEffect(() => {
+    const addFavourite = async () => {
+      try {
+        // tarkistetaan onko käyttäjä jo tykännyt elokuvasta
+        const response = await fetch(`http://localhost:3001/favourites/hasLikedMovie`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            media_id: id,
+            accountname: uname
+          }),
+        });
+  
+        if (!response.ok) {
+          console.log(data.error);
+        }
+        
+        const data = await response.json();
+        
+        if (data.error) {
+          console.log(data.error); 
+          return;
+        }
+        
+        if (data.liked) {
+          console.log("User has already liked this movie"); 
+          console.log(hasLiked);
+          setHasLiked(true) //jos jo tykätty, asetetaan muuttujan arvoksi true
+          return;
+        }
+  
+        // jos ei ole vielä tykätty, lisätään tykätyksi
+        const responseAdd = await fetch(`http://localhost:3001/favourites/addfavourite`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            movie_title: series.name,
+            media_id: id,
+            accountname: uname
+          }),
+        });
+  
+        if (responseAdd.ok) {
+          //kun tykkäys ok, asetetaan muuttujan arvoksi true
+          console.log("Movie added to favourites");
+          setHasLiked(true); 
+        } else {
+          throw new Error("Error adding movie to favourites");
+        }
+      } catch (error) {
+        console.error("Error adding movie to favourites:", error);
+      }
+    };
+  
+    if (heartClicked) {
+      addFavourite();
+    }
+  }, [heartClicked, id, uname, series]);
+
 
   useEffect(() => {
     if (series) {
@@ -86,7 +182,7 @@ function SeriesDetail({ user }) {
         }),
       });
       if (response.ok) {
-        setResult([...Result, { userreview: UserReview, accountname: uname }]);
+        setResult([...Result, {stars: rating, userreview: UserReview, accountname: uname }]);
         setRating(null);
       }
     } catch (error) {
@@ -114,6 +210,10 @@ function SeriesDetail({ user }) {
     setUserReview("");
   };
 
+  
+
+
+
   return (
     <div className="movie-details-container">
       <div className="movie-details-content">
@@ -126,6 +226,11 @@ function SeriesDetail({ user }) {
             </p>
             <p className="p-overview">Rating: {series.vote_average}</p>
 
+            {hasLiked && (
+            <div className="already-liked">
+              {language === 'ENG' ? 'This one is your favorite!' : 'Tämä on suosikkisi!'}
+            </div>
+ )}
             <div className="heart">
               <button
                 type='button'
@@ -139,9 +244,10 @@ function SeriesDetail({ user }) {
                 }}
                 onMouseEnter={() => setHeartHover(true)}
                 onMouseLeave={() => setHeartHover(false)}
-                style={{ color: heartClicked ? 'red' : 'black' }}
+                style={{ color: hasLiked ? 'red' : (heartClicked ? 'red' : 'black') }}
               >
-                ❤
+                ❤ {/* Sydän-teksti */}
+                
               </button>
             </div>
 

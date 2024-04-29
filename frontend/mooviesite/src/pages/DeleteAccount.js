@@ -21,6 +21,11 @@ try {
       method: "DELETE",
       headers: { "Content-Type": "application/json" }, //lähetämme pyynnön JSON-muodossa
     })
+    await fetch(`http://localhost:3001/favourites/deletefavourite/${username}`, {
+
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" }, 
+    })
         const response = await fetch(`http://localhost:3001/user/delete/${username}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }, //lähetämme pyynnön JSON-muodossa
