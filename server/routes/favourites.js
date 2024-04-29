@@ -8,7 +8,7 @@ router.post("/addfavourite", async (req, res) => {
     const media_id = req.body.media_id
     const accountname = req.body.accountname
     await addFavourite(movie_title, media_id,accountname)
-    
+    res.status(200).json({success: "favourite added succesfully"})
 
     } catch (error) {
         console.error("Error adding favourite:", error);
@@ -16,14 +16,14 @@ router.post("/addfavourite", async (req, res) => {
     }
     
     
-    res.end()
+    
 })
 
 router.get("/getfavourites/:username",async (req, res) => {
 const accountname= req.params.username
 try {
     const favourites = await getFavourites(accountname)
-    res.json(favourites)
+    res.status(200).json(favourites)
 
 } catch (error) {
     console.error("Error retrieving reviews:", error)
