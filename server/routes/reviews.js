@@ -4,14 +4,20 @@ const router = require("express").Router();
 
 router.post("/addreview", async (req, res) => {
     console.log(req.body);
+    try {
     const accountname = req.body.accountname
     const movietitle = req.body.movie_title
     const mediaid = req.body.media_id
     const userreview = req.body.userreview
     const stars = req.body.stars
     await addReview(mediaid, userreview, accountname, movietitle, stars)
+    res.status(200).json({success: "Review added succesfully"})
+    } catch (error) {
+        res.status(500).json({ error: "Error adding review" })
+    }
     
-    res.end()
+    
+   
 })
 
 router.get("/getreview/:mediaid", async (req, res) => {
