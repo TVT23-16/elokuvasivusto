@@ -60,6 +60,9 @@ Jsonwebtokenilla määritetään, mitä tietoja käyttäjä pääsee sovellukses
 
 Postman-työkalun avulla tehtiin backend rungon päätepisteitä eli endpointeja. Endpointit ovat URL-osoitteita, joihin frontendin puolelta tulee HTTP GET ja POST-pyyntöjä. Aiemmin laadittu tietokannan luokkakaavion avulla tehtiin Postman työkalulla eri endpointit sovellukseen, joita oli esimerkiksi käyttäjän rekisteröinti, käyttäjän sisäänkirjautuminen, käyttäjän poistaminen ja arvosteluiden tallentaminen tietokantaan. 
 
+Linkki Postman REST API dokumentaatioon
+https://documenter.getpostman.com/view/30342408/2sA3BuXpVJ
+
 KUVA 4 TÄHÄN
 KUVA 4. Kuva kotisivusta. 
 
