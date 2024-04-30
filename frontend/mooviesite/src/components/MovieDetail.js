@@ -280,7 +280,7 @@ function MovieDetail({ user }) {
                       : 'Lisää tähdet arvosteluusi'}
                 </p>
 
-                <textarea name="postContent" rows={4} cols={40} value={user ? Userreview : "Kirjaudu sisään kirjoittaaksesi arvostelun"} onChange={handleuserReview} className="postContent" />
+                <textarea name="postContent" rows={4} cols={40} value={user ? Userreview : (language === 'ENG' ? 'Login to write a review' : 'Kirjaudu sisään lisätäksesi arvostelun')} onChange={handleuserReview} className="postContent" />
                 <button type='submit'>{language === 'ENG' ? 'Submit' : 'Lähetä'}</button>
                 <h2>{language === 'ENG' ? 'Other users reviews' : 'Muiden käyttäjien arvostelut'}</h2>
                 </div>

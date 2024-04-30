@@ -220,11 +220,9 @@ function SeriesDetail({ user }) {
         <div className="text-details">
           <div className="text-container">
             <h1>{series.name}</h1>
-            <p className="p-overview">Overview: {series.overview}</p>
-            <p className="p-overview">
-              First Air Date: {series.first_air_date}
-            </p>
-            <p className="p-overview">Rating: {series.vote_average}</p>
+            <p className="p-overview">{language === 'ENG' ? 'Overview' : 'Yleiskatsaus'}: {series.overview}</p>
+            <p className="p-overview">{language === 'ENG' ? 'Release Date' : 'Julkaisupäivä'}: {series.first_air_date}</p>
+            <p className="p-overview">{language === 'ENG' ? 'Rating' : 'Arvostelu'}: {series.vote_average}</p>
 
             {hasLiked && (
             <div className="already-liked">
@@ -299,8 +297,8 @@ function SeriesDetail({ user }) {
         cols={40}
         value={
           user
-            ? UserReview
-            : "Kirjaudu sisään kirjoittaaksesi arvostelun"
+          ? UserReview
+          : (language === 'ENG' ? 'Login to write a review' : 'Kirjaudu sisään lisätäksesi arvostelun')
         }
         onChange={handleuserReview}
         className="postContent"

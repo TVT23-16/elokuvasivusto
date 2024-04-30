@@ -143,7 +143,9 @@ function Movies() {
                 />
               ) : (
                 <div className="empty-poster">
-                   <p className="empty-poster-text">No image available</p>
+                  <p className="empty-poster-text">
+                    {language === 'ENG' ? 'No image available' : 'Kuvaa ei saatavilla'}
+                  </p>
                 </div>
               )}
               <h2>{movie.title}</h2>

@@ -1,12 +1,13 @@
-import { Link } from 'react-router-dom';
-import './Navbar.css';
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import DropdownMenu from './DropdownMenu';
 import { useLanguage } from '../LanguageContext';
+import './Navbar.css';
 
 const Navbar = ({ user }) => {
   const { language, toggleLanguage } = useLanguage();
   const [isHover, setIsHover] = useState(false);
+  const location = useLocation();
 
   const handleMouseEnter = () => {
     setIsHover(true);
@@ -25,16 +26,24 @@ const Navbar = ({ user }) => {
       <div>
         <ul>
           <li>
-            <Link to="/">{language === 'ENG' ? 'HOME' : 'ETUSIVU'}</Link>
+            <Link to="/" className={location.pathname === '/' ? 'current-page' : ''}>
+              {language === 'ENG' ? 'HOME' : 'ETUSIVU'}
+            </Link>
           </li>
           <li>
-            <Link to="/series">{language === 'ENG' ? 'SERIES' : 'SARJAT'}</Link>
+            <Link to="/series" className={location.pathname === '/series' ? 'current-page' : ''}>
+              {language === 'ENG' ? 'SERIES' : 'SARJAT'}
+            </Link>
           </li>
           <li>
-            <Link to="/movies">{language === 'ENG' ? 'MOVIES' : 'ELOKUVAT'}</Link>
+            <Link to="/movies" className={location.pathname === '/movies' ? 'current-page' : ''}>
+              {language === 'ENG' ? 'MOVIES' : 'ELOKUVAT'}
+            </Link>
           </li>
           <li>
-            <Link to="/schedules">{language === 'ENG' ? 'FINNKINO SHOWTIMES' : 'FINNKINO NÄYTÖSAJAT'}</Link>
+            <Link to="/schedules" className={location.pathname === '/schedules' ? 'current-page' : ''}>
+              {language === 'ENG' ? 'FINNKINO SHOWTIMES' : 'FINNKINO NÄYTÖSAJAT'}
+            </Link>
           </li>
           <li>
             <button

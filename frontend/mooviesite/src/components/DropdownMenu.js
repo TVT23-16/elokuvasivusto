@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './DropdownMenu.css';
 import { useLanguage } from '../LanguageContext';
@@ -6,35 +6,38 @@ import { useLanguage } from '../LanguageContext';
 const DropdownMenu = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { language } = useLanguage();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const dropdownRef = useRef(null); // Ref dropdown-elementille
+
+  useEffect(() => {
+    setIsLoggedIn(user !== null);
+  }, [user]);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   const closeDropdown = () => {
-    setIsOpen(false); // Tämä funktio sulkee dropdown-valikon
+    setIsOpen(false);
   };
 
-  useEffect(() => {
-    // Kuuntelija, joka sulkee dropdown-valikon, kun käyttäjä klikkaa hiirellä muualle sivustolla
-    const handleClickOutside = (event) => {
-      if (event.target.closest('.dropdown-menu-container') === null) {
-        setIsOpen(false);
-      }
-    };
-
-    // Lisää tapahtumakuuntelija kun komponentti mountataan
-    window.addEventListener('click', handleClickOutside);
-
-    // Poista tapahtumakuuntelija kun komponentti unmountataan
-    return () => {
-      window.removeEventListener('click', handleClickOutside);
-    };
-  }, []); // Tyhjä taulukko varmistaa, että useEffect suoritetaan vain kerran, kun komponentti mountataan
-
   return (
-    <div className="dropdown-menu-container">
-      <button className="dropdown-toggle" onClick={toggleDropdown}>
+    <div className="dropdown-menu-container" ref={dropdownRef}>
+      <button className={`dropdown-toggle ${isLoggedIn ? 'logged-in' : ''}`} onClick={toggleDropdown}>
         <img src='/profile.png' alt="profilepic" />
       </button>
       {isOpen && (
