@@ -3,10 +3,10 @@
     background-color: rgba(52, 52, 52, 0.8);
     color: #fff; /* Aseta tekstin väri valkoiseksi */
     text-shadow: 0 0 1px #fff; /* Lisää vaalea varjo tekstin taustalle */
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: left;
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12);
@@ -37,3 +37,30 @@
     transform: scale(1.1); /* Suurennuskerroin 1.1 */
   }
 
+  .logged-in {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    background-color: rgba(52, 52, 52, 0.8);
+    margin-top: -33px;
+    margin-right: 20px;
+    width: 50px; /* Aseta kuvakkeen leveys */
+    height: 50px; /* Aseta kuvakkeen korkeus */
+    border-radius: 10px;
+
+    background-color: rgba(50, 118, 34, 0.8);
+    color: #fff; /* Aseta tekstin väri valkoiseksi */
+    text-shadow: 0 0 1px #fff; /* Lisää vaalea varjo tekstin taustalle */
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+    padding:8px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    border-radius: 5px; /* Pyöristää kaikki reunat 10 pikseliä */
+  }
+
+  .logged-in:hover {
+    transform: scale(1.1); /* Suurennuskerroin 1.1 */
+    background-color: rgba(86, 186, 61, 0.8);
+  }

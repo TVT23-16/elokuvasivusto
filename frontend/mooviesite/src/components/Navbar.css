@@ -1,73 +1,102 @@
-nav{
-    background-image: url('backr2.png');
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    text-shadow: 2px 1px 4px rgb(0, 0, 0);
+nav {
+  background-image: url('backr2.png');
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  text-shadow: 2px 1px 4px rgb(0, 0, 0);
 }
 
-nav ul{
-    list-style-type: none;
+nav ul {
+  list-style-type: none;
 }
 
-nav ul li{
-    display: inline-block;
-    margin-left: 15px;
+nav ul li {
+  display: inline-block;
+  margin-left: 15px;
 }
+
 nav a {
-    display: inline-block;
-    padding: 1em var(--gutter);
-    text-decoration: none;
-    font-size: 18px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(136, 125, 125);
-    text-shadow: 1px 1px 1px rgb(0, 0, 0);
-    font-weight: 600;
+  display: inline-block;
+  padding: 1em var(--gutter);
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(136, 125, 125);
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  font-weight: 600;
+}
 
+nav a:hover {
+  color: rgb(207, 207, 207);
+  transform: scale(1.1);
 }
-nav a:hover{
-    color: rgb(207, 207, 207);
-    transform: scale(1.1); /* Suurennuskerroin 1.1 */
-}
-nav div{
-display: inline-block;
+
+nav a.current-page {
+  color: #fff; /* Vaihda nykyisen sivun linkin väri */
 }
 
 .dropdown-menu {
-    right: auto;
-    left: auto; /* Poista automaattinen asettelu */
-  }
+  right: 0;
+  left: auto;
+}
 
-  .dropdown-toggle {
-    position: absolute;
-    right: 0;
-    cursor: pointer;
-    background-color: rgba(52, 52, 52, 0.8);
-    margin-top: -33px;
-    margin-right: 20px;
-    width: 50px; /* Aseta kuvakkeen leveys */
-    height: 50px; /* Aseta kuvakkeen korkeus */
-    border-radius: 10px;
-    padding: 5px; /* Lisää tyhjää tilaa kuvakkeen ympärille tarvittaessa */
-  }
+.dropdown-toggle {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  background-color: rgba(52, 52, 52, 0.8);
+  margin-top: -33px;
+  margin-right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  padding: 8px;
+}
 
-  .dropdown-toggle:hover {
-    transform: scale(1.1); /* Suurennuskerroin 1.1 */
-    background-color: rgba(123, 123, 123, 0.8);
-  }
+.dropdown-toggle:hover {
+  transform: scale(1.1);
+  background-color: rgba(123, 123, 123, 0.8);
+}
 
-/* kielen vaihtopainikkeen ulkoasu */
+
+.logged-in {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  background-color: rgba(52, 52, 52, 0.8);
+  margin-top: -33px;
+  margin-right: 20px;
+  width: 50px; /* Aseta kuvakkeen leveys */
+  height: 50px; /* Aseta kuvakkeen korkeus */
+  border-radius: 10px;
+
+  background-color: rgba(50, 118, 34, 0.8);
+  color: #fff; /* Aseta tekstin väri valkoiseksi */
+  text-shadow: 0 0 1px #fff; /* Lisää vaalea varjo tekstin taustalle */
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left;
+  padding:8px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  border-radius: 5px; /* Pyöristää kaikki reunat 10 pikseliä */
+}
+
+.logged-in:hover {
+  transform: scale(1.1); /* Suurennuskerroin 1.1 */
+  background-color: rgba(86, 186, 61, 0.8);
+}
+
 .language-button {
-    position: absolute;
-    margin-top: -22px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin-right: 20px;
-    margin-left: 15px;
-  }
-  
-   /* kielen vaihtopainikkeen väri kun hiiri on päällä */
-  .language-button:hover {
-    transform: scale(1.1); /* Suurennuskerroin 1.1 */
-  }
+  position: absolute;
+  margin-top: -22px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-left: 15px;
+}
+
+.language-button:hover {
+  transform: scale(1.1);
+}

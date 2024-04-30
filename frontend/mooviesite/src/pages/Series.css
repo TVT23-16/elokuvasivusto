@@ -4,6 +4,10 @@
   gap: 20px;
 }
 
+.series-link {
+  text-decoration: none;
+}
+
 .series {
   background-color: rgba(52, 52, 52, 0.3);
   padding: 20px;

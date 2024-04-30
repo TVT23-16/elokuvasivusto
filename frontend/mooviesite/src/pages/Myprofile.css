@@ -8,7 +8,6 @@
   margin-bottom: 30px;
 }
 
-
 .favourites textarea {
   resize: none;
   width: 100%;
@@ -59,7 +58,7 @@
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 18px;
   color: rgb(136, 125, 125);
   text-shadow: 2px 2px 2px rgb(0, 0, 0);
   text-align: center;

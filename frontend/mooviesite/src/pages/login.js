@@ -70,7 +70,7 @@ export default function Login({ setUser }) {
         <button className="custom-button">{language === "ENG" ? "Login" : "Kirjaudu"}</button>
         <div>
         <div>{errormsg && <p className="error-message">{errormsg}</p>}</div>
-        {language === 'ENG' ? 'Not a user yet? Create your Moovies account from the button down below!' : 'Etkö ole vielä käyttäjä? Luo Moovies tunnuksesi alla olevasta napista!'}
+        {language === 'ENG' ? 'Not a user yet? Create your MOOvies account from the button down below!' : 'Etkö ole vielä käyttäjä? Luo MOOvies tunnuksesi alla olevasta napista!'}
          
         </div>
         <div>

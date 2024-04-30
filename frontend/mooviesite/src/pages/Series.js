@@ -98,10 +98,10 @@ function Series() {
           type="text"
           value={search}
           onChange={(event) => setSearch(event.target.value)} 
-          placeholder="Search for a TV series"
+          placeholder={language === 'ENG' ? 'Search for a serie' : 'Etsi sarjaa'}
         />
         <select value={genre} onChange={(event) => setGenre(event.target.value)}>
-          <option value="">All Genres</option>
+        <option value="">{language === 'ENG' ? 'All Genres' : 'Kaikki genret'}</option>
           {genres.map((genre) => (
             <option key={genre.id} value={genre.id}>
               {genre.name}
@@ -110,14 +110,14 @@ function Series() {
         </select>
         
         <select value={language} onChange={(event) => setLanguage(event.target.value)}>
-          <option value="">All Languages</option>
+        <option value="">{language === 'ENG' ? 'All Languages' : 'Kaikki kielet'}</option>
           {languages.map((lang) => ( 
             <option key={lang.iso_639_1} value={lang.iso_639_1}>
               {lang.english_name} ({lang.iso_639_1})
             </option>
           ))}
         </select>
-        <button type="submit">Search</button>
+        <button type="submit">{language === 'ENG' ? 'Search' : 'Hae'}</button>
       </form>
 
       <div className="results">
@@ -133,8 +133,10 @@ function Series() {
               )}
               {!series.poster_path && (
                 <div className="empty-poster">
-                  <p className="empty-poster-text">No image available</p>
-                </div>
+                <p className="empty-poster-text">
+                  {language === 'ENG' ? 'No image available' : 'Kuvaa ei saatavilla'}
+                </p>
+              </div>
               )}
               <h2>{series.name}</h2>
               <p>Rating: {series.vote_average}</p>
