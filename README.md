@@ -30,13 +30,12 @@ Suunnitelmaa jatkettiin hahmottelemalla sivuston visuaalista puolta luomalla UI-
 
 Sovelluksen etusivun UI-suunnitelma. Tumma värityyli, yläpalkki jossa etusivu, elokuvat, sarjat ja sisäänkirjautumis painikkeet. Tämän alla Finnkinon hakupalkki. Sen alapuolella suosituimmat elokuvat tällä hetkellä. Sivuston alla site powered by teksti, jonka jälkeen linkit TMDB ja Finnkino sivustoille. 
 
-KUVA2 TÄHÄN
+<img src="UI_images/etusivu.png" alt="UI-etusivu" />
 
 KUVA 2. UI-kuva etusivusta 
 
-Sisäänkirjautumisvalikko, jossa tekstiruudut käyttäjänimeä ja salasanaa varten sekä niiden alapuolella rekisteröintinappi.  
 
-KUVA3 TÄHÄN
+<img src="UI_images/registerscreen.png" alt="UI-register" />
 
 KUVA 3. UI-kuva käyttäjän rekisteröintisivusta 
 
