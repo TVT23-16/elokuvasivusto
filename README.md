@@ -16,14 +16,16 @@ MOOvies on elokuvasovellus, joka kokoaa yhteen leffaharrastajien tärkeimmät om
 
 Sivustolla voi rekisteröidä käyttäjän, jonka myötä saa lisättyä elokuva- tai sarja-arvosteluja, lisättyä omia suosikkeja sekä jaettua suosikit muille. Käyttäjän voi halutessaan poistaa. Käyttäjän poiston myötä poistuu myös käyttäjän tekemät arvostelut sivustolta. Lisäominaisuutena sivustolla voi vaihtaa kieltä suomen ja englannin välillä. 
 
+<img src="kuvat/Etusivu_kuva.png" alt="Kotisivu" />
+KUVA 4. Kuva kotisivusta. 
  
 
 <h2>Sovelluksen suunnittelu </h2>
 
 Sovelluksen suunnittelu aloitettiin hahmottelemalla tietokantarakennetta. Luokkakaavion laadittiin tietokannasta (kuva 1). Tietokannassa linkittyy yhteen käyttäjä-, arvostelu- ja suosikkitaulut. Yhdellä käyttäjällä voi olla useita elokuva- ja sarja-arvosteluja sekä useita suosikkielokuvia ja -sarjoja. 
 
-KUVA 1 TÄHÄN
-KUVA 1. Projektin luokkakaavio 
+<img src="kuvat/luokkakaavio.png" alt="luokkakaavio" />
+KUVA 2. Projektin luokkakaavio 
 
 
 Suunnitelmaa jatkettiin hahmottelemalla sivuston visuaalista puolta luomalla UI-kuvia. UI-kuvien avulla suunnitellaan sovelluksen graafista toteutusta, kuten kuvakkeita ja komponentteja. Sivuston väriteemaa suunniteltiin keulahahmosta, joka on sivuston nimen mukaisesti lehmä. Kuva2 on etusivun UI-suunnitelmasta sekä kuva3 käyttäjän rekisteröintisivusta. 
@@ -32,12 +34,12 @@ Sovelluksen etusivun UI-suunnitelma. Tumma värityyli, yläpalkki jossa etusivu,
 
 <img src="UI_images/etusivu.png" alt="UI-etusivu" />
 
-KUVA 2. UI-kuva etusivusta 
+KUVA 3. UI-kuva etusivusta 
 
 
 <img src="UI_images/registerscreen.png" alt="UI-register" />
 
-KUVA 3. UI-kuva käyttäjän rekisteröintisivusta 
+KUVA 4. UI-kuva käyttäjän rekisteröintisivusta 
 
  
 
@@ -62,9 +64,6 @@ Postman-työkalun avulla tehtiin backend rungon päätepisteitä eli endpointeja
 Linkki Postman REST API dokumentaatioon
 
 https://documenter.getpostman.com/view/30342408/2sA3BuXpVJ
-
-<img src="kuvat/Etusivu_kuva.png" alt="Kotisivu" />
-KUVA 4. Kuva kotisivusta. 
 
 <h2>Sivuston esittelyvideo</h2>
 Linkki sivuston esittelyvideoon: 
