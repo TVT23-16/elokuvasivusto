@@ -64,7 +64,7 @@ Linkki Postman REST API dokumentaatioon
 
 https://documenter.getpostman.com/view/30342408/2sA3BuXpVJ
 
-KUVA 4 TÄHÄN
+<<img src="Etusivu_kuva.png" alt="Kotisivu" />
 KUVA 4. Kuva kotisivusta. 
 
 <h2>Sivuston esittelyvideo</h2>
