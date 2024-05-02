@@ -17,7 +17,7 @@ MOOvies on elokuvasovellus, joka kokoaa yhteen leffaharrastajien tärkeimmät om
 Sivustolla voi rekisteröidä käyttäjän, jonka myötä saa lisättyä elokuva- tai sarja-arvosteluja, lisättyä omia suosikkeja sekä jaettua suosikit muille. Käyttäjän voi halutessaan poistaa. Käyttäjän poiston myötä poistuu myös käyttäjän tekemät arvostelut sivustolta. Lisäominaisuutena sivustolla voi vaihtaa kieltä suomen ja englannin välillä. 
 
 <img src="kuvat/Etusivu_kuva.png" alt="Kotisivu" />
-KUVA 4. Kuva kotisivusta. 
+KUVA 1. Kuva kotisivusta. 
  
 
 <h2>Sovelluksen suunnittelu </h2>
