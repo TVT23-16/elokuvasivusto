@@ -22,25 +22,18 @@ KUVA 1. Kuva kotisivusta.
 
 <h2>Sovelluksen suunnittelu </h2>
 
-Sovelluksen suunnittelu aloitettiin hahmottelemalla tietokantarakennetta. Luokkakaavion laadittiin tietokannasta (kuva 1). Tietokannassa linkittyy yhteen käyttäjä-, arvostelu- ja suosikkitaulut. Yhdellä käyttäjällä voi olla useita elokuva- ja sarja-arvosteluja sekä useita suosikkielokuvia ja -sarjoja. 
+Sovelluksen suunnittelu aloitettiin hahmottelemalla tietokantarakennetta, josta laadittiin  luokkakaavio (kuva 2). Tietokannassa linkittyy yhteen käyttäjä-, arvostelu- ja suosikkitaulut. Yhdellä käyttäjällä voi olla useita elokuva- ja sarja-arvosteluja sekä useita suosikkielokuvia ja -sarjoja. 
 
 <img src="kuvat/luokkakaavio.png" alt="luokkakaavio" />
-KUVA 2. Projektin luokkakaavio 
-
-
-Suunnitelmaa jatkettiin hahmottelemalla sivuston visuaalista puolta luomalla UI-kuvia. UI-kuvien avulla suunnitellaan sovelluksen graafista toteutusta, kuten kuvakkeita ja komponentteja. Sivuston väriteemaa suunniteltiin keulahahmosta, joka on sivuston nimen mukaisesti lehmä. Kuva2 on etusivun UI-suunnitelmasta sekä kuva3 käyttäjän rekisteröintisivusta. 
-
-Sovelluksen etusivun UI-suunnitelma. Tumma värityyli, yläpalkki jossa etusivu, elokuvat, sarjat ja sisäänkirjautumis painikkeet. Tämän alla Finnkinon hakupalkki. Sen alapuolella suosituimmat elokuvat tällä hetkellä. Sivuston alla site powered by teksti, jonka jälkeen linkit TMDB ja Finnkino sivustoille. 
+KUVA 2. Projektin luokkakaavio  <br><br>
+Suunnitelmaa jatkettiin hahmottelemalla sivuston visuaalista puolta luomalla UI-kuvia. UI-kuvien avulla suunnitellaan sovelluksen graafista toteutusta, kuten kuvakkeita ja komponentteja. Sivuston väriteemaa suunniteltiin keulahahmosta, joka on sivuston nimen mukaisesti lehmä. <br><br>
 
 <img src="UI_images/etusivu.png" alt="UI-etusivu" />
-
-KUVA 3. UI-kuva etusivusta 
-
+KUVA 3. UI-kuva etusivusta <br><br>
 
 <img src="UI_images/registerscreen.png" alt="UI-register" />
 
 KUVA 4. UI-kuva käyttäjän rekisteröintisivusta 
-
  
 
 <h2>Sivuston toteutus  </h2>
@@ -50,19 +43,20 @@ UI-suunnitelman pohjalta aloitettiin työstämään frontend-osiota ja luokkakaa
 
 <h3>Frontend </h3>
 
-Frontend koodattiin käyttämällä Reactia ja palvelinpuolen koodaus toteutettiin JavaScriptillä Node.js Express-kirjaston avulla. Frontend ja palvelin keskustelevat keskenään REST API:n kautta. Tämäkin on toteutettu JavaScriptillä. REST API:n on tehty erilaisia reittejä, kuten uuden käyttäjän lisääminen, käyttäjän kirjautuminen, käyttäjän poisto. Myös arvostelujen lisäämiselle ja poistamiselle on tehty omat reitit.  
- 
-The Movie Databasen ja Finnkinon tietojen hakuun käytettiin HTTP GET -pyyntöjä tiettyihin osoitteisiin. Näillä pyynnöillä sovelluksen käyttäjä pystyy hakemaan haluamiansa elokuvia ja näytösaikoja. HTTP POST -pyynnöillä käyttäjä pystyy lisäämään omia suosikkejansa sovellukseen talteen. 
+Frontend koodattiin käyttämällä Reactia, ja palvelinpuolen koodaus toteutettiin JavaScriptillä Node.js Express-kirjaston avulla. Frontend ja palvelin keskustelevat keskenään REST API:n kautta, mikä on myös toteutettu JavaScriptillä. REST API:ssa on erilaisia reittejä, kuten uuden käyttäjän lisääminen, käyttäjän kirjautuminen ja käyttäjän poisto. Lisäksi on reitit arvostelujen lisäämiselle ja poistamiselle. 
+
+The Movie Databasen ja Finnkinon tietojen hakemiseen käytettiin HTTP GET -pyyntöjä tiettyihin osoitteisiin. Näillä pyynnöillä sovelluksen käyttäjä pystyy hakemaan haluamiaan elokuvia ja näytösaikoja. HTTP POST -pyyntöjä käytetään käyttäjän omien suosikkien lisäämiseen sovellukseen. 
 
 
 <h3>Backend</h3>
-Käyttäjän tietoturvan takaamiseksi käytössä on bcrypt- ja jsonwebtoken-kirjastot. Bcryptillä suolataan salasanat ennen niiden tallentamista tietokantaan. Tällä kirjastolla voi suojata salasanan hyökkäyksiltä.  
-Jsonwebtokenilla määritetään, mitä tietoja käyttäjä pääsee sovelluksessa näkemään. Tokenilla voi suojata esimerkiksi käyttäjän omia tietoja, kuten henkilökohtaisia asetuksia ja käyttäjätietoja. 
+Käyttäjän tietoturvan takaamiseksi käytössä on bcrypt- ja jsonwebtoken-kirjastot. Bcryptillä suolataan salasanat ennen niiden tallentamista tietokantaan, mikä parantaa niiden suojausta hyökkäyksiltä. 
+
+Jsonwebtokenilla määritetään, mitä tietoja käyttäjä pääsee sovelluksessa näkemään. Tokenilla voi suojata esimerkiksi käyttäjän omia tietoja, kuten henkilökohtaisia asetuksia ja käyttäjätietoja.
 
 
-Postman-työkalun avulla testattiin ja kehitettiin backendin päätepisteitä eli endpointeja. Nämä endpointit ovat URL-osoitteita, joihin frontendin puolelta tulee HTTP GET ja POST-pyyntöjä. Aiemmin laaditun tietokannan luokkakaavion pohjalta määriteltiin erilaisia endpointeja sovellukseen. Näitä oli esimerkiksi käyttäjän rekisteröinti, käyttäjän sisäänkirjautuminen, käyttäjän poistaminen ja arvosteluiden tallentaminen tietokantaan. 
+Postman-työkalun avulla testattiin ja kehitettiin backendin päätepisteitä eli endpointeja. Nämä endpointit ovat URL-osoitteita, joihin frontendin puolelta tulee HTTP GET- ja POST -pyyntöjä. Aiemmin laaditun tietokannan luokkakaavion pohjalta määriteltiin erilaisia endpointeja sovellukseen. Näitä oli esimerkiksi käyttäjän rekisteröinti, käyttäjän sisäänkirjautuminen, käyttäjän poistaminen ja arvosteluiden tallentaminen tietokantaan. 
  
-Backendiin rakensimme myös sovellustestausta. Näillä testeillä varmistuttiin, että sovellus toimii luotettavasti erilaisissa käyttötapauksissa. Testeissä simuloitiin esimerkiksi käyttötilanteita, jossa käyttäjä syötti tyhjät tiedot rekisteröinnissä. Testaus auttoi havaitsemaan virheitä ja epäloogisuutta koodissa. 
+Backendiin rakennettiin myös sovellustestausta varmistaaksemme, että sovellus toimii luotettavasti eri käyttötilanteissa. Testeissä simuloitiin esimerkiksi käyttötilanteita, jossa käyttäjä syötti tyhjät tiedot rekisteröinnissä. Testaus auttoi havaitsemaan virheitä ja epäloogisuutta koodissa.  
  
 
 Linkki Postman REST API dokumentaatioon
@@ -80,10 +74,6 @@ Jaakko Kaurala: Backend-reittien toteutus. Tietokantaan SQL queryjen toteutus. F
  
 Janniina Heikkinen: Tietokannan tekoa. Frontend-sivun muokkaamista. Alas-vetovalikon toteutus ja muokkaus.  
 
- 
-
 Pyry Liu: Frontend pohjan luonti, komponenttien ja sivujen alustukset. Elokuvalistan ja sarjalistan sisällön luonti. Suodatettu hakumahdollisuus elokuvien ja sarjojen listoista. Tarkemmat tiedot elokuvasta/sarjasta komponentin luonti ja sivujen reititys toisiinsa.  
-
- 
 
 Miia Alatervo: Tietokannan luonti. Frontend ulkoasun toteutus suunnitelmaa hyödyntäen. Lisäominaisuuden teko, joka oli sivuston kielen vaihdon mahdollisuus suomen ja englannin kielen välillä. Tähtiluokituksen teko arvosteluihin. Suosikkiominaisuuden teko frontend puolelle.  
