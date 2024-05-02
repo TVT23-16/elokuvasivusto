@@ -59,7 +59,11 @@ The Movie Databasen ja Finnkinon tietojen hakuun käytettiin HTTP GET -pyyntöj�
 Käyttäjän tietoturvan takaamiseksi käytössä on bcrypt- ja jsonwebtoken-kirjastot. Bcryptillä suolataan salasanat ennen niiden tallentamista tietokantaan. Tällä kirjastolla voi suojata salasanan hyökkäyksiltä.  
 Jsonwebtokenilla määritetään, mitä tietoja käyttäjä pääsee sovelluksessa näkemään. Tokenilla voi suojata esimerkiksi käyttäjän omia tietoja, kuten henkilökohtaisia asetuksia ja käyttäjätietoja. 
 
-Postman-työkalun avulla tehtiin backend rungon päätepisteitä eli endpointeja. Endpointit ovat URL-osoitteita, joihin frontendin puolelta tulee HTTP GET ja POST-pyyntöjä. Aiemmin laadittu tietokannan luokkakaavion avulla tehtiin Postman työkalulla eri endpointit sovellukseen, joita oli esimerkiksi käyttäjän rekisteröinti, käyttäjän sisäänkirjautuminen, käyttäjän poistaminen ja arvosteluiden tallentaminen tietokantaan. 
+
+Postman-työkalun avulla testattiin ja kehitettiin backendin päätepisteitä eli endpointeja. Nämä endpointit ovat URL-osoitteita, joihin frontendin puolelta tulee HTTP GET ja POST-pyyntöjä. Aiemmin laaditun tietokannan luokkakaavion pohjalta määriteltiin erilaisia endpointeja sovellukseen. Näitä oli esimerkiksi käyttäjän rekisteröinti, käyttäjän sisäänkirjautuminen, käyttäjän poistaminen ja arvosteluiden tallentaminen tietokantaan. 
+ 
+Backendiin rakensimme myös sovellustestausta. Näillä testeillä varmistuttiin, että sovellus toimii luotettavasti erilaisissa käyttötapauksissa. Testeissä simuloitiin esimerkiksi käyttötilanteita, jossa käyttäjä syötti tyhjät tiedot rekisteröinnissä. Testaus auttoi havaitsemaan virheitä ja epäloogisuutta koodissa. 
+ 
 
 Linkki Postman REST API dokumentaatioon
 
